@@ -1,0 +1,8 @@
+@import "tailwindcss";
+body {
+  background-color: black;
+
+}
+.nav-item:not(:first-child) {
+    margin-left: 40px;
+}
