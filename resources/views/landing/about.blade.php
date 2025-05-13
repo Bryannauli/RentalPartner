@@ -1,4 +1,37 @@
 <section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 !mt-30 !mb-30">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+        
+        <!-- Item 1 -->
+           <div class="opacity-0 transform translate-y-10 transition-all duration-500 ease-in-out animate-fade-in"
+         data-animate>
+          <h3 class="!text-4xl font-bold text-blue-600">10+</h3>
+          <p class="mt-2 text-xl font-medium text-gray-900">Years of Experience</p>
+        </div>
+
+        <!-- Item 2 -->
+         <div class="opacity-0 transform translate-y-10 transition-all duration-500 ease-in-out animate-fade-in"
+         data-animate>
+          <h3 class="!text-4xl font-bold text-blue-600">1000+</h3>
+          <p class="mt-2 text-xl font-medium text-gray-900">Happy Clients</p>
+        </div>
+
+        <!-- Item 3 -->
+         <div class="opacity-0 transform translate-y-10 transition-all duration-500 ease-in-out animate-fade-in"
+         data-animate>
+          <h3 class="!text-4xl font-bold text-blue-600">100+</h3>
+          <p class="mt-2 text-xl font-medium text-gray-900">Vehicles</p>
+        </div>
+
+        <!-- Item 4 -->
+         <div class="opacity-0 transform translate-y-10 transition-all duration-500 ease-in-out animate-fade-in"
+         data-animate>
+          <h3 class="!text-4xl font-bold text-blue-600">10+</h3>
+          <p class="mt-2 text-lg font-medium text-gray-900">Locations</p>
+        </div>
+
+      </div>
+    </div>
   <div class="container mx-auto flex flex-col md:flex-row items-center">
     
     <!-- Left Text -->
@@ -19,7 +52,7 @@
   </div>
 
   <p class="text-gray-600 !ml-12 !mt-5 mb-4 animate-fade-in-up delay-150 transition-all duration-500 hover:text-gray-800">
-    We are committed to providing the best service to every customer. We always ensure that each vehicle is in optimal condition, routinely serviced, and always clean before use. With our well-maintained fleet, customers can experience comfort and safety throughout their journey.
+  Kami berkomitmen memberikan pelayanan terbaik kepada setiap pelanggan. Kami selalu memastikan setiap kendaraan dalam kondisi optimal, secara rutin diservis, dan selalu bersih sebelum digunakan. Dengan armada yang terawat baik, pelanggan dapat merasakan kenyamanan dan keamanan selama perjalanan.
   </p>
   <button class="!text-white bg-gradient-to-r !ml-12 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
     CONTACT US

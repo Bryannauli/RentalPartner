@@ -1,3 +1,72 @@
+<section class="bg-white py-12">
+  <div class="max-w-6xl mx-auto text-center">
+  <h2 class="text-3xl font-bold !mt-40 mb-20 text-blue-600 
+           animate-[fadeIn_0.8s_ease-in-out_0.3s_both]">
+  Our Service
+</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 !ml-20 ">
+      
+      <!-- CARD 1 -->
+      <div class="bg-white rounded-xl shadow p-6 relative 
+                 animate-[fadeInUp_0.6s_ease-out_0.2s_both] hover:scale-[1.02] transition-transform">
+
+        <div class="absolute top-0 right-0 bg-blue-600 text-white font-bold text-xl !px-4 !py-4 rounded-bl-xl">01.</div>
+        <div class="mb-4">
+          <img src="/images/car.png" alt="Lepas Kunci" class="mx-auto h-12 " />
+        </div>
+        <h3 class="!text-xl font-bold !mb-5 !mt-5">Daily Car Rental</h3>
+        <p class="text-gray-500 text-sm !mb-10">
+        Layanan sewa mobil harian dengan kendaraan terawat untuk kenyamanan, keamanan, dan kemudahan Anda dengan harga kompetitif
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="bg-white rounded-xl shadow p-6 relative 
+      animate-[fadeInUp_0.6s_ease-out_0.4s_both] hover:scale-[1.02] transition-transform">
+
+      <div class="absolute top-0 right-0 bg-blue-600 text-white font-bold text-xl !px-4 !py-4 rounded-bl-xl">02.</div>
+        <div class="mb-4">
+          <img src="/images/nyetir.jpeg" alt="Lepas Kunci" class="mx-auto !h-40" />
+        </div>
+        <h3 class="!text-xl font-bold !mb-2 !mt-5">Chauffeur-Driven Car</h3>
+        <p class="text-gray-500 text-sm !mb-10 !p-4">
+        Memberikan kenyamanan ekstra bagi Anda yang ingin menikmati perjalanan dengan Supir Profesional.<br> Anda Santai, Kami Mengemudi 
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="bg-white rounded-xl shadow p-6 relative 
+      animate-[fadeInUp_0.6s_ease-out_0.6s_both] hover:scale-[1.02] transition-transform">
+
+      <div class="absolute top-0 right-0 bg-blue-600 text-white font-bold text-xl !px-4 !py-4 rounded-bl-xl">03.</div>
+        <div class="mb-4">
+          <img src="/images/kunci.jpg" alt="Driver" class="mx-auto h-12" />
+        </div>
+        <h3 class="!text-xl font-bold !mb-4 !mt-5">Self-Drive Car</h3>
+        <p class="text-gray-500 text-sm"> Sewa Mobil Lepas Kunci - Jelajah Sesuai Keinginan dan Bebas Berkendara Kapan Saja
+     
+        </p>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="bg-white rounded-xl shadow p-6 relative 
+                 animate-[fadeInUp_0.6s_ease-out_0.8s_both] hover:scale-[1.02] transition-transform">
+
+      <div class="absolute top-0 right-0 bg-blue-600 text-white font-bold text-xl !px-4 !py-4 rounded-bl-xl">04.</div>
+        <div class="mb-4">
+          <img src="/images/salaman.jpg" alt="Tour" class="mx-auto h-12" />
+        </div>
+        <h3 class="!text-xl font-bold !mb-1 !mt-5">Rent Out Your Car </h3>
+        <p class="text-gray-500 text-sm !p-4">
+        Anda dapat menyewakan mobil Anda dengan mudah, aman, dan terasuransi!
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <div class="bg-white py-12">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

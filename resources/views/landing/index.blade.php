@@ -2,10 +2,11 @@
 
 @section('content')
     @include('landing.hero')
-    @include('landing.about')
-   
+    @include('landing.about') 
     @include('landing.service')
     @include('landing.filter')
     @include('landing.featured')
+    @include('landing.review')
     
-@endsection
+    
+@endsection 

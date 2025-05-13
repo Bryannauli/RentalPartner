@@ -1,7 +1,7 @@
 <!-- Filter Section -->
-<div class=" w-full flex flex-wrap justify-center gap-6 p-6 bg-gray-50 mt-20">
+<div class=" w-full flex flex-wrap justify-center gap-6 p-6 bg-gray-100 mt-20">
   <div class="filter relative w-60 mt-10">
-  <select class="appearance-none w-full bg-white text-gray-500 h-15 border-gray-600 rounded-2xl py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
   <option value="" hidden>Select Car Type</option> <!-- ini tidak akan muncul di dropdown -->
   <option>SUV</option>
   <option>MPV</option>
@@ -14,7 +14,7 @@
   </div>
 
   <div class="filter relative w-60">
-    <select class="appearance-none w-full bg-white text-gray-500 border h-15 border-gray-600 rounded-2xl py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
       <option value="" hidden>Select Car Brand</option>
       <option>Toyota</option>
       <option>Honda</option>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="filter relative w-60">
-  <select class="appearance-none w-full bg-white text-gray-500 border h-15 border-gray-600 hover:!border-gray-600 focus:border-gray-700 rounded-2xl py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-200">
+  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
       <option value="" hidden>Select Pickup Location</option>
       <option>Jakarta</option>
       <option>Bandung</option>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="filter relative w-60 h-10 ">
-    <select class="appearance-none w-full bg-white text-gray-500 border h-15 border-gray-600 rounded-[30px] py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
       <option value="" hidden>Select Feature</option>
       <option>Automatic</option>
       <option>7 Seat</option>
