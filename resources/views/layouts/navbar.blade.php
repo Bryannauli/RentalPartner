@@ -1,5 +1,7 @@
 <!-- Navbar -->
-<nav id="mainNav" class="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-4 bg-transparent z-10 transition-all duration-300">
+<nav id="mainNav" class="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-4 z-10 transition-all duration-300 
+  {{ Request::is('/') ? 'bg-transparent' : 'bg-black' }}">
+
   <div class="flex items-center">
     <img src="/images/logo.png" alt="Logo" class="logo">
     <p class="rental font-medium text-white"> Rental Partner</p>

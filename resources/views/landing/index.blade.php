@@ -7,6 +7,8 @@
     @include('landing.filter')
     @include('landing.featured')
     @include('landing.review')
-    
-    
+
+
+
+
 @endsection 

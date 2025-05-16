@@ -1,10 +1,10 @@
-<div class="bg-gray-100 p-6 rounded-lg shadow-md relative overflow-hidden">
+<div class="bg-white p-6 rounded-lg  relative">
   <h2 class="text-4xl font-bold text-center mb-2 text-blue-600">Apa kata Mereka?</h2>
   <p class="text-center text-lg italic font-semibold text-black !mb-10">Rental Partner adalah Pilihan Tepat!</p>
 
   <div class="grid md:grid-cols-3 !gap-10 mt-10 !scroll-px-10 !mb-50">
     <!-- Testimoni 1 -->
-    <div class="bg-white p-6 rounded-lg shadow-md relative transition-all duration-300 hover:scale-[1.02] hover:shadow-lg !ml-10 !py-5">
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md relative transition-all duration-300 hover:scale-[1.02] hover:shadow-lg !ml-10 !py-5">
       <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 w-12 h-12 flex items-center justify-center rounded-full">
         <span class="text-white text-2xl font-bold">“</span>
       </div>
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Testimoni 2 -->
-    <div class="bg-white p-6 rounded-lg shadow-md relative transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md relative transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
       <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 w-12 h-12 flex items-center justify-center rounded-full">
         <span class="text-white text-2xl font-bold">“</span>
       </div>
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Testimoni 3 -->
-    <div class="bg-white p-6 rounded-lg shadow-md relative transition-all duration-300 hover:scale-[1.02] hover:shadow-lg !mr-10">
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md relative transition-all duration-300 hover:scale-[1.02] hover:shadow-lg !mr-10">
       <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 w-12 h-12 flex items-center justify-center rounded-full">
         <span class="text-white text-2xl font-bold">“</span>
       </div>
