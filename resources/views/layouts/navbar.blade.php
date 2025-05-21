@@ -25,7 +25,7 @@
      src="https://www.gravatar.com/avatar/?d=mp"
      alt="User avatar">
 <!-- Dropdown menu -->
-<div id="userDropdown" class="z-10 hidden bg-gray-700 divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-gray-700 dark:divide-gray-600">
+<div id="userDropdown" class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-gray-700 dark:divide-gray-600">
     <div class="px-4 py-3 text-sm !text-white dark:text-white">
       <div>Bonnie Green</div>
       <div class="font-medium truncate">name@flowbite.com</div>
