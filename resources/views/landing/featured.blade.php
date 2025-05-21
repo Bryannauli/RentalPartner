@@ -13,7 +13,7 @@
         <div class="p-6 flex flex-col flex-grow justify-between">
           <div>
             <h3 class="text-2xl font-bold mb-2 text-gray-800 text-center !mt-10">{{ $car->name }}</h3>
-            <p class="text-center text-blue-700 font-bold text-lg mb-4">Rp {{ number_format($car->price, 0, ',', '.') }} / DAY<span class="text-gray-600 font-normal text-sm">/ DAY</span></p>
+            <p class="text-center text-blue-700 font-bold text-lg mb-4">Rp {{ number_format($car->price, 0, ',', '.') }}<span class="text-gray-600 font-normal text-sm">/ DAY</span></p>
             <div class="flex justify-center space-x-4 text-gray-500 text-sm mb-6 mt-7">
               <div class="flex items-center space-x-1">
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
