@@ -17,14 +17,38 @@
         <svg class="w-2.5 h-2.5 ms-3"><path stroke="currentColor" ... /></svg>
       </button>
       
-      <!-- Dropdown menu -->
-      <div id="dropdown" class="z-10 hidden ...">...</div>
-      
-      <li class="nav-item"><a href="#" class="nav-link hover:!text-blue-500">CONTACT US</a></li>
-      <button type="button" class="nav-sign text-blue-400 hover:!text-blue-600 ...">SIGN UP</button>
+  <img id="avatarButton"
+     type="button"
+     data-dropdown-toggle="userDropdown"
+     data-dropdown-placement="bottom-start"
+     class="w-10 h-10 rounded-full cursor-pointer !mr-10"
+     src="https://www.gravatar.com/avatar/?d=mp"
+     alt="User avatar">
+<!-- Dropdown menu -->
+<div id="userDropdown" class="z-10 hidden bg-gray-700 divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-gray-700 dark:divide-gray-600">
+    <div class="px-4 py-3 text-sm !text-white dark:text-white">
+      <div>Bonnie Green</div>
+      <div class="font-medium truncate">name@flowbite.com</div>
+    </div>
+    <ul class="py-2 text-sm !text-white dark:text-gray-200" aria-labelledby="avatarButton">
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard</a>
+      </li>
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Settings</a>
+      </li>
+      <li>
+        <a href="{{ url('/upgrade') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Upgrade Account</a>
+      </li>
     </ul>
-    <button class="nav-button !text-white bg-gradient-to-r !ml-5 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 !mb-5">
-      RENT NOW
-    </button>
+    <div class="py-1">
+  
+      <a href="#" class="block px-4 py-2 text-sm !text-white hover:bg-blue-600 dark:hover:bg-blue-600 dark:text-gray-200 dark:hover:!text-white">Sign out</a>
+    </div>
+</div>
+
+    
+    </ul>
+   
   </div>
 </nav>
