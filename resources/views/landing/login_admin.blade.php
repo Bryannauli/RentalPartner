@@ -381,7 +381,6 @@
         <div class="auth-forms">
             <div class="form-tabs ">
                 <div class="form-tab active " id="login-tab">Login</div>
-                <div class="form-tab" id="register-tab">Register</div>
             </div>
 
             <!-- Cek berhasil atau tidak -->
@@ -407,8 +406,8 @@
                 <!-- Login Form -->
                 <form id="login-form" method="POST" action="{{route('login.submit')}}">
                     @csrf
-                    <h2 class="form-title">Welcome Back</h2>
-                    <p class="form-subtitle">Sign in to continue to your account</p>
+                    <h2 class="form-title">Admin Login</h2>
+                    <p class="form-subtitle">Confirm your account</p>
                     
                     <div class="form-group">
                         <label for="login-email">Email Address</label>
@@ -419,71 +418,14 @@
                         <label for="login-password">Password</label>
                         <input type="password" name="password" id="login-password" class="form-control" placeholder="Enter your password">
                     </div>
-                    
-                    <a href="#" class="forgot-password">Forgot Password?</a>
-                    
+
                     <div class="remember-me">
                         <input type="checkbox" id="remember" name="remember" checked>
                         <label for="remember">Remember me</label>
                     </div>
                     
-                    <div class="admin-login">
-                        <a href="{{route('login_admin')}}" id="admin-login-link">login as admin?</a>
-                    </div>
-                    
                     <div class="button-row">
                         <button type="submit" class="btn login-btn !text-white bg-gradient-to-r !ml-8 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"">LOGIN</button>
-                    </div>
-                    
-                    <div class="social-login">
-                        <div class="social-buttons">
-                        </div>
-                    </div>
-                </form>
-                
-                <!-- Register Form -->
-                <form id="register-form" method="POST" action="{{route('register')}}">
-                    @csrf
-                    <h2 class="form-title">Create an Account</h2>
-                    <p class="form-subtitle">Join Rental Partner for exclusive luxury car rentals</p>
-                    
-                    <!-- Name -->
-                    <div class="form-group">
-                        <label for="register-name">Full Name</label>
-                        <input type="text" name="register-name" id="register-name" class="form-control" placeholder="Enter your full name">
-                    </div>
-                    
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="register-email">Email Address</label>
-                        <input type="email" name="register-email" id="register-email" class="form-control" placeholder="Enter your email">
-                    </div>
-                    
-                    <!-- Phone number -->
-                    <div class="form-group">
-                        <label for="register-phone">Phone Number</label>
-                        <input type="tel" name="register-phone" id="register-phone" class="form-control" placeholder="Enter your phone number">
-                    </div>
-                    
-                    <!-- Password -->
-                    <div class="form-group">
-                        <label for="register-password">Password</label>
-                        <input type="password" name="register-password" id="register-password" class="form-control" placeholder="Create a password">
-                    </div>
-                    
-                    <!-- Confirm Password -->
-                    <div class="form-group">
-                        <label for="register-confirm-password">Confirm Password</label>
-                        <input type="password" name="register-confirm-password" id="register-confirm-password" class="form-control" placeholder="Confirm your password">
-                    </div>
-                    
-                    <div class="remember-me">
-                        <input type="checkbox" id="terms" name="terms" class="border-black border-2">
-                        <label for="terms" >I agree to the Terms & Conditions</label>
-                    </div>
-                    
-                     <div class="button-row">
-                        <button type="submit" class="btn login-btn !text-white text-3sm bg-gradient-to-r !ml-8 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg !px-30 !py-3 text-center me-2 mb-2"">REGISTER</button>
                     </div>
                     
                     <div class="social-login">
@@ -497,22 +439,13 @@
 
      <script>
         const loginTab = document.getElementById('login-tab');
-        const registerTab = document.getElementById('register-tab');
         const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
         
         loginTab.addEventListener('click', function() {
             loginTab.classList.add('active');
             registerTab.classList.remove('active');
             loginForm.style.display = 'block';
             registerForm.style.display = 'none';
-        });
-        
-        registerTab.addEventListener('click', function() {
-            registerTab.classList.add('active');
-            loginTab.classList.remove('active');
-            registerForm.style.display = 'block';
-            loginForm.style.display = 'none';
         });
         
         // loginForm.addEventListener('submit', function(e) {

@@ -52,4 +52,23 @@ class UserController extends Controller
     return Redirect::back()->withErrors(['email' => 'Email atau password salah.']);
 }
 
+    public function login_admin(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'access_level',
+    ]);
+
+    $credentials = $request->only('email', 'password', 'access_level');
+
+    if (Auth::attempt($credentials)) {
+        // Autentikasi berhasil, redirect ke halaman admin
+        return redirect()->intended(route('landing.admin'));
+    }
+
+    // Autentikasi gagal, kembali ke halaman login dengan error
+    return Redirect::back()->withErrors(['email' => 'Email atau password salah.']);
+}
+
 }

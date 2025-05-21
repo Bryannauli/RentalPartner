@@ -7,7 +7,9 @@ use App\Http\Controllers\CarController;
 Route::get('/', [LandingPageController::class, 'main'])->name('landing.main');
 
 Route::get('/login', [LandingPageController::class, 'login'])->name('login');
+Route::get('/login_admin', [LandingPageController::class, 'login_admin'])->name('login_admin');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
+Route::post('/login_admin', [UserController::class, 'login_admin'])->name('login_admin.submit');
 
 Route::get('/register', [LandingPageController::class, 'registerForm'])->name('register.form');
 Route::post('/register', [UserController::class, 'register'])->name('register');
