@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GearShift - Login & Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+      @vite('resources/css/app.css')
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -24,16 +29,7 @@
         }
         
         /* Header and Navigation */
-        header {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        
         
         .logo {
             display: flex;
@@ -46,24 +42,6 @@
             margin-right: 10px;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 2rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #4108ec;
-        }
         
         .btn {
             background-color: #4108ec;
@@ -365,33 +343,44 @@
             }
         }
     </style>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body class="relative font-poppins">
     <!-- Header Navigation -->
     <header>
-        <div class="logo">
-            <img src="/api/placeholder/150/50" alt="RentalPartner Logo">
-            <h2>RentalPartner</h2>
-        </div>
+        <nav id="mainNav" class="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-4 z-10 transition-all duration-300 
+   {{ Request::is('/') ? 'bg-transparent' : 'bg-black' }}">
+
+  <div class="flex items-center font-poppins">
+    <img src="/images/logo.png" alt="Logo" class="logo">
+    <p class="rental font-medium text-white"> Rental Partner</p>
+  </div>
+
+  <div class="flex items-center">
+    <ul class="hidden md:flex items-center text-white font-medium">
+      <li class="nav-item"><a href="#" class="nav-link hover:!text-blue-500">HOME</a></li>
+      <li class="nav-item"><a href="#" class="nav-link hover:!text-blue-500">ABOUT</a></li>
+      
+      <button id="dropdownDefaultButton" class="nav-link dropdown hover:!text-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+        SERVICE &nbsp;
+        <svg class="w-2.5 h-2.5 ms-3"><path stroke="currentColor" ... /></svg>
+      </button>
     </header>
 
     <!-- Auth Container -->
-    <div class="auth-container">
+    <div class="auth-container ">
         <!-- Left Side - Image -->
-        <div class="auth-image">
+        <div class="auth-image"  style="background-image: url('{{ asset('images/hero.jpg') }}')">
             <div class="auth-image-content">
                 <h2>Experience Luxury Driving</h2>
                 <p>Join GearShift today to unlock premium cars and exclusive member benefits. Your journey to luxury starts here.</p>
-                <a href="index.html" class="btn">EXPLORE OUR FLEET</a>
+                <a href="index.html" class="!text-white text-3sm bg-gradient-to-r !ml-8 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg !px-5 !py-2.5 text-center me-2 mb-2">EXPLORE OUR FLEET</a>
             </div>
         </div>
         
         <!-- Right Side - Forms -->
         <div class="auth-forms">
-            <div class="form-tabs">
-                <div class="form-tab active" id="login-tab">Login</div>
+            <div class="form-tabs ">
+                <div class="form-tab active " id="login-tab">Login</div>
                 <div class="form-tab" id="register-tab">Register</div>
             </div>
 
@@ -434,7 +423,7 @@
                     <a href="#" class="forgot-password">Forgot Password?</a>
                     
                     <div class="remember-me">
-                        <input type="checkbox" id="remember" checked>
+                        <input type="checkbox" id="remember" name="remember" checked>
                         <label for="remember">Remember me</label>
                     </div>
                     
@@ -443,7 +432,7 @@
                     </div>
                     
                     <div class="button-row">
-                        <button type="submit" class="btn login-btn">LOGIN</button>
+                        <button type="submit" class="btn login-btn !text-white bg-gradient-to-r !ml-8 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"">LOGIN</button>
                     </div>
                     
                     <div class="social-login">
@@ -456,7 +445,7 @@
                 <form id="register-form" method="POST" action="{{route('register')}}">
                     @csrf
                     <h2 class="form-title">Create an Account</h2>
-                    <p class="form-subtitle">Join GearShift for exclusive luxury car rentals</p>
+                    <p class="form-subtitle">Join Rental Partner for exclusive luxury car rentals</p>
                     
                     <!-- Name -->
                     <div class="form-group">
@@ -489,12 +478,12 @@
                     </div>
                     
                     <div class="remember-me">
-                        <input type="checkbox" id="terms" name="terms">
-                        <label for="terms">I agree to the Terms & Conditions</label>
+                        <input type="checkbox" id="terms" name="terms" class="border-black border-2">
+                        <label for="terms" >I agree to the Terms & Conditions</label>
                     </div>
                     
                      <div class="button-row">
-                        <button type="submit" class="btn login-btn">REGISTER</button>
+                        <button type="submit" class="btn login-btn !text-white text-3sm bg-gradient-to-r !ml-8 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg !px-30 !py-3 text-center me-2 mb-2"">REGISTER</button>
                     </div>
                     
                     <div class="social-login">
@@ -537,6 +526,36 @@
         //         alert('Please fill all required fields');
         //     }
         // });
+        </script>
+         <script>
+        // Simple script to handle header transparency
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            } else {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            }
+        });
+    </script>
+     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const navbar = document.getElementById("mainNav");
+      
+      window.addEventListener("scroll", function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add("navbar-scrolled");
+        } else {
+          navbar.classList.remove("navbar-scrolled");
+        }
+      });
+      
+      if (window.scrollY > 50) {
+        navbar.classList.add("navbar-scrolled");
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
         
     </script>
 </body>
