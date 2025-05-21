@@ -16,6 +16,14 @@ class LandingPageController extends Controller
         return view('landing.login');
     }
 
+    public function login_admin(){
+        return view('landing.login_admin');
+    }
+
+    public function admin(){
+        return view('landing.admin');
+    }
+
     public function index()
     {
     $cars = Car::all();

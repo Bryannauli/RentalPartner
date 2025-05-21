@@ -24,6 +24,10 @@ class User extends Authenticatable
         'phone',
     ];
 
+    protected $attributes = [
+        'access_level' => 1,
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -32,6 +36,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'access_level',
     ];
 
     /**
