@@ -44,37 +44,13 @@ class UserController extends Controller
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+        if ($user->access_level === 0) {
+            return redirect()->intended(route('landing.admin'));
+        }
         // Autentikasi berhasil, redirect ke halaman utama
         return redirect()->intended(route('landing.index'));
     }
 }
-
-    public function login_admin(Request $request)
-{
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
-
-    $credentials = $request->only('email', 'password');
-
-    // Attempt to log in
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user();
-
-        // Check access level
-        if ($user->access_level === 0) {
-            return redirect()->intended(route('landing.admin'));
-        }
-
-        // Logout immediately if access level is not allowed
-        Auth::logout();
-        return Redirect::back()->withErrors(['email' => 'Akses tidak diizinkan.']);
-    }
-
-    // Authentication failed
-    return Redirect::back()->withErrors(['email' => 'Email atau password salah.']);
-}
-
 
 }
