@@ -372,7 +372,7 @@
         <div class="auth-image"  style="background-image: url('{{ asset('images/hero.jpg') }}')">
             <div class="auth-image-content">
                 <h2>Experience Luxury Driving</h2>
-                <p>Join GearShift today to unlock premium cars and exclusive member benefits. Your journey to luxury starts here.</p>
+                <p>Join <span class="text-blue-500">Rental Partner</span> today to unlock premium cars and exclusive member benefits. Your journey to luxury starts here.</p>
                 <a href="index.html" class="!text-white text-3sm bg-gradient-to-r !ml-8 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg !px-5 !py-2.5 text-center me-2 mb-2">EXPLORE OUR FLEET</a>
             </div>
         </div>
