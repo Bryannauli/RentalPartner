@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="RentalPartner\public\images\logo.png" width="400" alt="Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="public\images\logo.png" width="400" alt="Logo"></a></p>
 
 ## Deskripsi tim
 
