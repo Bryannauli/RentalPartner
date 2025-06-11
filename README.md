@@ -1,61 +1,54 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="public\images\logo.png" width="400" alt="Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Deskripsi tim
 
-## About Laravel
+Mahasiswa Universitas Sumatera Utara
+- Ahmad Arif Fatahillah - 241402036 (Frontend: Web preview, Web admin, Tombol Rent)
+- Rahma Sarita Nasution - 241402043 (Frontend: Web main, Detail Kendaraan)
+- Agnes Olivia Ketaren  - 241402066 (Backend : Login User, Posting, Order)
+- Richard Lim           - 241402073 (Backend : Seeder Admin, Searching, Rating, Aprove post)
+- Bryan Sullivan Nauli  - 241402108 (Backend : Login Admin, History, Upgrade akun)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Deskripsi Aplikasi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Rental Partner adalah sebuah platform digital berbasis komunitas yang dirancang khusus untuk mempermudah proses penyewaan dan penyewaan ulang kendaraan roda empat. Aplikasi ini mempertemukan pemilik mobil yang ingin mendapatkan penghasilan tambahan dari mobil pribadinya dengan penyewa yang membutuhkan kendaraan untuk keperluan sehari-hari, perjalanan bisnis, liburan, atau kebutuhan lainnya.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Melalui Rental Partner, pengguna dapat dengan mudah mencari mobil yang tersedia di sekitar mereka, membandingkan harga, jenis mobil, dan ulasan pengguna lainnya untuk menemukan kendaraan yang paling sesuai dengan kebutuhan dan anggaran mereka. Platform ini menyediakan berbagai pilihan mobil, mulai dari city car yang hemat bahan bakar, MPV untuk keluarga, hingga SUV yang tangguh untuk perjalanan jauh.
 
-## Learning Laravel
+Bagi pemilik mobil, Rental Partner memberikan kesempatan untuk menghasilkan pendapatan pasif dari kendaraan yang jarang digunakan. Proses pendaftaran kendaraan sangat mudah, dan pemilik dapat mengatur sendiri ketersediaan, harga, serta ketentuan sewa. Semua transaksi dilakukan secara aman melalui sistem pembayaran digital yang transparan dan terlindungi.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Keamanan dan kenyamanan menjadi prioritas utama di Rental Partner. Sistem verifikasi pengguna, fitur ulasan dan rating, serta dukungan layanan pelanggan 24/7 menjadikan platform ini terpercaya dan nyaman digunakan oleh siapa saja. Selain itu, platform ini juga menyediakan opsi perlindungan tambahan seperti asuransi dan pelacakan kendaraan untuk memberikan rasa tenang bagi kedua belah pihak.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Fitur-fitur yang tersedia
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Register/Login akun
+- Searching
+- Order
+- Rating
+- History Sewa
+- Upgrade Akun
+- Posting
+- Aprove Post
 
-## Laravel Sponsors
+## Syarat Menjalankan Aplikasi
+- PHP 8.4.4
+- Laravel 12.10.2
+- tailwind 4.1.8
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Cara Mernjalankan Aplikasi
 
-### Premium Partners
+Pertama Kali:
+- Aktifkan MySQL di XAMPP/Laragon
+- composer install di terminal
+- ubah file .env.example menjadi .env
+- php artisan key:generate di terminal
+- npm install di terminal
+- npm run dev di terminal
+- php artisan migrate di terminal
+- php artisan db:seed di terminal
+- php artisan serve di terminal
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+Setelah pertama kali:
+- npm run dev di terminal
+- php artisan serve di terminal
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
