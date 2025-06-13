@@ -46,10 +46,10 @@ class UserController extends Controller
     if (Auth::attempt($credentials)) {
         $user = Auth::user();
         if ($user->access_level === 0) {
-            return redirect()->intended(route('landing.admin'));
+            return redirect()->intended(route('Admin.admin'));
         }
         // Autentikasi berhasil, redirect ke halaman utama
-        return redirect()->intended(route('landing.index'));
+        return redirect()->intended(route('user.index'));
     }
 }
 

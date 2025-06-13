@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="public\images\logo.png" width="400" alt="Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="public\images\RentalPartner.png" width="400" alt="Logo"></a></p>
 
 ## Deskripsi tim
 
@@ -35,7 +35,7 @@ Keamanan dan kenyamanan menjadi prioritas utama di Rental Partner. Sistem verifi
 - Laravel 12.10.2
 - tailwind 4.1.8
 
-## Cara Mernjalankan Aplikasi
+## Cara Menjalankan Aplikasi
 
 Pertama Kali:
 - Aktifkan MySQL di XAMPP/Laragon

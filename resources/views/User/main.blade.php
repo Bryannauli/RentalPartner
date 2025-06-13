@@ -60,8 +60,8 @@
         <a href="{{route('login')}}" class=" !text-white bg-gradient-to-r !ml-5 !mt-4 !mr-3 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm !px-7 !py-3 text-center me-2 !mb-5">LOGIN NOW</a>
     </header>
 
-@include('landing.hero')
-@include('landing.about')
+@include('user.hero')
+@include('user.about')
 
     <!-- Featured Cars Section -->
 <section class="bg-gray-100 py-10 !mt-10" id="featured-cars">
@@ -306,8 +306,8 @@
  
 </section>
 
-@include('landing.service')
-@include('landing.review')
+@include('user.service')
+@include('user.review')
 @include('layouts.footer')
 
     <script>

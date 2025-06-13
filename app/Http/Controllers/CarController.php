@@ -8,13 +8,13 @@ class CarController extends Controller
     public function featured()
     {
         $cars = Car::all();
-        return view('landing.featured', compact('cars'));
+        return view('user.featured', compact('cars'));
     }
 
  public function detail($id)
 {
     $car = Car::findOrFail($id);
-    return view('landing.detail', compact('car'));
+    return view('user.detail', compact('car'));
 }
 
 }

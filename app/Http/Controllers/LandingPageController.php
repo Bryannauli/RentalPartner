@@ -9,7 +9,7 @@ class LandingPageController extends Controller
 {
     public function main()
     {
-        return view('landing.main');
+        return view('user.main');
     }
 
     public function login(){
@@ -17,14 +17,22 @@ class LandingPageController extends Controller
     }
 
     public function admin(){
-        return view('landing.admin');
+        return view('user.admin');
     }
 
     public function index()
     {
     $cars = Car::all();
-    return view('landing.index', compact('cars'));
+    return view('user.index', compact('cars'));
     }
+
+    public function payment(){
+        return view ('user.payment');
+    }
+ public function process(){
+        return view ('payment.process');
+    }
+    
 }
 
 

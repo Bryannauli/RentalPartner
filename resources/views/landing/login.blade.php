@@ -12,7 +12,7 @@
       @vite('resources/css/app.css')
     <style>
         * {
-            margin: 0;
+            margin: 0 ;
             padding: 0;
             box-sizing: border-box;
         }
@@ -62,7 +62,7 @@
         .auth-container {
             min-height: 100vh;
             display: flex;
-            padding-top: 80px; /* Header height + spacing */
+            padding-top: 30px; /* Header height + spacing */
         }
         
         .auth-image {
