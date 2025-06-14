@@ -19,11 +19,8 @@
             @php
                 $menus = [
                     'dashboard' => 'Dashboard',
-                    'users' => 'Pengguna',
-                    'owner-requests' => 'Permintaan Owner',
-                    'posts' => 'Postingan Mobil',
-                    'reports' => 'Laporan',
-                    'settings' => 'Pengaturan'
+                    'history' => 'Riwayat Pesanan',
+                    'order' => 'Pesanan',
                 ];
             @endphp
             @foreach ($menus as $route => $label)
