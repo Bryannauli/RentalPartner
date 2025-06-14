@@ -5,13 +5,11 @@
 @section('content')
 <div class="min-h-screen bg-gray-50 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Header -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900">Histori Penyewaan</h1>
             <p class="mt-2 text-gray-600">Riwayat pemesanan mobil Anda</p>
         </div>
 
-        <!-- Navigation -->
         <div class="mb-6">
             <nav class="flex space-x-8">
                 <a href="{{ route('owner.dashboard') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
@@ -26,7 +24,6 @@
             </nav>
         </div>
 
-        <!-- Filter -->
         <div class="mb-6">
             <div class="bg-white p-4 rounded-lg shadow">
                 <div class="flex flex-wrap gap-4 items-center">
@@ -59,7 +56,6 @@
             </div>
         </div>
 
-        <!-- Statistics Cards -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-white rounded-lg shadow p-4">
                 <div class="flex items-center">
@@ -126,7 +122,6 @@
             </div>
         </div>
 
-        <!-- History List -->
         @if($bookings->count() > 0)
             <div class="space-y-4" id="bookingsList">
                 @foreach($bookings as $booking)
@@ -157,7 +152,6 @@
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Customer Info -->
                             <div>
                                 <h4 class="text-sm font-medium text-gray-900 mb-2">Penyewa</h4>
                                 <div class="space-y-1">
@@ -169,7 +163,6 @@
                                 </div>
                             </div>
 
-                            <!-- Car Info -->
                             <div>
                                 <h4 class="text-sm font-medium text-gray-900 mb-2">Mobil</h4>
                                 <div class="flex items-center space-x-3">
@@ -189,7 +182,6 @@
                                 </div>
                             </div>
 
-                            <!-- Booking Details -->
                             <div>
                                 <h4 class="text-sm font-medium text-gray-900 mb-2">Detail Sewa</h4>
                                 <div class="space-y-1">
@@ -260,7 +252,6 @@ function resetFilters() {
     filterBookings();
 }
 
-// Event listeners for filters
 document.getElementById('statusFilter').addEventListener('change', filterBookings);
 document.getElementById('carFilter').addEventListener('change', filterBookings);
 </script>
