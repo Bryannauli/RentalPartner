@@ -9,7 +9,6 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex">
 
-    <!-- Sidebar -->
     <aside class="w-64 bg-slate-800 text-white min-h-screen">
         <div class="p-6 border-b border-slate-600">
             <h1 class="text-2xl font-bold">Rental Partner</h1>
