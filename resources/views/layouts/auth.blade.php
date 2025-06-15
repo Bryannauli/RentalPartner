@@ -10,11 +10,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-poppins bg-gray-50">
-      @include('layouts.navbar')
 
     <div class="flex min-h-screen">
         <div class="hidden lg:flex w-1/2 items-center justify-center bg-cover bg-center" style="background-image: url('{{ asset('images/hero.jpg') }}')">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="relative z-10 max-w-md text-center text-white p-8">
                 <h2 class="text-4xl font-bold mb-4">Experience Luxury Driving</h2>
                 <p class="text-lg text-gray-200 mb-6">Join <span class="font-semibold text-blue-400">Rental Partner</span> today to unlock premium cars and exclusive member benefits. Your journey to luxury starts here.</p>
@@ -51,7 +49,7 @@
                 @endif
                 
                 @yield('content')
-                @include('layouts.footer')
+
 
             </div>
         </div>
