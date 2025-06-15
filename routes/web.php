@@ -38,6 +38,7 @@ Route::view('/upgrade', 'user.upgrade');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/mobil', [AdminController::class, 'mobil'])->name('mobil');
     Route::get('/owner-requests', [AdminController::class, 'ownerRequests'])->name('owner-requests');
     Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
     Route::get('/review', [AdminController::class, 'review'])->name('review');

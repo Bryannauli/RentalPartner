@@ -14,6 +14,10 @@ class AdminController extends Controller
         return view('admin.user');
     }
 
+    public function mobil() {
+        return view('admin.mobil');
+    }
+
     public function ownerRequests() {
         return view('admin.owner');
     }
