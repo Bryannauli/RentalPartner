@@ -8,11 +8,12 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [LandingPageController::class, 'main'])->name('user.main');
 
+Route::get('/home', [UserController::class, 'home'])->name('home');
 Route::get('/login', [LandingPageController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 
 Route::get('/register', [LandingPageController::class, 'registerForm'])->name('register.form');
-Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/register', [UserController::class, 'register'])->name('register.submit');
 
 Route::get('/index', [LandingPageController::class, 'index'])->name('user.index');
 Route::get('/featured', [CarController::class, 'featured'])->name('user.featured');

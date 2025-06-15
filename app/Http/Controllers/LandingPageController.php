@@ -13,7 +13,11 @@ class LandingPageController extends Controller
     }
 
     public function login(){
-        return view('landing.login');
+        return view('autentikasi.login');
+    }
+
+    public function registerForm(){
+        return view('autentikasi.regis');
     }
 
     public function admin(){
@@ -29,7 +33,7 @@ class LandingPageController extends Controller
     public function payment(){
         return view ('user.payment');
     }
- public function process(){
+    public function process(){
         return view ('payment.process');
     }
     
