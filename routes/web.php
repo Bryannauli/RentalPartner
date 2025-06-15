@@ -4,6 +4,8 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 
 
 Route::get('/', [LandingPageController::class, 'main'])->name('user.main');
@@ -14,6 +16,14 @@ Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 
 Route::get('/register', [LandingPageController::class, 'registerForm'])->name('register.form');
 Route::post('/register', [UserController::class, 'register'])->name('register.submit');
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'form'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
+
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])
+    ->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
+    ->name('password.update');
 
 Route::get('/index', [LandingPageController::class, 'index'])->name('user.index');
 Route::get('/featured', [CarController::class, 'featured'])->name('user.featured');

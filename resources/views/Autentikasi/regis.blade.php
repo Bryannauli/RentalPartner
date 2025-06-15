@@ -11,27 +11,27 @@
 
         <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-            <input type="text" name="name" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name" required>
+            <input type="text" name="register-name" id="register-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name" required>
         </div>
 
         <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-            <input type="email" name="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email" required>
+            <input type="email" name="register-email" id="register-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email" required>
         </div>
         
         <div class="mb-4">
             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-            <input type="tel" name="phone" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your phone number" required>
+            <input type="tel" name="register-phone" id="register-phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your phone number" required>
         </div>
 
         <div class="mb-4">
             <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-            <input type="password" name="password" id="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Create a password" required>
+            <input type="password" name="register-password" id="register-password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Create a password" required>
         </div>
         
         <div class="mb-6">
             <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Confirm your password" required>
+            <input type="password" name="register-confirm-password" id="register-confirm-password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Confirm your password" required>
         </div>
         
         <div class="flex items-center mb-6">

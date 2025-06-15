@@ -17,7 +17,7 @@
         <div class="mb-6">
             <div class="flex justify-between items-center">
                 <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                <a href="#" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                <a href="{{route('password.request')}}" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
             </div>
             <input type="password" name="password" id="password" class="w-full mt-2 px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your password" required>
         </div>
