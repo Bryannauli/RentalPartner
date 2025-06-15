@@ -29,8 +29,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::get('/owner-requests', [AdminController::class, 'ownerRequests'])->name('owner-requests');
     Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
-    Route::get('/reports', [AdminController::class, 'reports'])->name('reports');
-    Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
+    Route::get('/review', [AdminController::class, 'review'])->name('review');
+    Route::get('/history', [AdminController::class, 'history'])->name('history');
 });
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 

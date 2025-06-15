@@ -17,11 +17,11 @@
         <a href="{{ route('admin.posts') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.posts') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.posts') ? 'page' : '' }}">
             <i class="fas fa-car w-5"></i> <span>Postingan Mobil</span>
         </a>
-        <a href="{{ route('admin.reports') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.reports') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.reports') ? 'page' : '' }}">
-            <i class="fas fa-flag w-5"></i> <span>Laporan</span>
+        <a href="{{ route('admin.review') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.reports') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.reports') ? 'page' : '' }}">
+            <i class="fas fa-flag w-5"></i> <span>Review</span>
         </a>
-        <a href="{{ route('admin.settings') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.settings') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.settings') ? 'page' : '' }}">
-            <i class="fas fa-cog w-5"></i> <span>Pengaturan</span>
+        <a href="{{ route('admin.history') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.settings') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.settings') ? 'page' : '' }}">
+            <i class="fas fa-cog w-5"></i> <span>History Pemesanan</span>
         </a>
 
     </nav>

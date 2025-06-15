@@ -22,12 +22,12 @@ class AdminController extends Controller
         return view('admin.postingan');
     }
 
-    public function reports() {
-        return view('admin.laporan');
+    public function review() {
+        return view('admin.review');
     }
 
-    public function settings() {
-        return view('admin.settings');
+    public function history() {
+        return view('admin.history');
     }
 
 
