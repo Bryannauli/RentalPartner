@@ -72,29 +72,7 @@
                         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{{ route('admin.owner-requests.show', 1) }}" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">Siti Nurhayati</td>
-                    <td class="px-6 py-4 whitespace-nowrap">siti.nurhayati@email.com</td>
-                    <td class="px-6 py-4 whitespace-nowrap">14 Mei 2025</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{{ route('admin.owner-requests.show', 2) }}" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">Agus Wijaya</td>
-                    <td class="px-6 py-4 whitespace-nowrap">agus.wijaya@email.com</td>
-                    <td class="px-6 py-4 whitespace-nowrap">13 Mei 2025</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{{ route('admin.owner-requests.show', 3) }}" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
+                        <a href="" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
                     </td>
                 </tr>
             </tbody>
@@ -129,31 +107,7 @@
                         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Aktif</span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{{ route('admin.posts.show', 1) }}" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">Honda Brio 2022</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Siti Nurhayati</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Rp 300.000</td>
-                    <td class="px-6 py-4 whitespace-nowrap">16 Mei 2025</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Aktif</span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{{ route('admin.posts.show', 2) }}" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">Mitsubishi Xpander 2023</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Agus Wijaya</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Rp 450.000</td>
-                    <td class="px-6 py-4 whitespace-nowrap">15 Mei 2025</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Aktif</span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{{ route('admin.posts.show', 3) }}" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
+                        <a href="" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</a>
                     </td>
                 </tr>
             </tbody>

@@ -34,23 +34,22 @@ class UserController extends Controller
     return redirect('/login')->with('success', 'Registrasi berhasil!');
     }
 
-    public function login(Request $request)
-{
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+    public function login(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
 
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user();
-        if ($user->access_level === 0) {
-            return redirect()->intended(route('Admin.admin'));
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->access_level === 0) {
+                return redirect()->intended(route('user.admin'));
+            }
+            // Autentikasi berhasil, redirect ke halaman utama
+            return redirect()->intended(route('user.index'));
         }
-        // Autentikasi berhasil, redirect ke halaman utama
-        return redirect()->intended(route('user.index'));
     }
-}
 
-}
+    }

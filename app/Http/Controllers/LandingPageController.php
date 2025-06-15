@@ -17,7 +17,7 @@ class LandingPageController extends Controller
     }
 
     public function admin(){
-        return view('user.admin');
+        return view('admin.dashboard');
     }
 
     public function index()
