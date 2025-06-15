@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Rental Partner Admin' }}</title>
+    <title>{{ $title ?? 'Rental Partner Owner' }}</title>
     <script src="https://cdn.tailwindcss.com"></script> 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -13,7 +13,7 @@
     <aside class="w-64 bg-slate-800 text-white min-h-screen">
         <div class="p-6 border-b border-slate-600">
             <h1 class="text-2xl font-bold">Rental Partner</h1>
-            <p class="text-sm text-slate-300">Admin Dashboard</p>
+            <p class="text-sm text-slate-300">Owner Dashboard</p>
         </div>
         <ul class="mt-4 space-y-2">
             @php
@@ -46,7 +46,7 @@
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-bold">{{ $title ?? 'Halaman' }}</h2>
             <div class="flex items-center gap-2">
-                <span class="text-gray-700">Admin</span>
+                <span class="text-gray-700">Owner</span>
                 <img src="https://cdn-icons-png.flaticon.com/256/6522/6522516.png"
                      class="w-10 h-10 rounded-full object-cover" alt="Admin Avatar">
             </div>

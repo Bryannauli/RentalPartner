@@ -1,61 +1,3 @@
-@php
-    $bookings = collect([
-        (object)[
-            'id' => 1,
-            'status' => 'confirmed',
-            'created_at' => \Carbon\Carbon::now()->subDays(3),
-            'total_price' => 500000,
-            'user' => (object)[
-                'name' => 'Agnes Ketaren',
-                'email' => 'agnes@example.com',
-            ],
-            'phone' => '081234567890',
-            'car' => (object)[
-                'name' => 'Toyota Avanza',
-                'brand' => 'Toyota',
-                'year' => 2022,
-                'image' => null,
-            ],
-            'start_date' => now()->subDays(10),
-            'end_date' => now()->subDays(7),
-            'duration' => 3,
-            'notes' => 'Harap mobil diantar jam 9 pagi',
-            'rejection_reason' => null,
-        ],
-        (object)[
-            'id' => 2,
-            'status' => 'rejected',
-            'created_at' => \Carbon\Carbon::now()->subDays(1),
-            'total_price' => 350000,
-            'user' => (object)[
-                'name' => 'Budi Santoso',
-                'email' => 'budi@example.com',
-            ],
-            'phone' => null,
-            'car' => (object)[
-                'name' => 'Honda Jazz',
-                'brand' => 'Honda',
-                'year' => 2021,
-                'image' => 'cars/honda-jazz.jpg',
-            ],
-            'start_date' => now()->subDays(5),
-            'end_date' => now()->subDays(3),
-            'duration' => 2,
-            'notes' => null,
-            'rejection_reason' => 'Dokumen tidak lengkap',
-        ],
-    ]);
-@endphp
-
-@php
-    $cars = collect([
-        (object)[ 'id' => 1, 'name' => 'Toyota Avanza' ],
-        (object)[ 'id' => 2, 'name' => 'Honda Jazz' ],
-        (object)[ 'id' => 3, 'name' => 'Daihatsu Xenia' ],
-    ]);
-@endphp
-
-
 @extends('layouts.owner')
 
 @section('title', 'Histori Penyewaan')
@@ -70,55 +12,50 @@
 
         <div class="mb-6">
             <nav class="flex space-x-8">
-                <a href="{{ route('dashboard') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
+                <a href="{{ route('owner.dashboard') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
                     Dashboard
                 </a>
-                <a href="{{ route('order') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
+                <a href="{{ route('owner.orders') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
                     Pesanan Masuk
                 </a>
-                <a href="{{ route('history') }}" class="border-b-2 border-blue-500 text-blue-600 px-3 py-2 font-medium text-sm">
+                <a href="{{ route('owner.history') }}" class="border-b-2 border-blue-500 text-blue-600 px-3 py-2 font-medium text-sm">
                     Histori
                 </a>
             </nav>
         </div>
 
-        {{-- Filter Form --}}
-        <form method="GET" action="{{ route('history') }}" class="mb-6 bg-white p-4 rounded-lg shadow">
-            <div class="flex flex-wrap gap-4 items-end">
-                <div>
-                    <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <select name="status" id="status" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
-                        <option value="" {{ request('status') == '' ? 'selected' : '' }}>Semua Status</option>
-                        <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu</option>
-                        <option value="confirmed" {{ request('status') == 'confirmed' ? 'selected' : '' }}>Dikonfirmasi</option>
-                        <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Ditolak</option>
-                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Selesai</option>
-                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="car" class="block text-sm font-medium text-gray-700 mb-1">Mobil</label>
-                    <select name="car" id="car" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
-                        <option value="" {{ request('car') == '' ? 'selected' : '' }}>Semua Mobil</option>
-                        @foreach($cars as $car)
-                            <option value="{{ $car->id }}" {{ request('car') == $car->id ? 'selected' : '' }}>
-                                {{ $car->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Filter</button>
-                </div>
-                <div>
-                    <a href="{{ route('history') }}" class="px-4 py-2 text-gray-600 hover:text-gray-800 text-sm">
-                        Reset Filter
-                    </a>
+        <div class="mb-6">
+            <div class="bg-white p-4 rounded-lg shadow">
+                <div class="flex flex-wrap gap-4 items-center">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select id="statusFilter" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                            <option value="">Semua Status</option>
+                            <option value="pending">Menunggu</option>
+                            <option value="confirmed">Dikonfirmasi</option>
+                            <option value="rejected">Ditolak</option>
+                            <option value="completed">Selesai</option>
+                            <option value="cancelled">Dibatalkan</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Mobil</label>
+                        <select id="carFilter" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                            <option value="">Semua Mobil</option>
+                            @foreach($bookings->pluck('car')->unique('id') as $car)
+                                <option value="{{ $car->id }}">{{ $car->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="resetFilters()" class="px-4 py-2 text-gray-600 hover:text-gray-800 text-sm">
+                            Reset Filter
+                        </button>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
 
-        {{-- Statistik --}}
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-white rounded-lg shadow p-4">
                 <div class="flex items-center">
@@ -186,9 +123,9 @@
         </div>
 
         @if($bookings->count() > 0)
-            <div class="space-y-4">
+            <div class="space-y-4" id="bookingsList">
                 @foreach($bookings as $booking)
-                <div class="booking-item bg-white shadow rounded-lg">
+                <div class="booking-item bg-white shadow rounded-lg" data-status="{{ $booking->status }}" data-car="{{ $booking->car->id }}">
                     <div class="px-6 py-4">
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center space-x-4">
@@ -269,12 +206,6 @@
                     </div>
                 </div>
                 @endforeach
-                {{-- pagination --}}
-                @if(method_exists($bookings, 'links'))
-                <div class="mt-6">
-                    {{ $bookings->withQueryString()->links() }}
-                </div>
-                @endif
             </div>
         @else
             <div class="bg-white shadow rounded-lg">
@@ -289,4 +220,40 @@
         @endif
     </div>
 </div>
+
+@push('scripts')
+<script>
+function filterBookings() {
+    const statusFilter = document.getElementById('statusFilter').value;
+    const carFilter = document.getElementById('carFilter').value;
+    const bookingItems = document.querySelectorAll('.booking-item');
+
+    bookingItems.forEach(item => {
+        const itemStatus = item.getAttribute('data-status');
+        const itemCar = item.getAttribute('data-car');
+        
+        let showItem = true;
+        
+        if (statusFilter && itemStatus !== statusFilter) {
+            showItem = false;
+        }
+        
+        if (carFilter && itemCar !== carFilter) {
+            showItem = false;
+        }
+        
+        item.style.display = showItem ? 'block' : 'none';
+    });
+}
+
+function resetFilters() {
+    document.getElementById('statusFilter').value = '';
+    document.getElementById('carFilter').value = '';
+    filterBookings();
+}
+
+document.getElementById('statusFilter').addEventListener('change', filterBookings);
+document.getElementById('carFilter').addEventListener('change', filterBookings);
+</script>
+@endpush
 @endsection

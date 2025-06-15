@@ -1,11 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ForgotPasswordController;
 
 
 Route::get('/', [LandingPageController::class, 'main'])->name('user.main');
@@ -45,6 +46,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/history', [AdminController::class, 'history'])->name('history');
 });
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+
+Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
+Route::get('/owner/history', [OwnerController::class, 'history'])->name('history');
+Route::get('/owner/order', [OwnerController::class, 'order'])->name('order');
+
 
 
 
