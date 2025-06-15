@@ -7,8 +7,4 @@
     @include('user.filter')
     @include('user.featured')
     @include('user.review')
-
-
-
-
 @endsection 
