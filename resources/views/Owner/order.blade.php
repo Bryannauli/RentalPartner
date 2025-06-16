@@ -61,20 +61,6 @@
             <p class="mt-2 text-gray-600">Kelola pesanan yang masuk untuk mobil Anda</p>
         </div>
 
-        <div class="mb-6">
-            <nav class="flex space-x-8">
-                <a href="{{ route('dashboard') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
-                    Dashboard
-                </a>
-                <a href="{{ route('order') }}" class="border-b-2 border-blue-500 text-blue-600 px-3 py-2 font-medium text-sm">
-                    Pesanan Masuk
-                </a>
-                <a href="{{ route('history') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
-                    Histori
-                </a>
-            </nav>
-        </div>
-
         @if(count($orders) > 0)
             <div class="space-y-6">
                 @foreach($orders as $order)

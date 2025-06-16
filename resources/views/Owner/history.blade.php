@@ -68,20 +68,6 @@
             <p class="mt-2 text-gray-600">Riwayat pemesanan mobil Anda</p>
         </div>
 
-        <div class="mb-6">
-            <nav class="flex space-x-8">
-                <a href="{{ route('dashboard') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
-                    Dashboard
-                </a>
-                <a href="{{ route('order') }}" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm">
-                    Pesanan Masuk
-                </a>
-                <a href="{{ route('history') }}" class="border-b-2 border-blue-500 text-blue-600 px-3 py-2 font-medium text-sm">
-                    Histori
-                </a>
-            </nav>
-        </div>
-
         {{-- Filter Form --}}
         <form method="GET" action="{{ route('history') }}" class="mb-6 bg-white p-4 rounded-lg shadow">
             <div class="flex flex-wrap gap-4 items-end">
