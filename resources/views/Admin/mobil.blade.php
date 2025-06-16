@@ -1,11 +1,11 @@
-@extends('layouts.admin')
+@extends('admin.layout')
 
 @section('title', 'Data Mobil')
 
 @section('content')
 <div class="bg-white p-6 rounded-lg shadow-md">
     <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-4">
-        <h2 class="text-xl font-bold text-slate-800">Manajemen Master Mobil</h2>
+        <h2 class="text-xl font-bold text-slate-800">Daftar Mobil</h2>
         <a href="{{-- route('admin.cars.create') --}}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2 w-full md:w-auto">
             <i class="fas fa-plus"></i> Tambah Mobil Baru
         </a>

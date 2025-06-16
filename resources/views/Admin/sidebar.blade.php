@@ -11,7 +11,7 @@
         <a href="{{ route('admin.users') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.users') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.users') ? 'page' : '' }}">
             <i class="fas fa-users w-5"></i> <span>Pengguna</span>
         </a>
-        <a href="{{ route('admin.mobil') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.users') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.users') ? 'page' : '' }}">
+        <a href="{{ route('admin.mobil') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.mobil') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.users') ? 'page' : '' }}">
             <i class="fas fa-users w-5"></i> <span>Daftar Mobil</span>
         </a>
         <a href="{{ route('admin.owner-requests') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.owner-requests') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.owner-requests') ? 'page' : '' }}">
@@ -20,10 +20,10 @@
         <a href="{{ route('admin.posts') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.posts') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.posts') ? 'page' : '' }}">
             <i class="fas fa-car w-5"></i> <span>Postingan Mobil</span>
         </a>
-        <a href="{{ route('admin.review') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.reports') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.reports') ? 'page' : '' }}">
+        <a href="{{ route('admin.review') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.review') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.reports') ? 'page' : '' }}">
             <i class="fas fa-flag w-5"></i> <span>Review</span>
         </a>
-        <a href="{{ route('admin.history') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.settings') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.settings') ? 'page' : '' }}">
+        <a href="{{ route('admin.history') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.history') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.settings') ? 'page' : '' }}">
             <i class="fas fa-cog w-5"></i> <span>History Pemesanan</span>
         </a>
 

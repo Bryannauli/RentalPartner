@@ -47,7 +47,6 @@
     </div>
 </div>
 
-<!-- Menampilkan Detail Pengajuan -->
 <div id="request-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
     <div class="modal-content bg-white rounded-lg p-6 w-11/12 max-w-lg">
         <h3 class="text-lg font-semibold mb-4">Detail Pengajuan</h3>
@@ -61,37 +60,3 @@
 </div>
 
 @endsection
-
-@push('scripts')
-<script>
-    function openModal(requestId) {
-        // Simulasi data pengajuan
-        const requestData = {
-            2001: {
-                name: "Budi Santoso",
-                email: "budi.santoso@email.com",
-                ktp: "https://placehold.co/300x200?text=KTP",
-                sim: "https://placehold.co/300x200?text=SIM",
-                stnk: "https://placehold.co/300x200?text=STNK"
-            }
-           
-        };
-
-        const data = requestData[requestId];
-        if (data) {
-            document.getElementById('modal-body').innerHTML = `
-                <p><strong>Nama:</strong> ${data.name}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Foto KTP:</strong> <img src="${data.ktp}" alt="Foto KTP" class="mt-2" /></p>
-                <p><strong>Foto SIM:</strong> <img src="${data.sim}" alt="Foto SIM" class="mt-2" /></p>
-                <p><strong>Foto STNK:</strong> <img src="${data.stnk}" alt="Foto STNK" class="mt-2" /></p>
-            `;
-            document.getElementById('request-modal').classList.remove('hidden');
-        }
-    }
-
-    function closeModal() {
-        document.getElementById('request-modal').classList.add('hidden');
-    }
-</script>
-@endpush
