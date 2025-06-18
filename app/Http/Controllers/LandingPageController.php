@@ -36,7 +36,9 @@ class LandingPageController extends Controller
     public function process(){
         return view ('payment.process');
     }
-    
+    public function form(){
+        return view('payment.form');
+    }
 }
 
 
