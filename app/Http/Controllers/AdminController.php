@@ -45,11 +45,6 @@ class AdminController extends Controller
     public function history() {
         return view('admin.history');
     }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login');
-    }
     
     // OWNER
     // Daftar permintaan owner

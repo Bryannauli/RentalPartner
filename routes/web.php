@@ -41,11 +41,11 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     
     Route::view('/upgrade', 'user.upgrade');
     Route::post('/submit-upgrade', [UserController::class, 'submitUpgrade'])->name('upgrade.submit');
+    
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::resource('profile', ProfileController::class); 
 });
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
-Route::resource('profile', ProfileController::class); 
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
