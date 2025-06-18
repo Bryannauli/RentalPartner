@@ -30,7 +30,6 @@ Route::get('/index', [LandingPageController::class, 'index'])->name('user.index'
 Route::get('/featured', [CarController::class, 'featured'])->name('user.featured');
 Route::get('/detail/{id}', [CarController::class, 'detail'])->name('cars.detail');
 
-Route::get('/admin', [LandingPageController::class, 'admin'])->name('user.admin');
 Route::get('/payment', [LandingPageController::class, 'payment'])->name('user.payment');
 Route::get('/payment/process', [LandingPageController::class, 'process'])->name('payment.process');
 Route::get('/payment/form', [LandingPageController::class, 'form'])->name('payment.form');
@@ -49,7 +48,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/history', [AdminController::class, 'history'])->name('history');
     Route::get('/owner-requests', [AdminController::class, 'ownerRequests'])->name('owner-requests');
     
-    
     // route kelola owner
     Route::post('/admin/owners/{id}/activate', [AdminController::class, 'activateOwner'])->name('activateOwner');
     Route::post('/admin/owners/{id}/suspend', [AdminController::class, 'suspendOwner'])->name('suspendOwner');
@@ -60,9 +58,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
-Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
-Route::get('/owner/riwayat', [OwnerController::class, 'riwayat'])->name('owner.riwayat');
-Route::get('/owner/order', [OwnerController::class, 'order'])->name('owner.order');
+Route::prefix('owner')->name('owner.')->group(function () {
+    Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
+    Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
+    Route::get('/order', [OwnerController::class, 'order'])->name('order');
+    Route::get('/posts', [OwnerController::class, 'posts'])->name('posts');
+});
 
 Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');
 

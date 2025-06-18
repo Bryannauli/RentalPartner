@@ -69,7 +69,7 @@
         </div>
 
         {{-- Filter Form --}}
-        <form method="GET" action="{{ route('history') }}" class="mb-6 bg-white p-4 rounded-lg shadow">
+        <form method="GET" action="" class="mb-6 bg-white p-4 rounded-lg shadow">
             <div class="flex flex-wrap gap-4 items-end">
                 <div>
                     <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
@@ -97,7 +97,7 @@
                     <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Filter</button>
                 </div>
                 <div>
-                    <a href="{{ route('history') }}" class="px-4 py-2 text-gray-600 hover:text-gray-800 text-sm">
+                    <a href="" class="px-4 py-2 text-gray-600 hover:text-gray-800 text-sm">
                         Reset Filter
                     </a>
                 </div>

@@ -22,4 +22,7 @@ class OwnerController extends Controller
     public function order(){
         return view('owner.order');    
     }
+    public function posts(){
+        return view('components-owner.tambahpost');
+    }
 }

@@ -1,7 +1,7 @@
 <aside class="w-64 bg-gray-900 text-gray-100 flex flex-col p-6">
     <div class="mb-8">
         <h1 class="text-3xl font-bold tracking-tight">Rental Partner</h1>
-        <p class="text-gray-400 mt-1">Admin Dashboard</p>
+        <p class="text-gray-400 mt-1">Owner Dashboard</p>
     </div>
 
     <nav class="flex flex-col gap-3 flex-grow" id="admin-sidebar-nav">

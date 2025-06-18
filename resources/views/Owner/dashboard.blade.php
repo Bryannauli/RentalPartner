@@ -74,7 +74,7 @@
         </div>
 
         <div class="mt-10">
-            <a href="" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+            <a href="{{route('owner.posts')}}" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
                 Tambah Mobil Baru
             </a>
         </div> 
