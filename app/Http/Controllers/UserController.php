@@ -9,9 +9,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
+use App\Http\Middleware\PreventBackHistory;
+
 
 class UserController extends Controller
 {
+    // untuk mencegah methods biar tidak bisa diakses tanpa login
+    // kecuali method login dan logout
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['login', 'register']);
+    }
     public function register(Request $request){
         $request->validate([
             'register-name' => 'required|string|max:255',
@@ -30,7 +38,7 @@ class UserController extends Controller
         ]);
 
     
-    return redirect('/login')->with('success', 'Registrasi berhasil!');
+    return redirect('/login')->with('success', 'Registrasi berhasil! Silahkan login untuk melanjutkan.');
     }
 
     public function login(Request $request){
@@ -38,6 +46,14 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+
+        // Cari pengguna berdasarkan email ada atau tidak di db
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            return back()->withErrors([
+                'email' => 'Email salah atau tidak terdaftar',
+            ])->withInput();
+        }
 
         $credentials = $request->only('email', 'password');
 
@@ -49,12 +65,22 @@ class UserController extends Controller
             // Autentikasi berhasil, redirect ke halaman utama
             return redirect()->intended(route('user.index'));
         }
+        // Autentikasi gagal, password salah
+        return back()->withErrors([
+            'login' => 'Password salah',
+        ])->withInput();
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     public function home(){
         return view('user.main');    
     }
-
 
     public function submitUpgrade(Request $request){
     $request->validate([
@@ -93,4 +119,4 @@ class UserController extends Controller
     }
 
 
-};
+}

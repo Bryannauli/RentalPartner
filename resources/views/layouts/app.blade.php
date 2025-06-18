@@ -13,7 +13,9 @@
   @vite('resources/css/app.css')
 </head>
 <body class="relative font-poppins">
-  @include('layouts.navbar')
+  <header id="header">
+    @include('layouts.navbar')
+  </header>
   
   <main>
     @yield('content')

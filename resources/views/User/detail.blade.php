@@ -1,7 +1,3 @@
-
-@extends('layouts.app')
-
-@section('content')
 <div class="flex flex-col md:flex-row items-center justify-center min-h-screen bg-white text-black p-4">
     <div class="md:w-1/2 mb-6 md:mb-0"> 
         <img src="{{ asset('images/' . $car->image) }}" alt="{{ $car->name }}" class="rounded-xl"> 
@@ -12,7 +8,6 @@
             <!-- Nama Mobil -->
             <h2 class="text-4xl font-bold mb-4">{{ $car->name }}</h2>
 
-           
             <!-- Spesifikasi Singkat -->
             <div class="flex gap-6 text-sm mb-6">
                 <div class="flex items-center gap-2 text-gray-700">
