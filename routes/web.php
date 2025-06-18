@@ -36,16 +36,25 @@ Route::get('/payment/process', [LandingPageController::class, 'process'])->name(
 Route::get('/payment/form', [LandingPageController::class, 'form'])->name('payment.form');
 
 Route::view('/upgrade', 'user.upgrade');
+Route::post('/submit-upgrade', [UserController::class, 'submitUpgrade'])->name('upgrade.submit');
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::get('/mobil', [AdminController::class, 'mobil'])->name('mobil');
-    Route::get('/owner-requests', [AdminController::class, 'ownerRequests'])->name('owner-requests');
     Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
     Route::get('/review', [AdminController::class, 'review'])->name('review');
     Route::get('/history', [AdminController::class, 'history'])->name('history');
+    Route::get('/owner-requests', [AdminController::class, 'ownerRequests'])->name('owner-requests');
+    
+    
+    // route kelola owner
+    Route::post('/owner/approve/{id}', [AdminController::class, 'approveOwner'])->name('owner.approve');
+    Route::post('/owner/reject/{id}', [AdminController::class, 'rejectOwner'])->name('owner.reject');
+    Route::get('/owner/detail/{id}', [AdminController::class, 'showOwner'])->name('owner.detail');
 });
+
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');

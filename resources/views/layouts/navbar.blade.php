@@ -24,25 +24,48 @@
      class="w-10 h-10 rounded-full cursor-pointer !mr-10"
      src="https://www.gravatar.com/avatar/?d=mp"
      alt="User avatar">
+
 <!-- Dropdown menu -->
 <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-gray-700 dark:divide-gray-600">
     <div class="px-4 py-3 text-sm !text-white dark:text-white">
-      <div>Bonnie Green</div>
-      <div class="font-medium truncate">name@flowbite.com</div>
+      <div>{{auth()->user()->name}}</div>
+      <div class="font-medium truncate">{{auth()->user()->email}}</div>
     </div>
+
     <ul class="py-2 text-sm !text-white dark:text-gray-200" aria-labelledby="avatarButton">
       <li>
         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard</a>
       </li>
+
       <li>
         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Settings</a>
       </li>
-      <li>
-        <a href="{{ url('/upgrade') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Upgrade Account</a>
-      </li>
+
+      @auth
+        @if(auth()->user()->owner)
+          @if(auth()->user()->owner->status === 'approved')
+            <li>
+              <a href="{{ route('owner.dashboard') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard Owner</a>
+            </li>
+          @elseif(auth()->user()->owner->status === 'pending')
+            <li>
+              <span class="block px-4 py-2 text-yellow-400">Menunggu Persetujuan Admin</span>
+            </li>
+          @elseif(auth()->user()->owner->status === 'rejected')
+            <li>
+              <span class="block px-4 py-2 text-red-400">Upgrade Ditolak</span>
+            </li>
+          @endif
+        @else
+          <li>
+            <a href="{{ url('/upgrade') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Upgrade Account</a>
+          </li>
+        @endif
+      @endauth
+
     </ul>
+
     <div class="py-1">
-  
       <a href="#" class="block px-4 py-2 text-sm !text-white hover:bg-blue-600 dark:hover:bg-blue-600 dark:text-gray-200 dark:hover:!text-white">Sign out</a>
     </div>
 </div>

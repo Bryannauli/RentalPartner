@@ -51,4 +51,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    /**
+     * Get the owner associated with the user.
+     */
+    public function owner()
+    {
+        return $this->hasOne(Owner::class);
+    }
+
 }

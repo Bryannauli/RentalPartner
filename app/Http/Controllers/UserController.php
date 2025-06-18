@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Owner;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,5 +56,43 @@ class UserController extends Controller
     public function home(){
         return view('user.main');    
     }
+
+
+    public function submitUpgrade(Request $request){
+    $request->validate([
+        'nik' => 'required|string|max:20|unique:owners,nik',
+        'phone' => 'required|string|max:15|unique:owners,phone',
+        'address' => 'required|string|max:255',
+        'ktp' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        'sim' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        'stnk' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    ]);
+
+    $user = Auth::user();
+
+    // cek apakah sudah pernah jadi owner
+    if ($user->owner) {
+        return back()->with('info', 'Kamu sudah terdaftar sebagai owner.');
+    }
+    
+    // upload file
+    $ktp = $request->file('ktp')->store('dokumen/ktp', 'public');
+    $sim = $request->file('sim')->store('dokumen/sim', 'public');
+    $stnk = $request->file('stnk')->store('dokumen/stnk', 'public');
+
+    // simpan ke tabel owners
+    Owner::create([
+        'user_id' => $user->id,
+        'nik' => $request->nik,
+        'phone' => $request->phone,
+        'address' => $request->address,
+        'ktp' => $ktp,
+        'sim' => $sim,
+        'stnk' => $stnk,
+    ]);
+
+    return redirect()->route('user.index')->with('success', 'Permintaan upgrade dikirim.');
+    }
+
 
 };
