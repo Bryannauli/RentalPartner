@@ -33,6 +33,7 @@ Route::get('/detail/{id}', [CarController::class, 'detail'])->name('cars.detail'
 Route::get('/admin', [LandingPageController::class, 'admin'])->name('user.admin');
 Route::get('/payment', [LandingPageController::class, 'payment'])->name('user.payment');
 Route::get('/payment/process', [LandingPageController::class, 'process'])->name('payment.process');
+Route::get('/payment/form', [LandingPageController::class, 'form'])->name('payment.form');
 
 Route::view('/upgrade', 'user.upgrade');
 
@@ -51,7 +52,7 @@ Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('own
 Route::get('/owner/riwayat', [OwnerController::class, 'riwayat'])->name('owner.riwayat');
 Route::get('/owner/order', [OwnerController::class, 'order'])->name('owner.order');
 
-
+Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');
 
 
 

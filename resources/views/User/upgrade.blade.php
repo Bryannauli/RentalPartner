@@ -19,7 +19,7 @@
   </nav>
 
   {{-- Konten Form Upgrade --}}
-  <div class="max-w-3xl mx-auto mt-12 bg-white p-10 rounded-xl shadow-md">
+  <div class="max-w-3xl mx-auto mt-16 bg-white p-10 rounded-xl shadow-md !mb-10">
     <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">Upgrade Akun - Ingin Menyewakan Mobil?</h1>
 
     <form action="{{ url('/submit-upgrade') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
@@ -31,86 +31,67 @@
         <div class="space-y-4">
           <input type="text" name="name" placeholder="Nama Lengkap" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <input type="text" name="nik" placeholder="NIK" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
+          <input type="text" name="phone" placeholder="No Telepon" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
+          <input type="email" name="email" placeholder="Email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <textarea name="address" placeholder="Alamat Lengkap" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 resize-none"></textarea>
         </div>
       </div>
 
       {{-- Upload Dokumen --}}
-    <!-- Unggah Dokumen -->
-<div>
-  <h2 class="text-xl font-semibold mb-4 text-gray-700 border-b pb-2">Unggah Dokumen</h2>
-  <div class="space-y-4">
+      <div>
+        <h2 class="text-xl font-semibold mb-4 text-gray-700 border-b pb-2">Unggah Dokumen</h2>
+        <div class="space-y-4">
 
-    <!-- KTP -->
-    <div class="relative w-full">
-      <label class="block mb-1 text-sm text-gray-600">Foto KTP (PDF/JPG/PNG)</label>
-      <input 
-        type="file" 
-        name="ktp" 
-        accept=".pdf,.jpg,.jpeg,.png" 
-        required 
-        class="w-full text-sm text-gray-500
-               file:mr-4 file:py-2 file:px-4
-               file:rounded-md file:border-2 
-               file:text-sm file:font-semibold
-               file:bg-blue-600 file:text-white
-               hover:file:bg-white hover:file:text-blue-600" />
-    </div>
+          {{-- KTP --}}
+          <div class="relative w-full">
+            <label class="block mb-1 text-sm text-gray-600">Foto KTP (PDF/JPG/PNG)</label>
+            <input 
+              type="file" 
+              name="ktp" 
+              accept=".pdf,.jpg,.jpeg,.png" 
+              required 
+              class="w-full text-sm text-gray-500
+                     file:mr-4 file:py-2 file:px-4
+                     file:rounded-md file:border-2 
+                     file:text-sm file:font-semibold
+                     file:bg-blue-600 file:text-white
+                     hover:file:bg-white hover:file:text-blue-600" />
+          </div>
 
-    <!-- SIM -->
-    <div class="relative w-full">
-      <label class="block mb-1 text-sm text-gray-600">Foto SIM (PDF/JPG/PNG)</label>
-      <input 
-        type="file" 
-        name="sim" 
-        accept=".pdf,.jpg,.jpeg,.png" 
-        required 
-        class="w-full text-sm text-gray-500
-               file:mr-4 file:py-2 file:px-4
-               file:rounded-md file:border-2 
-               file:text-sm file:font-semibold
-               file:bg-blue-600 file:text-white
-               hover:file:bg-white hover:file:text-blue-600" />
-    </div>
+          {{-- SIM --}}
+          <div class="relative w-full">
+            <label class="block mb-1 text-sm text-gray-600">Foto SIM (PDF/JPG/PNG)</label>
+            <input 
+              type="file" 
+              name="sim" 
+              accept=".pdf,.jpg,.jpeg,.png" 
+              required 
+              class="w-full text-sm text-gray-500
+                     file:mr-4 file:py-2 file:px-4
+                     file:rounded-md file:border-2 
+                     file:text-sm file:font-semibold
+                     file:bg-blue-600 file:text-white
+                     hover:file:bg-white hover:file:text-blue-600" />
+          </div>
 
-  </div>
-</div>
+          {{-- STNK --}}
+          <div class="relative w-full">
+            <label class="block mb-1 text-sm text-gray-600">Foto STNK (PDF/JPG/PNG)</label>
+            <input 
+              type="file" 
+              name="stnk" 
+              accept=".pdf,.jpg,.jpeg,.png" 
+              required 
+              class="w-full text-sm text-gray-500
+                     file:mr-4 file:py-2 file:px-4
+                     file:rounded-md file:border-2 
+                     file:text-sm file:font-semibold
+                     file:bg-blue-600 file:text-white
+                     hover:file:bg-white hover:file:text-blue-600" />
+          </div>
 
-<!-- Informasi Mobil -->
-<div>
-  <h2 class="text-xl font-semibold mb-4 text-gray-700 border-b pb-2">Informasi Mobil</h2>
-  <div class="space-y-4">
-    <input type="text" name="brand" placeholder="Merek Mobil (contoh: Toyota)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
-    <input type="text" name="type" placeholder="Tipe Mobil (contoh: Avanza G)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
-    <input type="number" name="year" placeholder="Tahun Produksi" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
-    <input type="text" name="plate" placeholder="Plat Nomor (contoh: B 1234 CD)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
-    <input type="text" name="transmission" placeholder="Jenis Transmisi (contoh: Automatic)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
-    <input type="text" name="seats" placeholder="Kursi (contoh: 4 Orang)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
-
-    <!-- Deskripsi -->
-    <div>
-      <label class="block mb-1 text-sm text-gray-600">Deskripsi Mobil</label>
-      <textarea name="description" placeholder="Deskripsi lengkap mobil, kondisi, fitur, dll." required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 resize-none"></textarea>
-    </div>
-
-    <!-- Foto Mobil -->
-    <div class="relative w-full">
-      <label class="block mb-1 text-sm text-gray-600">Foto Mobil (JPG/PNG)</label>
-      <input 
-        type="file" 
-        name="car_photo" 
-        accept=".jpg,.jpeg,.png" 
-        required 
-        class="w-full text-sm text-gray-500
-               file:mr-4 file:py-2 file:px-4
-               file:rounded-md file:border-2 
-               file:text-sm file:font-semibold
-               file:bg-blue-600 file:text-white
-               hover:file:bg-white hover:file:text-blue-600" />
-    </div>
-  </div>
-</div>
-
+        </div>
+      </div>
 
       {{-- Tombol Submit --}}
       <div class="text-center pt-4">
@@ -120,11 +101,5 @@
       </div>
     </form>
   </div>
-
-  {{-- Footer --}}
-  <footer class="mt-16 bg-white border-t">
-    
-  </footer>
-
 </body>
 @endsection
