@@ -22,67 +22,52 @@
         alt="User avatar">
 
       <!-- Dropdown menu -->
-      <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-gray-700 dark:divide-gray-600">
-        <!-- @auth -->
+      <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-black dark:divide-gray-600">
         <div class="px-4 py-3 text-sm !text-white dark:text-white">
           <div>{{auth()->user()->name}}</div>
           <div class="font-medium truncate">{{auth()->user()->email}}</div>
         </div>
-        <!-- @endauth -->
-        <!-- Dropdown menu -->
-        <div id="userDropdown" class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-black dark:divide-gray-600">
-          <div class="px-4 py-3 text-sm !text-white dark:text-white">
-            <div>{{auth()->user()->name}}</div>
-            <div class="font-medium truncate">{{auth()->user()->email}}</div>
-          </div>
 
-          <ul class="py-2 text-sm !text-white dark:text-gray-200" aria-labelledby="avatarButton">
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard</a>
-            </li>
-            <ul class="py-2 text-sm !text-white dark:text-gray-200" aria-labelledby="avatarButton">
-              <li>
-                <a href="{{ url('/profile/edit') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Edit Profile</a>
-              </li>
+        <ul class="py-2 text-sm !text-white dark:text-gray-200" aria-labelledby="avatarButton">
+          <li>
+            <a href="{{ url('/profile/edit') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Edit Profile</a>
+          </li>
 
+          @auth
+          @if(auth()->user()->owner)
+          @if(auth()->user()->owner->status_verifikasi === 'approved')
+          <li>
+            <a href="{{ route('owner.dashboard') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard Owner</a>
+          </li>
+          @elseif(auth()->user()->owner->status_verifikasi === 'pending')
+          <li>
+            <span class="block px-4 py-2 text-yellow-400">Menunggu Persetujuan Admin</span>
+          </li>
+          @elseif(auth()->user()->owner->status_verifikasi === 'rejected')
+          <li>
+            <span class="block px-4 py-2 text-red-400">Upgrade Ditolak</span>
+          </li>
+          @endif
+          @else
+          <li>
+            <a href="{{ url('/upgrade') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Upgrade Account</a>
+          </li>
+          @endif
+          @endauth
 
+        </ul>
 
-
-              @auth
-              @if(auth()->user()->owner)
-              @if(auth()->user()->owner->status_verifikasi === 'approved')
-              <li>
-                <a href="{{ route('owner.dashboard') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard Owner</a>
-              </li>
-              @elseif(auth()->user()->owner->status_verifikasi === 'pending')
-              <li>
-                <span class="block px-4 py-2 text-yellow-400">Menunggu Persetujuan Admin</span>
-              </li>
-              @elseif(auth()->user()->owner->status_verifikasi === 'rejected')
-              <li>
-                <span class="block px-4 py-2 text-red-400">Upgrade Ditolak</span>
-              </li>
-              @endif
-              @else
-              <li>
-                <a href="{{ url('/upgrade') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Upgrade Account</a>
-              </li>
-              @endif
-              @endauth
-
-            </ul>
-
-            <div class="py-1">
-              <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <a href="#"
-                  onclick="event.preventDefault(); this.closest('form').submit();"
-                  class="block px-4 py-2 text-sm !text-white hover:bg-blue-600 dark:hover:bg-blue-600 dark:text-gray-200 dark:hover:!text-white">
-                  Sign out
-                </a>
-              </form>
-            </div>
+        <div class="py-1">
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <a href="#"
+              onclick="event.preventDefault(); this.closest('form').submit();"
+              class="block px-4 py-2 text-sm !text-white hover:bg-blue-600 dark:hover:bg-blue-600 dark:text-gray-200 dark:hover:!text-white">
+              Sign out
+            </a>
+          </form>
         </div>
+      </div>
     </ul>
 
   </div>
