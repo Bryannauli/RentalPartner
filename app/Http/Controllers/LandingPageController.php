@@ -9,7 +9,7 @@ class LandingPageController extends Controller
 {
     public function main()
     {
-        return view('user.main');
+        return view('preview.main');
     }
 
     public function login(){
