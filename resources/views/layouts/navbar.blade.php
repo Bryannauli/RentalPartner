@@ -29,15 +29,24 @@
           <div class="font-medium truncate">{{auth()->user()->email}}</div>
         </div>
         <!-- @endauth -->
+<!-- Dropdown menu -->
+<div id="userDropdown" class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-black dark:divide-gray-600">
+    <div class="px-4 py-3 text-sm !text-white dark:text-white">
+      <div>{{auth()->user()->name}}</div>
+      <div class="font-medium truncate">{{auth()->user()->email}}</div>
+    </div>
 
         <ul class="py-2 text-sm !text-white dark:text-gray-200" aria-labelledby="avatarButton">
           <li>
             <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard</a>
           </li>
+    <ul class="py-2 text-sm !text-white dark:text-gray-200" aria-labelledby="avatarButton">
+    <li>
+  <a href="{{ url('/profile/edit') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Edit Profile</a>
+</li>
 
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Settings</a>
-          </li>
+
+   
 
           @auth
           @if(auth()->user()->owner)

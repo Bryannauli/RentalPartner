@@ -80,7 +80,7 @@
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-gray-800 mt-4">Browse Our Fleet</h3>
-          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Providing the latest cars in prime condition, ensuring comfort and safety on your journey</p>
+          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Menyediakan mobil terbaru dalam kondisi prima, memastikan kenyamanan dan keselamatan dalam perjalanan Anda</p>
         </div>
       </div>
       <div>
@@ -92,7 +92,7 @@
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-gray-800 mt-4">All Risk Insurance Coverage</h3>
-          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Maximum protection for your safety on every journey</p>
+          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Perlindungan maksimal untuk keselamatan Anda di setiap perjalanan</p>
         </div>
       </div>
       <div>
@@ -115,7 +115,7 @@
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-gray-800 mt-4">Pick Up & Drive</h3>
-          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Flexibility to choose between chauffeur service or self-drive according to your needs</p>
+          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Fleksibilitas memilih antara layanan sopir atau mengemudi sendiri sesuai kebutuhan Anda</p>
         </div>
       </div>
     </div>

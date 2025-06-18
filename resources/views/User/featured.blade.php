@@ -1,55 +1,105 @@
-<!-- Filter Section -->
-<div class=" w-full flex flex-wrap justify-center gap-6 p-6 bg-gray-100 mt-20">
-  <div class="filter relative w-60 mt-10">
-  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
-  <option value="" hidden>Select Car Type</option> <!-- ini tidak akan muncul di dropdown -->
-  <option>SUV</option>
-  <option>MPV</option>
-  <option>Hatchback</option>
-  <option>Luxury</option>
-</select>
+@extends('layouts.app')
+<style>
+.search-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: #f3f4f6;
+    margin-top: 4rem;
+  }
 
-    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
-    </div>
-  </div>
+  .search-input {
+    width: 24rem;
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    border: 1px solid #2563eb;
+    color: #374151;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    outline: none;
+  }
 
-  <div class="filter relative w-60">
-  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
-      <option value="" hidden>Select Car Brand</option>
-      <option>Toyota</option>
-      <option>Honda</option>
-      <option>Mitsubishi</option>
-      <option>BMW</option>
-    </select>
-    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
-    </div>
-  </div>
+  .search-input:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+    border-color: #2563eb;
+  }
 
-  <div class="filter relative w-60">
-  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
-      <option value="" hidden>Select Pickup Location</option>
-      <option>Jakarta</option>
-      <option>Bandung</option>
-      <option>Surabaya</option>
-      <option>Bali</option>
-    </select>
-    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
-    </div>
-  </div>
+  .search-button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-  <div class="filter relative w-60 h-10 ">
-  <select class="appearance-none w-full !bg-white text-gray-500 h-15 !border-blue-600 !rounded-full py-4 px-6 text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
-      <option value="" hidden>Select Feature</option>
-      <option>Automatic</option>
-      <option>7 Seat</option>
-      <option>Luxury Interior</option>
-      <option>Sunroof</option>
-    </select>
-    <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
+  .search-button:hover {
+    background-color: #1d4ed8;
+  }
 
-    </div>
-  </div>
+.search-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #f3f4f6; /* gray-100 */
+  margin-top: 6rem;
+}
+
+.search-input {
+  width: 24rem;
+  padding: 1rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid #2563eb; /* blue-600 */
+  color: #374151; /* gray-700 */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  outline: none;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+  border-color: #2563eb;
+}
+
+.search-button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #1d4ed8;
+}
+</style>
+
+<div class="search-container !mt-12">
+  <input 
+    type="text" 
+    id="carSearch" 
+    placeholder="Cari mobil, merk, tipe, lokasi..." 
+    class="search-input"
+  />
+  <button 
+    id="searchBtn"
+    class="search-button"
+  >
+    Cari
+  </button>
 </div>
+
+
+
+
+
 
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
 

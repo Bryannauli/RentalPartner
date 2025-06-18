@@ -29,22 +29,51 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
+                @foreach ($posts as $post)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">3001</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Toyota Avanza 2023</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Budi Santoso</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Rp 350.000</td>
-                    <td class="px-6 py-4 whitespace-nowrap">17 Mei 2025</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->id}}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->car_name }} {{ $post->year }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->owner->name ?? 'Unknown' }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($post->price, 0, ',', '.') }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->created_at->format('d M Y') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Aktif</span>
+                         @php
+                            $statusColors = [
+                                'pending' => 'bg-yellow-100 text-yellow-800',
+                                'approved' => 'bg-green-100 text-green-800',
+                                'rejected' => 'bg-red-100 text-red-800',
+                            ];
+                        @endphp
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium {{$statusColors[$post->status] ?? 'bg-gray-100 text-gray-800'}}">
+                            {{ucfirst($post->status)}}
+                        </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap space-x-1">
-                        <button onclick="alert('Lihat postingan 3001')" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</button>
-                        <button onclick="alert('Edit postingan 3001')" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition text-sm">Tangguhkan</button>
-                        <button onclick="if(confirm('Tangguhkan postingan 3001?')) alert('Tertangguhkan')" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm">Hapus</button>
+                        <a href="{{ route('admin.posts.show', $post->id) }}" 
+                        class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">
+                        Lihat
+                        </a>
+
+                        <form action="{{ route('admin.posts.approve', $post->id) }}" method="POST" class="inline">
+                            @csrf
+                            <button type="submit" 
+                                class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition text-sm"
+                                onclick="return confirm('Setujui postingan {{ $post->id }}?')">
+                                Setujui
+                            </button>
+                        </form>
+
+                        <form action="{{ route('admin.posts.reject', $post->id) }}" method="POST" class="inline">
+                            @csrf
+                            <button type="submit" 
+                                class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm"
+                                onclick="return confirm('Tolak postingan {{ $post->id }}?')">
+                                Tolak
+                            </button>
+                        </form>
                     </td>
                 </tr>
-                {{-- Tambah data disini --}}
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    protected $fillable = [
+        'owner_id',
+        'car_name',
+        'brand',
+        'type',
+        'transmission',
+        'capacity',
+        'baggage',
+        'facilities',
+        'mileage',
+        'year',
+        'price',
+        'description',
+        'location',
+        'status'
+    ];
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class, 'owner_id');
+    }
+}

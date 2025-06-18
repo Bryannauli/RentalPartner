@@ -7,7 +7,8 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
-
+use App\Http\Controllers\ProfileController;
+use App\Models\Owner;
 
 Route::get('/', [LandingPageController::class, 'main'])->name('main');
 
@@ -41,6 +42,11 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::view('/upgrade', 'user.upgrade');
     Route::post('/submit-upgrade', [UserController::class, 'submitUpgrade'])->name('upgrade.submit');
 });
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::resource('profile', ProfileController::class); 
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -58,6 +64,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/owner/approve/{id}', [AdminController::class, 'approveOwner'])->name('owner.approve');
     Route::post('/owner/reject/{id}', [AdminController::class, 'rejectOwner'])->name('owner.reject');
     Route::get('/owner/detail/{id}', [AdminController::class, 'showOwner'])->name('owner.detail');
+
+    // route kelola post
+    Route::get('/posts/detail/{id}', [AdminController::class, 'showPost'])->name('posts.show');
+    Route::post('/posts/approve/{id}', [AdminController::class, 'approvePost'])->name('posts.approve');
+    Route::post('/posts/reject/{id}', [AdminController::class, 'rejectPost'])->name('posts.reject');
 });
 
 Route::prefix('owner')->name('owner.')->group(function () {
@@ -65,6 +76,7 @@ Route::prefix('owner')->name('owner.')->group(function () {
     Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
     Route::get('/order', [OwnerController::class, 'order'])->name('order');
     Route::get('/posts', [OwnerController::class, 'posts'])->name('posts');
+    Route::post('/posts/store', [OwnerController::class, 'storePost'])->name('posts.store');
 });
 
 Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');
