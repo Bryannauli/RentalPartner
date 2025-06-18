@@ -10,15 +10,42 @@
         @csrf
         <div class="space-y-6">
             <div>
-                <label for="car_id" class="block text-sm font-medium text-slate-700">Pilih Mobil</label>
-                <select id="car_id" name="car_id" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    <option value="">-- Pilih dari daftar mobil Anda --</option>
-                    <option value="1">Toyota Avanza 2023</option>
-                    <option value="2">Toyota Innova 2022</option>
-                    </select>
-                <p class="text-xs text-slate-500 mt-1">Tidak menemukan mobil? <a href="#" class="text-blue-600 hover:underline">Tambahkan mobil baru ke garasi Anda.</a></p>
+                <label for="location" class="block text-sm font-medium text-slate-700">Nama Mobil</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: Toyota">
             </div>
-            
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Kapasitas</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: 6 Orang">
+            </div>
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Tahun Keluaran Mobil</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: 2018">
+            </div>
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Transmisi</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: CVT">
+            </div>
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Fasilitas</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: AC">
+            </div>
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Jarak Tempuh</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: 4000 KM">
+            </div>
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Bagasi</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: 4 Koper">
+            </div>
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Tipe Mobil</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: Luxury">
+            </div>
+            <div>
+                <label for="location" class="block text-sm font-medium text-slate-700">Brand Mobil</label>
+                <input type="text" name="location" id="location" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Contoh: Honda">
+            </div>
+
             <div>
                  <label for="price" class="block text-sm font-medium text-slate-700">Harga Sewa per Hari</label>
                  <div class="relative mt-1">
