@@ -7,14 +7,14 @@
         <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
             <div class="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center text-xl"><i class="fas fa-users"></i></div>
             <div>
-                <h3 class="text-2xl font-bold">2,456</h3>
+                <h3 class="text-2xl font-bold">{{$totalUsers}}</h3>
                 <p class="text-slate-500">Total Pengguna</p>
             </div>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
             <div class="w-12 h-12 bg-green-500 text-white rounded-lg flex items-center justify-center text-xl"><i class="fas fa-user-tie"></i></div>
             <div>
-                <h3 class="text-2xl font-bold">358</h3>
+                <h3 class="text-2xl font-bold">{{$totalOwners}}</h3>
                 <p class="text-slate-500">Total Owner</p>
             </div>
         </div>
@@ -37,7 +37,7 @@
     <div class="bg-white p-6 rounded-lg shadow-md mb-6">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-bold text-slate-800">Permintaan Owner Terbaru</h2>
-            <a href="#" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
+            <a href="{{ route('admin.owner-requests')}}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left">
@@ -51,16 +51,26 @@
                     </tr>
                 </thead>
                 <tbody>
+                     @foreach ($recentOwners as $owner)
                     <tr class="border-b">
-                        <td class="p-3">Budi Santoso</td>
-                        <td class="p-3">budi.santoso@email.com</td>
-                        <td class="p-3">15 Mei 2025</td>
-                        <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">Pending</span></td>
+                        <td class="p-3">{{ $owner->user->name }}</td>
+                        <td class="p-3">{{ $owner->user->email }}</td>
+                        <td class="p-3">{{ $owner->created_at->format('d M Y') }}</td>
                         <td class="p-3">
-                            <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
+                            @if ($owner->status_verifikasi == 'pending')
+                                <span class="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">Pending</span>
+                            @elseif ($owner->status_verifikasi == 'approved')
+                                <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Disetujui</span>
+                            @else
+                                <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">Ditolak</span>
+                            @endif
+                        </td>
+                        <td class="p-3">
+                            <a href="{{ route('admin.owner.detail', $owner->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
                         </td>
                     </tr>
-                    </tbody>
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>

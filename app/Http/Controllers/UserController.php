@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
     public function register(Request $request){
-        //cek berhasil diterima controller atau ga
-        // dd($request->all());
         $request->validate([
             'register-name' => 'required|string|max:255',
             'register-email' => 'required|email|unique:users,email',

@@ -11,6 +11,9 @@
         <a href="{{ route('admin.users') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.users') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.users') ? 'page' : '' }}">
             <i class="fas fa-users w-5"></i> <span>Pengguna</span>
         </a>
+        <a href="{{ route('admin.owner') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.owner') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.users') ? 'page' : '' }}">
+            <i class="fas fa-users w-5"></i> <span>Owner</span>
+        </a>
         <a href="{{ route('admin.mobil') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('admin.mobil') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('admin.users') ? 'page' : '' }}">
             <i class="fas fa-users w-5"></i> <span>Daftar Mobil</span>
         </a>

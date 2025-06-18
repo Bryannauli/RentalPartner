@@ -43,15 +43,15 @@
 
       @auth
         @if(auth()->user()->owner)
-          @if(auth()->user()->owner->status === 'approved')
+          @if(auth()->user()->owner->status_verifikasi === 'approved')
             <li>
               <a href="{{ route('owner.dashboard') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard Owner</a>
             </li>
-          @elseif(auth()->user()->owner->status === 'pending')
+          @elseif(auth()->user()->owner->status_verifikasi === 'pending')
             <li>
               <span class="block px-4 py-2 text-yellow-400">Menunggu Persetujuan Admin</span>
             </li>
-          @elseif(auth()->user()->owner->status === 'rejected')
+          @elseif(auth()->user()->owner->status_verifikasi === 'rejected')
             <li>
               <span class="block px-4 py-2 text-red-400">Upgrade Ditolak</span>
             </li>

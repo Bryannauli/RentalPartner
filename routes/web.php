@@ -42,6 +42,7 @@ Route::post('/submit-upgrade', [UserController::class, 'submitUpgrade'])->name('
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/owner', [AdminController::class, 'owner'])->name('owner');
     Route::get('/mobil', [AdminController::class, 'mobil'])->name('mobil');
     Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
     Route::get('/review', [AdminController::class, 'review'])->name('review');
@@ -50,6 +51,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     
     
     // route kelola owner
+    Route::post('/admin/owners/{id}/activate', [AdminController::class, 'activateOwner'])->name('activateOwner');
+    Route::post('/admin/owners/{id}/suspend', [AdminController::class, 'suspendOwner'])->name('suspendOwner');
     Route::post('/owner/approve/{id}', [AdminController::class, 'approveOwner'])->name('owner.approve');
     Route::post('/owner/reject/{id}', [AdminController::class, 'rejectOwner'])->name('owner.reject');
     Route::get('/owner/detail/{id}', [AdminController::class, 'showOwner'])->name('owner.detail');

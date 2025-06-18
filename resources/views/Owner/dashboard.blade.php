@@ -55,12 +55,12 @@
                         <p class="text-sm mt-2 text-gray-500 italic">{{ $car->description }}</p>
 
                         <div class="flex justify-between mt-4">
-                            <form action="{{ route('owner.cars.edit', $car->id) }}" method="GET">
+                            <form action="" method="GET">
                                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded text-sm">
                                     Update
                                 </button>
                             </form>
-                            <form action="{{ route('owner.cars.destroy', $car->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus mobil ini?')">
+                            <form action="" method="POST" onsubmit="return confirm('Yakin ingin menghapus mobil ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded text-sm">
@@ -74,7 +74,7 @@
         </div>
 
         <div class="mt-10">
-            <a href="{{ route('owner.cars.create') }}" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+            <a href="" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
                 Tambah Mobil Baru
             </a>
         </div> 

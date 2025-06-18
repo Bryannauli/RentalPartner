@@ -31,28 +31,32 @@
                 <tr>
                     <th class="p-3 font-semibold text-slate-600">Nama</th>
                     <th class="p-3 font-semibold text-slate-600">Email</th>
-                    <th class="p-3 font-semibold text-slate-600">Tipe Akun</th>
+                    <th class="p-3 font-semibold text-slate-600">No hp</th>
                     <th class="p-3 font-semibold text-slate-600">Status</th>
                     <th class="p-3 font-semibold text-slate-600">Aksi</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $user)
                 <tr class="border-b">
-                    <td class="p-3">Budi Santoso</td>
-                    <td class="p-3">budi.santoso@email.com</td>
-                    <td class="p-3">Owner</td>
-                    <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Aktif</span></td>
+                    <td class="p-3">{{ $user->name }}</td>
+                    <td class="p-3">{{ $user->email }}</td>
+                    <td class="p-3">{{ $user->phone }}</td>
+                    <td class="p-3">
+                        <span class="px-2 py-1 text-xs font-semibold {{ $user->is_active ? 'text-green-800 bg-green-200' : 'text-red-800 bg-red-200' }} rounded-full">
+                            {{ $user->is_active ? 'Aktif' : 'Ditangguhkan' }}
+                        </span>
+                    </td>
                     <td class="p-3 flex gap-2">
-                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-1 px-3 rounded">Edit</a>
-                        <form action="#" method="POST" onsubmit="return confirm('Anda yakin?');">
+                        <form action="" method="POST" onsubmit="return confirm('Anda yakin?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Hapus</button>
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Tangguhkan</button>
                         </form>
                     </td>
                 </tr>
-                </tbody>
+                @endforeach
+            </tbody>
         </table>
     </div>
 </div>
