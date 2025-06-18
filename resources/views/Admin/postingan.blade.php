@@ -40,7 +40,8 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap space-x-1">
                         <button onclick="alert('Lihat postingan 3001')" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">Lihat</button>
-                        <button onclick="if(confirm('Tangguhkan postingan 3001?')) alert('Tertangguhkan')" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm">Tangguhkan</button>
+                        <button onclick="alert('Edit postingan 3001')" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition text-sm">Tangguhkan</button>
+                        <button onclick="if(confirm('Tangguhkan postingan 3001?')) alert('Tertangguhkan')" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm">Hapus</button>
                     </td>
                 </tr>
                 {{-- Tambah data disini --}}
