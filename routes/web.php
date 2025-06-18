@@ -7,7 +7,7 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
-
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [LandingPageController::class, 'main'])->name('user.main');
 
@@ -36,6 +36,11 @@ Route::get('/payment/form', [LandingPageController::class, 'form'])->name('payme
 
 Route::view('/upgrade', 'user.upgrade');
 Route::post('/submit-upgrade', [UserController::class, 'submitUpgrade'])->name('upgrade.submit');
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::resource('profile', ProfileController::class); 
 
 
 Route::prefix('admin')->name('admin.')->group(function () {

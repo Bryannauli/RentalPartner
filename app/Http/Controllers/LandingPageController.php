@@ -23,8 +23,13 @@ class LandingPageController extends Controller
     public function admin(){
         return view('admin.dashboard');
     }
+   public function index(){
+        $cars = Car::all();
+    return view('user.index', compact('cars'))->with('layout', 'landing');
 
-    public function index()
+    }
+
+    public function cars()
     {
     $cars = Car::all();
     return view('user.index', compact('cars'));

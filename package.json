@@ -5,8 +5,6 @@
         "build": "vite build",
         "development": "mix",
         "dev": "vite",
-        "dev": "npm run development",
-        "watch": "mix watch",
         "hot": "mix hot",
         "prod": "npm run production",
         "production": "mix --production"

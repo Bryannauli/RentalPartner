@@ -54,9 +54,7 @@
   <p class="text-gray-600 !ml-12 !mt-5 mb-4 animate-fade-in-up delay-150 transition-all duration-500 hover:text-gray-800">
   Kami berkomitmen memberikan pelayanan terbaik kepada setiap pelanggan. Kami selalu memastikan setiap kendaraan dalam kondisi optimal, secara rutin diservis, dan selalu bersih sebelum digunakan. Dengan armada yang terawat baik, pelanggan dapat merasakan kenyamanan dan keamanan selama perjalanan.
   </p>
-  <button class="!text-white bg-gradient-to-r !ml-12 !mt-5 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-    CONTACT US
-</button>
+
 
 </div>
 <!-- Right Images -->

@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins';
 }
 
 body {
@@ -181,6 +181,7 @@ nav ul li a:hover {
 .forgot-password:hover {
     color: #4108ec;
 }
+
 
 .remember-me {
     display: flex;

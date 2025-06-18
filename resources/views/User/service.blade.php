@@ -56,12 +56,20 @@
       <div class="absolute top-0 right-0 bg-blue-600 text-white font-bold text-xl !px-4 !py-4 rounded-bl-xl">04.</div>
         <div class="mb-4">
           <img src="/images/salaman.jpg" alt="Tour" class="mx-auto h-12" />
-        </div>
-        <h3 class="!text-xl font-bold !mb-1 !mt-5">Rent Out Your Car </h3>
-        <p class="text-gray-500 text-sm !p-4">
-        Anda dapat menyewakan mobil Anda dengan mudah, aman, dan terasuransi!
-        </p>
-      </div>
+     </div>
+<h3 class="!text-xl font-bold !mb-1 !mt-5">Rent Out Your Car</h3>
+<p class="text-gray-500 text-sm !p-4">
+  Anda dapat menyewakan mobil Anda dengan mudah, aman, dan terasuransi!
+</p>
+<a href="{{ url('/upgrade') }}" style="color: #60a5fa;" class="inline-flex items-center hover:underline hover:text-blue-800 transition-colors duration-200">
+  Try Now
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right ml-1" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+  </svg>
+</a>
+
+
+
 
     </div>
   </div>
@@ -80,7 +88,7 @@
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-gray-800 mt-4">Browse Our Fleet</h3>
-          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Providing the latest cars in prime condition, ensuring comfort and safety on your journey</p>
+          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Menyediakan mobil terbaru dalam kondisi prima, memastikan kenyamanan dan keselamatan dalam perjalanan Anda</p>
         </div>
       </div>
       <div>
@@ -90,7 +98,7 @@
             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 8V5a1 1 0 00-1-1H6a1 1 0 00-1 1v3m9 8h-4m4-8v3m-6 1a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
           </div>
           <h3 class="text-lg font-semibold text-gray-800 mt-4">All Risk Insurance Coverage</h3>
-          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Maximum protection for your safety on every journey</p>
+          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Perlindungan maksimal untuk keselamatan Anda di setiap perjalanan</p>
         </div>
       </div>
       <div>
@@ -100,7 +108,7 @@
           </div>
           <h3 class="text-lg font-semibold text-gray-800 mt-4">
           Customer Service 24/7</h3>
-          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Customer service that is ready to help at any time, provides comfort and solutions when needed</p>
+          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Layanan pelanggan siap membantu kapan saja, memberikan kenyamanan dan solusi saat dibutuhkan</p>
         </div>
       </div>
       <div>
@@ -109,7 +117,7 @@
             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 5v2a2 2 0 002 2h2a2 2 0 002-2V5m-3 5h3m-3 4h3m-3 4h3M5 10V5a2 2 0 00-2-2H2a2 2 0 00-2 2v5m3 0h3m-3 4h3m-3 4h3M5 19v-2a2 2 0 00-2-2H2a2 2 0 00-2 2v2m3 0h3m-3-4h3m3 4h3M5 10v-2a2 2 0 00-2-2H2a2 2 0 00-2 2v2m3 0h3m-3 4h3"></path></svg>
           </div>
           <h3 class="text-lg font-semibold text-gray-800 mt-4">Pick Up & Drive</h3>
-          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Flexibility to choose between chauffeur service or self-drive according to your needs</p>
+          <p class="text-gray-400 mt-2 text-sm !ml-5 !mr-5">Fleksibilitas memilih antara layanan sopir atau mengemudi sendiri sesuai kebutuhan Anda</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,67 @@
+@extends('layouts.app')
+
+@section('title', 'Edit Profil')
+<script src="https://cdn.tailwindcss.com"></script>
+@section('content')
+<div class="max-w-2xl mx-auto p-6 bg-white shadow rounded mt-28 mb-10">
+    <h2 class="text-2xl font-bold mb-4 text-center">Edit Profil</h2>
+
+    @if(session('success'))
+        <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
+ <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+
+    @csrf
+    @method('PUT')
+
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Nama</label>
+            <input type="text" name="name" value="{{ old('name', $user->name) }}" class="w-full p-2 border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Email</label>
+            <input type="email" name="email" value="{{ old('email', $user->email) }}" class="w-full p-2 border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Nomor Telepon</label>
+            <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" class="w-full p-2 border rounded">
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Foto Profil</label>
+            <input 
+              type="file" 
+              name="sim" 
+              accept="jpg,.jpeg,.png" 
+              required 
+              class="w-full text-sm text-gray-500
+                     file:mr-4 file:py-2 file:px-4
+                     file:rounded-md file:border-2 
+                     file:text-sm file:font-semibold
+                     file:bg-blue-600 file:text-white
+                     hover:file:bg-white hover:file:text-blue-600" />
+            @if($user->photo)
+                <img src="{{ asset('storage/photos/' . $user->photo) }}" class="w-20 h-20 mt-2 rounded-full" alt="Foto Profil">
+            @endif
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Password Baru</label>
+            <input type="password" name="password" class="w-full p-2 border rounded" placeholder="Kosongkan jika tidak ingin mengubah">
+        </div>
+
+        <div class="mb-6">
+            <label class="block font-medium mb-1">Konfirmasi Password Baru</label>
+            <input type="password" name="password_confirmation" class="w-full p-2 border rounded">
+        </div>
+
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mr-50">Simpan</button>
+    </form>
+</div>
+@endsection

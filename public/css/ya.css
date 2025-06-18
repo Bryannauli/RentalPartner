@@ -1,12 +1,5 @@
-@import "tailwindcss";
-body {
-  background-color: black;
 
-}
-.nav-item:not(:first-child) {
-    margin-left: 40px;
-}
-.search-container {
+  .search-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
