@@ -6,9 +6,6 @@
 <div class="bg-white p-6 rounded-lg shadow-md">
     <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-4">
         <h2 class="text-xl font-bold text-slate-800">Daftar Mobil</h2>
-        <a href="{{-- route('admin.cars.create') --}}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2 w-full md:w-auto">
-            <i class="fas fa-plus"></i> Tambah Mobil Baru
-        </a>
     </div>
 
     <div class="mb-4">
@@ -26,7 +23,6 @@
                     <th class="p-3 font-semibold text-slate-600">Tipe</th>
                     <th class="p-3 font-semibold text-slate-600">Transmisi</th>
                     <th class="p-3 font-semibold text-slate-600">Tahun</th>
-                    <th class="p-3 font-semibold text-slate-600">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,13 +39,6 @@
                     <td class="p-3">MPV</td>
                     <td class="p-3">Manual</td>
                     <td class="p-3">2023</td>
-                    <td class="p-3 flex gap-2">
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-1 px-3 rounded">Edit</a>
-                        <form action="#" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus data mobil ini secara permanen?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Hapus</button>
-                        </form>
                     </td>
                 </tr>
                 <tr class="border-b hover:bg-slate-50 transition-colors">
@@ -65,13 +54,6 @@
                     <td class="p-3">SUV</td>
                     <td class="p-3">Otomatis</td>
                     <td class="p-3">2024</td>
-                    <td class="p-3 flex gap-2">
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-1 px-3 rounded">Edit</a>
-                        <form action="#" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus data mobil ini secara permanen?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Hapus</button>
-                        </form>
                     </td>
                 </tr>
                 <tr class="border-b hover:bg-slate-50 transition-colors">
@@ -87,13 +69,6 @@
                     <td class="p-3">Hatchback</td>
                     <td class="p-3">Manual</td>
                     <td class="p-3">2022</td>
-                    <td class="p-3 flex gap-2">
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-1 px-3 rounded">Edit</a>
-                        <form action="#" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus data mobil ini secara permanen?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Hapus</button>
-                        </form>
                     </td>
                 </tr>
                 </tbody>
