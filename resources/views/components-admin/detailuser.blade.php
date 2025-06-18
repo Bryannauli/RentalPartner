@@ -1,4 +1,9 @@
-    <div class="modal" id="view-user-modal">
+@extends('admin.layout')
+
+@section('title', 'Tambah Pengguna Baru')
+
+@section('content')
+<div class="modal" id="view-user-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Detail Pengguna</h3>
@@ -87,3 +92,4 @@
             </div>
         </div>
     </div>
+@endsection

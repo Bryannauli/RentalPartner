@@ -47,9 +47,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
-Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
-Route::get('/owner/history', [OwnerController::class, 'history'])->name('history');
-Route::get('/owner/order', [OwnerController::class, 'order'])->name('order');
+Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+Route::get('/owner/riwayat', [OwnerController::class, 'riwayat'])->name('owner.riwayat');
+Route::get('/owner/order', [OwnerController::class, 'order'])->name('owner.order');
 
 
 

@@ -1,13 +1,13 @@
-@extends('admin.layout')
+@extends('owner.layout')
 
-@section('title', 'Edit Pengguna')
+@section('title', 'Edit Postingan')
 
 @section('content')
 
 <div class="modal" id="edit-user-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Edit Pengguna</h3>
+                <h3 class="modal-title">Edit Postingan</h3>
                 <span class="modal-close" onclick="closeModal('edit-user-modal')">&times;</span>
             </div>
             <div class="modal-body">

@@ -9,8 +9,8 @@ class OwnerController extends Controller
     public function dashboard(){
         return view('owner.dashboard');    
     }
-    public function history(){
-        return view('owner.history');    
+    public function riwayat(){
+        return view('owner.riwayat');    
     }
     public function order(){
         return view('owner.order');    

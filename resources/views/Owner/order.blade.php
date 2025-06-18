@@ -49,7 +49,7 @@
     ];
 @endphp
 
-@extends('layouts.owner')
+@extends('owner.layout')
 
 @section('title', 'Pesanan Masuk')
 

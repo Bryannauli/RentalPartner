@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'History Transaksi')
+@section('title', 'Riwayat Transaksi')
 
 @section('content')
 <div class="bg-white p-6 rounded-lg shadow-md">

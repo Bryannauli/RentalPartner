@@ -1,4 +1,4 @@
-@extends('layouts.owner')
+@extends('owner.layout')
 
 @section('title', 'Buat Postingan Baru')
 
