@@ -46,6 +46,8 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::resource('profile', ProfileController::class); 
+
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store')->middleware('auth');
 });
 
 
