@@ -110,7 +110,7 @@
 
 @section('content')
 
-<form action="{{ route('cars.search') }}" method="GET" class="search-container" style="margin-bottom: 20px;">
+<form action="{{ route('cars.search') }}" method="GET" class="search-container" style=" margin-top:60px">
   <input 
     type="text" 
     name="query" 
@@ -124,31 +124,36 @@
     <option value="brand" {{ request('kategori') == 'brand' ? 'selected' : '' }}>Merek Kendaraan</option>
     <option value="type" {{ request('kategori') == 'type' ? 'selected' : '' }}>Tipe Kendaraan</option>
     <option value="location" {{ request('kategori') == 'location' ? 'selected' : '' }}>Lokasi</option>
-    <option value="facilities" {{ request('kategori') == 'facilities' ? 'selected' : '' }}>Fasilitas Kendaraan</option>
   </select>
+
 
   <button type="submit" class="search-button">Cari</button>
 </form>
 
+
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
+
+
   <div class="container mx-auto px-4 !mb-20">
     <div class="flex justify-between items-center mb-6 ">
-      <h2 class="text-xl font-bold text-blue-600">Featured Cars</h2>
+      <h2 class="text-xl font-bold text-blue-600 !ml-30">Featured Cars</h2>
     </div>
+
     <div class=" w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch !ml-25  ">
+
       @foreach ($posts as $post)
       <div class="bg-white rounded-2xl shadow-md flex flex-col h-full transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 !mb-0 ">
         <img src="{{ asset('storage/' . $post->photo) }}" alt="{{ $post->name }}" class="w-full h-48 object-cover rounded-t-2xl" />
         <div class="p-6 flex flex-col flex-grow justify-between">
           <div>
-            <h3 class="text-2xl font-bold mb-2 text-gray-800 text-center !mt-10">{{ $post->name }}</h3>
+            <h3 class="text-2xl font-bold mb-2 text-gray-800 text-center !mt-10">{{ $post->car_name }}</h3>
             <p class="text-center text-blue-700 font-bold text-lg mb-4">Rp {{ number_format($post->price, 0, ',', '.') }}<span class="text-gray-600 font-normal text-sm">/ DAY</span></p>
             <div class="flex justify-center space-x-4 text-gray-500 text-sm mb-6 mt-7">
               <div class="flex items-center space-x-1">
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                 </svg></span>
-                <span> &nbsp;{{ $post->capacity}} &nbsp;</span>
+                <span> &nbsp;{{ $post->capacity }} &nbsp;</span>
               </div>
               <div class="flex items-center space-x-1">
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
@@ -174,5 +179,5 @@
     </div>
   </div>
 </section>
-
-@endsection
+    
+@endsection 
