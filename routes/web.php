@@ -8,6 +8,8 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PesananController;
+
 use App\Models\Owner;
 
 Route::get('/', [LandingPageController::class, 'main'])->name('main');
@@ -38,7 +40,6 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     
     Route::get('/payment', [LandingPageController::class, 'payment'])->name('user.payment');
     Route::get('/payment/process', [LandingPageController::class, 'process'])->name('payment.process');
-    Route::get('/payment/form', [LandingPageController::class, 'form'])->name('payment.form');
     
     Route::view('/upgrade', 'user.upgrade');
     Route::post('/submit-upgrade', [UserController::class, 'submitUpgrade'])->name('upgrade.submit');
@@ -46,6 +47,10 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::resource('profile', ProfileController::class); 
+    
+    Route::post('/pesanan/store', [PesananController::class, 'store'])->name('pesanan.store');
+    Route::get('/payment/form/{id}', [PesananController::class, 'form'])->name('payment.form');
+    
 });
 
 
@@ -66,7 +71,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-histor
     Route::post('/owner/approve/{id}', [AdminController::class, 'approveOwner'])->name('owner.approve');
     Route::post('/owner/reject/{id}', [AdminController::class, 'rejectOwner'])->name('owner.reject');
     Route::get('/owner/detail/{id}', [AdminController::class, 'showOwner'])->name('owner.detail');
-
+    
     // route kelola post
     Route::get('/posts/detail/{id}', [AdminController::class, 'showPost'])->name('posts.show');
     Route::post('/posts/approve/{id}', [AdminController::class, 'approvePost'])->name('posts.approve');
