@@ -6,15 +6,15 @@
     <p class="rental font-medium text-white ml-2">Rental Partner</p>
   </div>
 
-  <div class="flex items-center space-x-4 sm:space-x-6">
-    <ul class="hidden md:flex items-center text-white font-medium space-x-6">
+  <div class="flex items-center space-x-4 sm:space-x-6 ">
+    <ul class="hidden md:flex items-center text-white font-medium space-x-6 okay gap-10">
       <li>
-        <a href="{{ route('home') }}" title="Home" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
+        <a href="{{ route('home') }}" title="Home" class="block p-3 rounded-full  hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
           <i class="fas fa-home text-xl"></i>
         </a>
       </li>
       <li>
-        <a href="{{ Route::currentRouteName() === 'user.index' ? '#about' : route('user.index') . '#about' }}" title="About" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
+        <a href="{{ Route::currentRouteName() === 'user.index' ? '#about' : route('user.index') . '#about' }}" title="About" class="block p-3 rounded-full  hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
           <i class="fas fa-info-circle text-xl"></i>
         </a>
       </li>
@@ -30,8 +30,8 @@
       </li>
     </ul>
 
-    <div class="relative">
-      <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer" src="https://www.gravatar.com/avatar/?d=mp" alt="User avatar">
+    <div class="relative ">
+      <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full okay cursor-pointer" src="https://www.gravatar.com/avatar/?d=mp" alt="User avatar">
 
       <div id="userDropdown" class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-black dark:divide-gray-600">
         <div class="px-4 py-3 text-sm !text-white dark:text-white">

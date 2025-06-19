@@ -38,7 +38,7 @@
       <!-- Eye Icon -->
       <button
         type="button"
-        onclick="togglePassword('register-password', 'eyeIcon1')"
+        onclick="togglePassword('password', 'eyeIcon1')"
         class="absolute mt-7 right-3 transform -translate-y-1/2 text-gray-400 hover:text-blue-500">
         <i id="eyeIcon1" class="fa-solid fa-eye"></i>
       </button>
@@ -58,7 +58,7 @@
         <!-- Eye Icon -->
         <button
           type="button"
-          onclick="togglePassword('register-confirm-password', 'eyeIcon2')"
+          onclick="togglePassword('password_confirmation', 'eyeIcon2')"
           class="absolute mt-6 right-3 transform -translate-y-1/2 text-gray-400 hover:text-blue-500">
           <i id="eyeIcon2" class="fa-solid fa-eye"></i>
         </button>
