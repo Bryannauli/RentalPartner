@@ -46,8 +46,8 @@
                                 'rejected' => 'bg-red-100 text-red-800',
                             ];
                         @endphp
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium {{$statusColors[$post->status] ?? 'bg-gray-100 text-gray-800'}}">
-                            {{ucfirst($post->status)}}
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium {{$statusColors[$post->status_verifikasi] ?? 'bg-gray-100 text-gray-800'}}">
+                            {{ucfirst($post->status_verifikasi)}}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap space-x-1">

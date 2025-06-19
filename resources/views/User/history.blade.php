@@ -14,13 +14,13 @@
                     <div class="bg-white p-5 rounded-xl shadow-md border border-gray-200 transition duration-300 hover:shadow-lg hover:border-blue-300">
                         <div class="flex flex-col md:flex-row items-center gap-6">
                             <div class="w-full md:w-1/4">
-                                @if($pesanan->car)
-                                    <img src="{{ asset('storage/' . $pesanan->car->photo) }}" alt="{{ $pesanan->car->car_name }}" class="w-full h-32 object-cover rounded-lg">
+                                @if($pesanan->postingan && $pesanan->photo)
+                                    <img src="{{ asset('storage/' . $pesanan->postingan->photo) }}" alt="{{ $pesanan->car_name }}" class="w-full h-32 object-cover rounded-lg">
                                 @endif
                             </div>
 
                             <div class="w-full md:w-2/4">
-                                <h3 class="text-xl font-bold text-gray-900">{{ $pesanan->car->car_name ?? 'Mobil tidak ditemukan' }}</h3>
+                                <h3 class="text-xl font-bold text-gray-900">{{$pesanan->car_name}}</h3>
                                 <p class="text-sm text-gray-500">
                                     Order ID: #{{ $pesanan->invoice_number ?? $pesanan->id }}
                                 </p>
