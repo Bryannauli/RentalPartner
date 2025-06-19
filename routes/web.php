@@ -1,16 +1,17 @@
 <?php
+use App\Models\Owner;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LandingPageController;
+
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PesananController;
-
-use App\Models\Owner;
 
 Route::get('/', [LandingPageController::class, 'main'])->name('main');
 

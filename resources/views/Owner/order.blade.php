@@ -45,10 +45,6 @@
                                         <span class="text-sm text-gray-500 w-24">No. HP:</span>
                                         <span class="text-sm text-gray-900">{{ $pesanan->phone ?? '-' }}</span>
                                     </div>
-                                    <div class="flex">
-                                        <span class="text-sm text-gray-500 w-24">No. KTP:</span>
-                                        <span class="text-sm text-gray-900">{{ $pesanan->id_number ?? '-' }}</span>
-                                    </div>
                                 </div>
                             </div>
                             
@@ -81,10 +77,11 @@
                             <p class="text-sm text-gray-600 bg-gray-50 p-3 rounded">{{ $pesanan->notes }}</p>
                         </div>
                         @endif
-                        
                         <div class="mt-4 p-4 bg-gray-50 rounded-lg flex items-center space-x-4">
-                            @if($pesanan->photo)
-                                <img src="{{ asset('storage/' . $pesanan->photo) }}" alt="{{ $pesanan->car_name }}" class="w-16 h-16 object-cover rounded">
+                            <h4 class="text-sm font-medium text-gray-900 mb-2">Postingan</h4>
+
+                            @if($pesanan->postingan->photo)
+                                <img src="{{ asset('storage/' . $pesanan->postingan->photo) }}" alt="{{ $pesanan->car_name }}" class="w-40 ">
                             @else
                                 <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
                                     <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,6 +89,28 @@
                                     </svg>
                                 </div>
                             @endif
+                        
+                        <div class="mt-4 p-4 bg-gray-50 rounded-lg flex items-center space-x-4">
+                            <h4 class="text-sm font-medium text-gray-900 mb-2">Dokumen Pendukung</h4>
+                            @if($pesanan->sim_path)
+                                <img src="{{ asset('storage/' . $pesanan->sim_path) }}" alt="{{ $pesanan->car_name }}" class="w-40 ">
+                            @else
+                                <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"></path>
+                                    </svg>
+                                </div>
+                            @endif
+                            @if($pesanan->ktp_path)
+                                <img src="{{ asset('storage/' . $pesanan->ktp_path) }}" alt="{{ $pesanan->car_name }}" class="w-40 ">
+                            @else
+                                <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"></path>
+                                    </svg>
+                                </div>
+                            @endif
+
                             <div>
                                 <h5 class="text-sm font-medium text-gray-900">{{ $pesanan->car_name }}</h5>
                                 <p class="text-sm text-gray-500">{{ $pesanan->brand }} • {{ $pesanan->year }}</p>

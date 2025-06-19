@@ -59,7 +59,7 @@ class PesananController extends Controller
     // tampilkan list pesanan untuk owner (dashboard owner)
     public function index()
     {
-        $ownerId = Auth::user()->owner->id; // asumsi user yg login punya relasi ke owner
+        $ownerId = Auth::user()->owner->id; 
 
         $pesanans = Pesanan::where('owner_id', $ownerId)
             ->orderBy('created_at', 'desc')
