@@ -48,7 +48,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 });
 
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::get('/owner', [AdminController::class, 'owner'])->name('owner');
@@ -71,7 +71,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/posts/reject/{id}', [AdminController::class, 'rejectPost'])->name('posts.reject');
 });
 
-Route::prefix('owner')->name('owner.')->group(function () {
+Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
     Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
     Route::get('/order', [OwnerController::class, 'order'])->name('order');
