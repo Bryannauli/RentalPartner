@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log; 
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -68,12 +69,9 @@ class OwnerController extends Controller
         $post->location = $validated['location'];
 
         if ($request->hasFile('photo')) {
-        $file = $request->file('photo');
-        $filename = time().'_'.$file->getClientOriginalName();
-        $path = $file->storeAs('public/photos', $filename);
-        $post->photo = $filename;
-    }
-
+        $path = $request->file('photo')->store('photos', 'public');
+        $post->photo = $path; 
+        }
         $post->save();
 
         return redirect()->back()->with('success', 'Postingan mobil berhasil dibuat!');

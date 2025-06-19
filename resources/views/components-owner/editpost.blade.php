@@ -66,7 +66,7 @@
                 <label class="block text-sm font-medium text-slate-700">Foto Mobil</label>
                 <div class="mt-1">
                     @if ($post->photo)
-                        <img src="{{ asset('storage/photos/' . $post->photo) }}" alt="Foto Mobil" class="mb-4 w-40 h-auto rounded">
+                        <img src="{{ asset('storage/' . $post->photo) }}" alt="Foto Mobil" class="mb-4 w-40 h-auto rounded">
                     @endif
                     <input type="file" name="photo" class="block w-full text-sm text-slate-600">
                     <p class="text-xs text-slate-500">Biarkan kosong jika tidak ingin mengubah foto. PNG, JPG, GIF hingga 10MB.</p>

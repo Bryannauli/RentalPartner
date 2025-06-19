@@ -7,8 +7,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
             {{-- tampilkan foto pertama kalau ada --}}
-            @if($post->photos)
-                <img src="{{ asset('storage/' . $post->photos) }}" alt="{{ $post->car_name }}" class="w-full h-auto rounded-lg shadow-md">
+            @if($post->photo)
+                <img src="{{ asset('storage/' . $post->photo) }}" alt="{{ $post->car_name }}" class="w-full h-auto rounded-lg shadow-md">
             @else
                 <img src="https://placehold.co/600x400/e2e8f0/475569?text=No+Image" alt="No Image" class="w-full h-auto rounded-lg shadow-md">
             @endif
