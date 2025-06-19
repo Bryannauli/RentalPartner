@@ -17,7 +17,9 @@
                 @yield('page-title', 'Dashboard')
             </h2>
             <div class="flex items-center gap-3">
-                <span class="text-gray-700 font-medium">Admin</span>
+                <span class="text-gray-700 font-medium">
+                    {{ auth()->user()->name }}
+                </span>
                 <img src="https://cdn-icons-png.flaticon.com/256/6522/6522516.png" alt="Admin" class="h-10 w-10 rounded-full object-cover" />
             </div>
         </header>
