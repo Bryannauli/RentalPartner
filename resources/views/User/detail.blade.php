@@ -61,10 +61,11 @@
     </div>
 </div>
 
-<h1 class="!ml-10 !mb-5">Contact Owner : 
+<h1 class="!ml-10 !mb-5">Contact Owner :
+    <br> 
 <i class="fas fa-user-alt text-blue-600"></i>{{ $post->owner->user->name}}
-    <br><i class="fas fa-phone-alt text-blue-600 !ml-29"></i>{{ $post->owner->user->phone}}
-    <br><i class="fas fa-envelope text-blue-600 !ml-29"></i>{{ $post->owner->user->email}}</h1>
+    <br><i class="fas fa-phone-alt text-blue-600 "></i>{{ $post->owner->user->phone}}
+    <br><i class="fas fa-envelope text-blue-600 "></i>{{ $post->owner->user->email}}</h1>
 
 <div class="container mx-auto px-6">
     <!-- Tab Navigation -->
