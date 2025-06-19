@@ -8,6 +8,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold text-gray-900 mb-6">Mobil yang Anda Sewakan</h1>
 
+    <div class="mb-8">
+            <a href="{{route('owner.posts')}}" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+                Tambah Mobil Baru
+            </a>
+        </div> 
+
         @if (session('success'))
             <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
                 {{ session('success') }}
@@ -49,12 +55,6 @@
                 </div>
             @endforeach
         </div>
-
-        <div class="mt-10">
-            <a href="{{route('owner.posts')}}" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
-                Tambah Mobil Baru
-            </a>
-        </div> 
     </div>
 </div>
 @endsection
