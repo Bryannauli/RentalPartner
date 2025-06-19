@@ -13,7 +13,7 @@
 
         <div class="absolute top-0 right-0 bg-blue-600 text-white font-bold text-xl !px-4 !py-4 rounded-bl-xl">01.</div>
         <div class="mb-4">
-          <img src="/images/car.png" alt="Lepas Kunci" class="mx-auto h-12 " />
+          <img src="/images/nyetir.jpeg" alt="Lepas Kunci" class="mx-auto !h-40 " />
         </div>
         <h3 class="!text-xl font-bold !mb-5 !mt-5">Daily Car Rental</h3>
         <p class="text-gray-500 text-sm !mb-10">
@@ -27,11 +27,12 @@
 
         <div class="absolute top-0 right-0 bg-blue-600 text-white font-bold text-xl !px-4 !py-4 rounded-bl-xl">02.</div>
         <div class="mb-4">
-          <img src="/images/nyetir.jpeg" alt="Lepas Kunci" class="mx-auto !h-40" />
+          <img src="/images/car.png" alt="Lepas Kunci" class="mx-auto !h-40" />
         </div>
-        <h3 class="!text-xl font-bold !mb-2 !mt-5">Chauffeur-Driven Car</h3>
+        <h3 class="!text-xl font-bold !mb-2 !mt-5">Special Occasion Car</h3>
         <p class="text-gray-500 text-sm !mb-10 !p-4">
-          Memberikan kenyamanan ekstra bagi Anda yang ingin menikmati perjalanan dengan Supir Profesional.<br> Anda Santai, Kami Mengemudi
+         Mobil premium untuk acara penting seperti lamaran, anniversary, atau photoshoot.
+Buat momen spesial Anda makin berkesan.
         </p>
       </div>
 
