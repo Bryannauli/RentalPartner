@@ -15,7 +15,7 @@
             <h2 class="text-4xl font-bold mb-4 text-center">{{ $post->car_name }}</h2>
   
             <!-- Spesifikasi Singkat -->
-            <div class="flex gap-6 text-sm mb-6 !ml-35">
+            <div class="flex gap-6 text-sm mb-6 !ml-30">
                 <div class="flex items-center gap-2 text-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
                         <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z" />
@@ -64,8 +64,17 @@
 <h1 class="!ml-10 !mb-5">Contact Owner :
     <br> 
 <i class="fas fa-user-alt text-blue-600"></i>{{ $post->owner->user->name}}
-    <br><i class="fas fa-phone-alt text-blue-600 "></i>{{ $post->owner->user->phone}}
-    <br><i class="fas fa-envelope text-blue-600 "></i>{{ $post->owner->user->email}}</h1>
+ <div class="flex flex-col items-start">
+    <h1 class="flex items-center gap-2">
+        <i class="fas fa-envelope text-blue-600"></i>
+        {{ $post->owner->user->email }}
+    </h1>
+    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $post->owner->user->phone) }}" 
+       target="_blank" 
+       class="inline-flex items-center gap-2 text-sm bg-green-500 hover:bg-green-600 text-white !px-4 !py-2 rounded-lg shadow ml-10 mt-0">
+        <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+    </a>
+</div>
 
 <div class="container mx-auto px-6">
     <!-- Tab Navigation -->
