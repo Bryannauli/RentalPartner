@@ -86,7 +86,7 @@ class AdminController extends Controller
     public function showOwner($id)
     {
         $owner = Owner::with('user')->findOrFail($id);
-        return view('admin.owner-detail', compact('owner'));
+        return view('components-admin.detailowner', compact('owner'));
     }
 
     // POSTINGAN

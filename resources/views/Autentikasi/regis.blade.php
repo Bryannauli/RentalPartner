@@ -29,8 +29,8 @@
             <div class="relative">
   <input 
     type="password" 
-    name="password" 
-    id="password" 
+    name="register-password" 
+    id="register-password" 
     class="w-full  px-4 py-3 pr-12 bg-gray-700 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
     placeholder="Enter your password" 
     required
@@ -50,8 +50,8 @@
             <label for="password_confirmation" class="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>
            <div class="relative">
   <input 
-    type="password" 
-    name="password" 
+    type="register-confirm-password" 
+    name="register-confirm-password" 
     id="password" 
     class="w-full  px-4 py-3 pr-12 bg-gray-700 hover:bg-gray-700 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
     placeholder="Confirm your password" 
