@@ -52,6 +52,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::delete('admin/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/owner', [AdminController::class, 'owner'])->name('owner');
     Route::get('/mobil', [AdminController::class, 'mobil'])->name('mobil');
     Route::get('/posts', [AdminController::class, 'posts'])->name('posts');

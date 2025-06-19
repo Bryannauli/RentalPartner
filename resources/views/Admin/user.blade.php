@@ -37,17 +37,27 @@
                     <td class="p-3">{{ $user->name }}</td>
                     <td class="p-3">{{ $user->email }}</td>
                     <td class="p-3">{{ $user->phone }}</td>
-                    <td class="p-3">
-                        <span class="px-2 py-1 text-xs font-semibold {{ $user->is_active ? 'text-green-800 bg-green-200' : 'text-red-800 bg-red-200' }} rounded-full">
-                            {{ $user->is_active ? 'Aktif' : 'Ditangguhkan' }}
-                        </span>
-                    </td>
+                <td class="p-3">
+                    @if ($user->role == 'owner')
+                    <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                        Owner
+                    </span>
+                    @elseif ($user->is_active)
+                        <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                    Aktif
+                    </span>
+                    @else
+                    <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
+                        Ditangguhkan
+                    </span>
+                    @endif
+                </td>
                     <td class="p-3 flex gap-2">
-                        <form action="" method="POST" onsubmit="return confirm('Anda yakin?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Tangguhkan</button>
-                        </form>
+                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Anda yakin menangguhkan pengguna ini?');">
+                    @csrf
+                    @method('DELETE')
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Tangguhkan</button>
+                    </form>
                     </td>
                 </tr>
                 @endforeach

@@ -35,6 +35,7 @@ class UserController extends Controller
             'email' => $request->input('register-email'),
             'phone' => $request->input('register-phone'),
             'password' => Hash::make($request->input('register-password')),
+            'is_active' => true,
         ]);
 
     
@@ -69,6 +70,15 @@ class UserController extends Controller
         return back()->withErrors([
             'login' => 'Password salah',
         ])->withInput();
+    }
+
+    public function destroy(User $user)
+    {
+        $user->is_active = false;
+        $user->save();
+
+        return redirect()->route('admin.user')
+                         ->with('success', 'Pengguna berhasil ditangguhkan.');
     }
 
     public function logout(Request $request){
