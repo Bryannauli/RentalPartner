@@ -5,6 +5,7 @@
 
 <div class="flex flex-col md:flex-row items-center justify-center min-h-screen bg-white text-black p-4">
     <div class="md:w-1/2 mb-6 md:mb-0"> 
+        <!-- Gambar Mobil -->
         <img src="{{ asset('storage/' . $post->photo) }}" alt="{{ $post->car_name }}" class="rounded-xl"> 
     </div>
 
@@ -12,7 +13,7 @@
         <div class="max-w-xl mx-auto bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden !pb-16 !px-10 ">
             <!-- Nama Mobil -->
             <h2 class="text-4xl font-bold mb-4 text-center">{{ $post->car_name }}</h2>
-
+  
             <!-- Spesifikasi Singkat -->
             <div class="flex gap-6 text-sm mb-6 !ml-35">
                 <div class="flex items-center gap-2 text-gray-700">
