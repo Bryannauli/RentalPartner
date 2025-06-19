@@ -7,20 +7,19 @@
   </div>
 
   <div class="flex items-center space-x-4 sm:space-x-6">
-    
     <ul class="hidden md:flex items-center text-white font-medium space-x-6">
       <li>
-        <a href="#header" title="Home" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
+        <a href="{{ route('user.home') }}" title="Home" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
           <i class="fas fa-home text-xl"></i>
         </a>
       </li>
       <li>
-        <a href="#about" title="About" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
+        <a href="{{ Route::currentRouteName() === 'user.index' ? '#about' : route('user.index') . '#about' }}" title="About" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
           <i class="fas fa-info-circle text-xl"></i>
         </a>
       </li>
       <li>
-        <a href="#service" title="Service" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
+        <a href="{{ Route::currentRouteName() === 'user.index' ? '#service' : route('user.index') . '#service' }}" title="Service" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
           <i class="fas fa-concierge-bell text-xl"></i>
         </a>
       </li>

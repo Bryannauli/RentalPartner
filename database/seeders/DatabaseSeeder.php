@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         'name' => 'Admin',
         'email' => 'admin@gmail.com',
         'access_level' => 0,
-        'password' => Hash::make('passwordAdmin'),
+        'password' => Hash::make('passAdmin'),
         ]);
 
         $this->call([

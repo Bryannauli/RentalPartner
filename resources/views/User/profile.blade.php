@@ -7,15 +7,15 @@
     <h2 class="text-2xl font-bold mb-4 text-center">Edit Profil</h2>
 
     @if(session('success'))
-        <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
-            {{ session('success') }}
-        </div>
+    <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
+        {{ session('success') }}
+    </div>
     @endif
 
- <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
 
-    @csrf
-    @method('PUT')
+        @csrf
+        @method('PUT')
 
 
         <div class="mb-4">
@@ -35,19 +35,19 @@
 
         <div class="mb-4">
             <label class="block font-medium mb-1">Foto Profil</label>
-            <input 
-              type="file" 
-              name="sim" 
-              accept="jpg,.jpeg,.png" 
-              required 
-              class="w-full text-sm text-gray-500
-                     file:mr-4 file:py-2 file:px-4
-                     file:rounded-md file:border-2 
-                     file:text-sm file:font-semibold
-                     file:bg-blue-600 file:text-white
-                     hover:file:bg-white hover:file:text-blue-600" />
+            <input
+                type="file"
+                name="sim"
+                accept="jpg,.jpeg,.png"
+                required
+                class="w-full text-sm text-gray-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-md file:border-2 
+                    file:text-sm file:font-semibold
+                    file:bg-blue-600 file:text-white
+                    hover:file:bg-white hover:file:text-blue-600" />
             @if($user->photo)
-                <img src="{{ asset('storage/photos/' . $user->photo) }}" class="w-20 h-20 mt-2 rounded-full" alt="Foto Profil">
+            <img src="{{ asset('storage/photos/' . $user->photo) }}" class="w-20 h-20 mt-2 rounded-full" alt="Foto Profil">
             @endif
         </div>
 

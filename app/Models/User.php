@@ -22,10 +22,12 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'status',
     ];
 
     protected $attributes = [
         'access_level' => 1,
+        'status' => 'active',
     ];
 
     /**

@@ -20,7 +20,7 @@ return new class extends Migration
                     $table->string('ktp');
                     $table->string('sim');
                     $table->string('stnk');
-                    $table->string('status_verifikasi')->default('pending'); // pending, approved, rejected
+                    $table->enum('status_verifikasi', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }

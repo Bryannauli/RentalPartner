@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
- public function edit()
-{
-    $user = auth()->user(); // atau ambil user sesuai kebutuhan
-    return view('user.profile', compact('user'));
-}
+    public function edit()
+    {
+        $user = auth()->user(); // atau ambil user sesuai kebutuhan
+        return view('user.profile', compact('user'));
+    }
 
 
     public function update(Request $request)

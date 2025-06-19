@@ -6,7 +6,7 @@
 <div class="bg-white p-6 rounded-lg shadow-md">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold text-slate-800">Manajemen Pengguna</h2>
-        <a href="{{-- route('admin.users.create') --}}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+        <a href="{{ route('admin.users.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
             <i class="fas fa-plus"></i> Tambah Pengguna
         </a>
     </div>
@@ -38,11 +38,11 @@
                     <td class="p-3">{{ $user->email }}</td>
                     <td class="p-3">{{ $user->phone }}</td>
                 <td class="p-3">
-                    @if ($user->role == 'owner')
+                    @if ($user->access_level == 2)
                     <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
                         Owner
                     </span>
-                    @elseif ($user->is_active)
+                    @elseif ($user->status == 'active')
                         <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
                     Aktif
                     </span>

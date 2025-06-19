@@ -22,20 +22,20 @@ class UserController extends Controller
     }
     public function register(Request $request){
         $request->validate([
-            'register-name' => 'required|string|max:255',
-            'register-email' => 'required|email|unique:users,email',
-            'register-phone' => 'required|string|max:20',
-            'register-password' => 'required|min:6|same:register-confirm-password',
-            'register-confirm-password' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|max:20',
+            'password' => 'required|min:6|same:password_confirmation',
+            'password_confirmation' => 'required',
             'terms' => 'required',
         ]);
 
         User::create([
-            'name' => $request->input('register-name'),
-            'email' => $request->input('register-email'),
-            'phone' => $request->input('register-phone'),
-            'password' => Hash::make($request->input('register-password')),
-            'is_active' => true,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'status' => 'active',
         ]);
 
     
@@ -82,7 +82,7 @@ class UserController extends Controller
     }
 
     public function home(){
-        return view('user.main');    
+        return redirect()->route('user.index');
     }
 
     public function history(){
