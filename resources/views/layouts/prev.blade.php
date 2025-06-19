@@ -37,9 +37,9 @@
             </div>
             <div class="flex items-center">
                 <ul class="hidden md:flex items-center text-white font-medium">
-                    <li class="nav-item"><a href="{{ route('user.index') }}" class="nav-link hover:!text-blue-500">HOME</a></li>
-                    <li class="nav-item"><a href="{{ route('user.about') }}" class="nav-link hover:!text-blue-500">ABOUT</a></li>
-                    <li class="nav-item"><a href="{{ route('user.service') }}" class="nav-link hover:!text-blue-500">SERVICE</a></li>
+                    <li class="nav-item"><a href="#header" class="nav-link hover:!text-blue-500">HOME</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link hover:!text-blue-500">ABOUT</a></li>
+                    <li class="nav-item"><a href="#service" class="nav-link hover:!text-blue-500">SERVICE</a></li>
                     <a href="{{ route('login') }}" class="!text-white bg-gradient-to-r !ml-5 !mt-4 !mr-3 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm !px-7 !py-3 text-center me-2 !mb-5">LOGIN NOW</a>
                 </ul>
             </div>
