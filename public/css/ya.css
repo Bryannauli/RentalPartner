@@ -9,7 +9,12 @@
     background-color: #f3f4f6;
     margin-top: 4rem;
   }
-
+.chat{
+  padding: 10px;
+}
+.spec{
+  margin-left: 120px;
+}
   .search-input {
     width: 24rem;
     padding: 1rem 1.5rem;
