@@ -35,6 +35,7 @@ class UserController extends Controller
             'email' => $request->input('register-email'),
             'phone' => $request->input('register-phone'),
             'password' => Hash::make($request->input('register-password')),
+            'is_active' => true,
         ]);
 
     
@@ -70,6 +71,8 @@ class UserController extends Controller
             'login' => 'Password salah',
         ])->withInput();
     }
+
+    
 
     public function logout(Request $request){
         Auth::logout();

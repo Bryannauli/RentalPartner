@@ -39,10 +39,10 @@
   <!-- Eye Icon -->
   <button 
     type="button" 
-    onclick="togglePassword()" 
+    onclick="togglePassword('register-password', 'eyeIcon1')"  
     class="absolute mt-7 right-3 transform -translate-y-1/2 text-gray-400 hover:text-blue-500"
   >
-    <i id="eyeIcon" class="fa-solid fa-eye"></i>
+    <i id="eyeIcon1" class="fa-solid fa-eye"></i>
   </button>
 </div>
         
@@ -61,10 +61,10 @@
   <!-- Eye Icon -->
   <button 
     type="button" 
-    onclick="togglePassword()" 
+    onclick="togglePassword('register-confirm-password', 'eyeIcon2')" 
     class="absolute mt-6 right-3 transform -translate-y-1/2 text-gray-400 hover:text-blue-500"
   >
-    <i id="eyeIcon" class="fa-solid fa-eye"></i>
+    <i id="eyeIcon2" class="fa-solid fa-eye"></i>
   </button>
 </div>
 
@@ -87,4 +87,21 @@
             </a>
         </p>
     </form>
+<script>
+  function togglePassword(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    } else {
+      input.type = 'password';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+  }
+</script>
+
 @endsection

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log; 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Pesanan;
 
 class OwnerController extends Controller
 {
@@ -31,7 +32,14 @@ class OwnerController extends Controller
         return view('owner.riwayat');    
     }
     public function order(){
-        return view('owner.order');    
+        $owner = Auth::user()->owner;
+
+        $pesanans = Pesanan::with(['user', 'postingan'])
+                    ->where('owner_id', $owner->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+        return view('owner.order', compact('pesanans'));    
     }
     public function posts(){
         return view('components-owner.tambahpost');
