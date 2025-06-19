@@ -52,13 +52,13 @@
                                 Diposting pada {{ $post->created_at->format('d M Y') }}
                             </p>
 
-                            @if($post->status === 'Dikonfirmasi')
+                            @if($post->status === 'approved')
                                 <div class="mt-4 p-3 bg-green-50 rounded-lg">
                                     <p class="text-sm text-green-700">
                                         <i class="fas fa-check-circle mr-2"></i>Postingan Anda telah dikonfirmasi dan sekarang tampil di halaman dashboard dan pencarian.
                                     </p>
                                 </div>
-                            @elseif($post->status === 'Ditolak' && $post->rejection_reason)
+                            @elseif($post->status === 'rejected' && $post->rejection_reason)
                                 <div class="mt-4 p-3 bg-red-50 rounded-lg">
                                     <p class="text-sm font-medium text-red-800">Alasan Penolakan:</p>
                                     <p class="text-sm text-red-700 mt-1">{{ $post->rejection_reason }}</p>
