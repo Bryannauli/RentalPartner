@@ -1,35 +1,41 @@
 @extends('layouts.app')
 
-@section('title', 'Payment - Rental Partner')
+@section('title', 'Konfirmasi Pembayaran')
 
 @section('content')
-<section class="bg-white p-6 rounded shadow max-w-3xl mx-auto">
-  <h2 class="text-2xl font-bold mb-6">Pembayaran</h2>
+<div class="min-h-screen bg-gray-100 py-12">
+    <div class="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Konfirmasi Pembayaran</h2>
 
-  <h3 class="mb-2 font-semibold">Metode Pembayaran</h3>
-  <div class="space-y-2 mb-6">
-    <label class="flex items-center gap-2">
-      <input type="radio" name="metode" checked>
-      Tunai
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="radio" name="metode">
-      Kartu Kredit
-    </label>
-  </div>
+        <div class="mb-6">
+            <p class="text-gray-600">Invoice: <span class="font-semibold">#{{ $pesanan->invoice_number ?? $pesanan->id }}</span></p>
+            <p class="text-gray-600">Mobil: <span class="font-semibold">{{ $pesanan->postingan->car_name }}</span></p>
+            <p class="text-gray-600">Total: <span class="font-bold text-blue-600">Rp {{ number_format($pesanan->total_price, 0, ',', '.') }}</span></p>
+        </div>
 
-  <h3 class="mb-2 font-semibold">Tata Cara Pembayaran</h3>
-  <div class="grid gap-4 mb-6">
-    <div class="border p-4 rounded">
-      <h4 class="font-semibold">Tunai</h4>
-      <p>Pembayaran langsung saat mobil diambil di lokasi.</p>
+        <form action="{{ route('user.payment.submit', $pesanan->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+
+            <div class="mb-4">
+                <label for="payment_method" class="block text-sm font-medium text-gray-700 mb-1">Metode Pembayaran</label>
+                <select name="payment_method" id="payment_method" required class="w-full border border-gray-300 rounded px-3 py-2">
+                    <option value="">-- Pilih Metode --</option>
+                    <option value="cash">Tunai</option>
+                    <option value="credit_card">Kartu Kredit</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="payment_proof" class="block text-sm font-medium text-gray-700 mb-1">Upload Bukti Pembayaran</label>
+                <input type="file" name="payment_proof" id="payment_proof" required accept="image/*"
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <button type="submit"
+                class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-200">
+                Konfirmasi Pembayaran
+            </button>
+        </form>
     </div>
-    <div class="border p-4 rounded">
-      <h4 class="font-semibold">Kartu Kredit</h4>
-      <p>Pembayaran diproses otomatis setelah konfirmasi.</p>
-    </div>
-  </div>
-
-  <button class="bg-green-600 text-white px-6 py-2 rounded">Konfirmasi Pembayaran</button>
-</section>
+</div>
 @endsection

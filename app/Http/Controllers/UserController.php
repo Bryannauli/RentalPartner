@@ -96,6 +96,41 @@ class UserController extends Controller
         return view('user.history', compact('pesanans'));    
     }
 
+    public function showhistoryDetail($id){
+        $pesanan = Pesanan::with(['user', 'postingan'])->findOrFail($id);
+        return view('user.history-detail', compact('pesanan'));
+    }
+
+    public function showPaymentForm($id)
+    {
+        $pesanan = Pesanan::findOrFail($id);
+        return view('payment.payment', compact('pesanan'));
+    }
+
+    public function submitPayment(Request $request, $id)
+    {
+        $pesanan = Pesanan::findOrFail($id);
+
+        if ($pesanan->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $request->validate([
+            'payment_method' => 'required|string',
+            'payment_proof' => 'required|image|max:2048',
+        ]);
+
+        $proofPath = $request->file('payment_proof')->store('bukti-pembayaran', 'public');
+
+        $pesanan->payment_method = $request->payment_method;
+        $pesanan->payment_proof = $proofPath;
+        $pesanan->status = 'Menunggu Konfirmasi Pembayaran';
+        $pesanan->save();
+
+        return redirect()->route('user.history')->with('success', 'Pembayaran berhasil dikonfirmasi.');
+    }
+
+
     public function submitUpgrade(Request $request){
     $request->validate([
         'nik' => 'required|string|max:20|unique:owners,nik',
@@ -131,6 +166,21 @@ class UserController extends Controller
 
     return redirect()->route('user.index')->with('success', 'Permintaan upgrade dikirim.');
     }
+
+    public function selesaikanPeminjaman($id)
+    {
+        $pesanan = Pesanan::findOrFail($id);
+
+        if ($pesanan->status !== 'Peminjaman Berlangsung') {
+            return redirect()->back()->with('error', 'Pesanan belum dapat diselesaikan.');
+        }
+
+        $pesanan->status = 'Selesai';
+        $pesanan->save();
+
+        return redirect()->back()->with('success', 'Peminjaman berhasil diselesaikan.');
+    }
+
 
 
 }

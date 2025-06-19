@@ -41,6 +41,47 @@ class OwnerController extends Controller
 
         return view('owner.order', compact('pesanans'));    
     }
+
+    public function konfirmasiPesanan(Request $request, $id)
+    {
+        $pesanan = Pesanan::findOrFail($id);
+
+        if ($request->action === 'accept') {
+            // konfirmasi, ubah status
+            $pesanan->status = 'Menunggu Pembayaran';
+            $pesanan->save();
+
+            return redirect()->back()->with('success', 'Pesanan telah dikonfirmasi.');
+        }
+
+        if ($request->action === 'reject') {
+            // tolak, ubah status dan simpan alasan
+            $pesanan->status = 'Dibatalkan';
+            $pesanan->rejection_reason = $request->rejection_reason;
+            $pesanan->save();
+
+            return redirect()->back()->with('success', 'Pesanan ditolak.');
+        }
+
+        return redirect()->back()->with('error', 'Aksi tidak valid.');
+    }
+
+    public function konfirmasiPembayaran($id)
+    {
+        $pesanan = Pesanan::findOrFail($id);
+        
+        if ($pesanan->status === 'Menunggu Konfirmasi Pembayaran') {
+            $pesanan->status = 'Peminjaman Berlangsung';
+            $pesanan->save();
+
+            return back()->with('success', 'Pembayaran telah dikonfirmasi. Peminjaman dimulai.');
+        }
+
+        return back()->with('error', 'Status pesanan tidak valid untuk konfirmasi pembayaran.');
+    }
+
+
+
     public function posts(){
         return view('components-owner.tambahpost');
     }

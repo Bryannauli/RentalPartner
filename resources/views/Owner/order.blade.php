@@ -20,7 +20,7 @@
                                 Pesanan #{{ $pesanan->id }} - {{ $pesanan->car_name }}
                             </h3>
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
-                                Menunggu Konfirmasi
+                                {{ $pesanan->status }}
                             </span>
                         </div>
                         <p class="mt-1 text-sm text-gray-500">
@@ -110,6 +110,16 @@
                                     </svg>
                                 </div>
                             @endif
+                            
+                            <div class="mt-4 p-4 bg-gray-50 rounded-lg flex items-center space-x-4">
+                                @if($pesanan->payment_proof)
+                                    <h4 class="text-sm font-medium text-gray-900 mb-2">Bukti Pembayaran</h4>
+                                    <img src="{{ asset('storage/' . $pesanan->payment_proof) }}" alt="Bukti Pembayaran" class="w-40 rounded-md shadow" />
+                                @else
+                                    <p class="text-sm text-gray-500">Belum ada bukti pembayaran.</p>
+                                @endif
+                            </div>
+
 
                             <div>
                                 <h5 class="text-sm font-medium text-gray-900">{{ $pesanan->car_name }}</h5>
@@ -119,8 +129,9 @@
                         </div>
                     </div>
 
-                    {{-- form konfirmasi --}}
-                    <form method="POST" action="" class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex flex-col space-y-4">
+                    {{-- tombol sesuai status --}}
+                    @if($pesanan->status === 'Menunggu Konfirmasi Owner')
+                    <form method="POST" action="{{ route('owner.pesanan.konfirmasi', $pesanan->id) }}" class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex flex-col space-y-4">
                         @csrf
                         @method('PUT')
 
@@ -144,6 +155,15 @@
                             </button>
                         </div>
                     </form>
+                 @elseif($pesanan->status === 'Menunggu Konfirmasi Pembayaran')
+                    <form method="POST" action="{{ route('owner.pesanan.konfirmasi.pembayaran', $pesanan->id) }}" class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200">
+                            Konfirmasi Pembayaran
+                        </button>
+                    </form>
+                @endif   
                 </div>
                 @endforeach
             </div>

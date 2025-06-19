@@ -54,7 +54,13 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/payment/form/{id}', [PesananController::class, 'form'])->name('payment.form');
 
     Route::get('/history', [UserController::class, 'history'])->name('user.history');
-    
+    Route::get('/history/{id}', [UserController::class, 'showHistoryDetail'])->name('user.history.detail');
+
+    Route::get('/pembayaran/{id}', [UserController::class, 'showPaymentForm'])->name('user.payment.form');
+    Route::post('/pembayaran/{id}', [UserController::class, 'submitPayment'])->name('user.payment.submit');
+
+    Route::post('/user/pesanan/{id}/selesai', [UserController::class, 'selesaikanPeminjaman'])->name('user.rent.complete');
+
 
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store')->middleware('auth');
 });
@@ -99,6 +105,10 @@ Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-histor
     Route::post('/posts/store', [OwnerController::class, 'storePost'])->name('posts.store');
     Route::get('/posts/edit/{id}', [OwnerController::class, 'editPost'])->name('posts.edit');
     Route::put('/posts/update/{id}', [OwnerController::class, 'updatePost'])->name('posts.update');
+    Route::put('/pesanan/{id}/konfirmasi', [OwnerController::class, 'konfirmasiPesanan'])->name('pesanan.konfirmasi');
+    Route::put('/pesanan/{id}/konfirmasi-pembayaran', [OwnerController::class, 'konfirmasiPembayaran'])->name('pesanan.konfirmasi.pembayaran');
+
+
 });
 
 Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');
