@@ -35,11 +35,15 @@
                                     <p class="text-lg text-gray-800 font-semibold mt-1">Rp {{ number_format($post->price, 0, ',', '.') }} / hari</p>
                                 </div>
                                 <div class="mt-3 sm:mt-0">
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
-                                        @if($post->status === 'Dikonfirmasi') bg-green-100 text-green-800
-                                        @elseif($post->status === 'Menunggu Konfirmasi') bg-yellow-100 text-yellow-800
-                                        @else bg-red-100 text-red-800 @endif">
-                                        {{ $post->status }}
+                                        @php
+                                        $statusColors = [
+                                            'pending' => 'bg-yellow-100 text-yellow-800',
+                                            'approved' => 'bg-green-100 text-green-800',
+                                            'rejected' => 'bg-red-100 text-red-800',
+                                        ];
+                                    @endphp
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium  {{$statusColors[$post->status] ?? 'bg-gray-100 text-gray-800'}}">
+                                        {{ucfirst($post->status)}}
                                     </span>
                                 </div>
                             </div>
@@ -48,13 +52,13 @@
                                 Diposting pada {{ $post->created_at->format('d M Y') }}
                             </p>
 
-                            @if($post->status === 'Dikonfirmasi')
+                            @if($post->status === 'approved')
                                 <div class="mt-4 p-3 bg-green-50 rounded-lg">
                                     <p class="text-sm text-green-700">
                                         <i class="fas fa-check-circle mr-2"></i>Postingan Anda telah dikonfirmasi dan sekarang tampil di halaman dashboard dan pencarian.
                                     </p>
                                 </div>
-                            @elseif($post->status === 'Ditolak' && $post->rejection_reason)
+                            @elseif($post->status === 'rejected' && $post->rejection_reason)
                                 <div class="mt-4 p-3 bg-red-50 rounded-lg">
                                     <p class="text-sm font-medium text-red-800">Alasan Penolakan:</p>
                                     <p class="text-sm text-red-700 mt-1">{{ $post->rejection_reason }}</p>

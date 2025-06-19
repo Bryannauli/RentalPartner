@@ -75,6 +75,7 @@ Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-histor
     Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
     Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
     Route::get('/order', [OwnerController::class, 'order'])->name('order');
+    Route::get('/posts/info', [OwnerController::class, 'showPost'])->name('postingan');
     Route::get('/posts', [OwnerController::class, 'posts'])->name('posts');
     Route::post('/posts/store', [OwnerController::class, 'storePost'])->name('posts.store');
     Route::get('/posts/edit/{id}', [OwnerController::class, 'editPost'])->name('posts.edit');
