@@ -69,6 +69,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-histor
     // route kelola post
     Route::get('/posts/detail/{id}', [AdminController::class, 'showPost'])->name('posts.show');
     Route::post('/posts/approve/{id}', [AdminController::class, 'approvePost'])->name('posts.approve');
+    Route::get('/posts/reject/{id}', [AdminController::class, 'showRejectForm'])->name('posts.showRejectForm');
     Route::post('/posts/reject/{id}', [AdminController::class, 'rejectPost'])->name('posts.reject');
 });
 

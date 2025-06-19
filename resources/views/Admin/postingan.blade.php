@@ -52,27 +52,31 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap space-x-1">
                         <a href="{{ route('admin.posts.show', $post->id) }}" 
-                        class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">
+                        class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm inline-block">
                         Lihat
                         </a>
 
-                        <form action="{{ route('admin.posts.approve', $post->id) }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" 
-                                class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition text-sm"
-                                onclick="return confirm('Setujui postingan {{ $post->id }}?')">
-                                Setujui
-                            </button>
-                        </form>
+                        @if ($post->status == 'approved')
+                            <span class="bg-green-300 text-green-900 px-3 py-1 rounded text-sm cursor-not-allowed">Sudah</span>
+                        @else
+                            <form action="{{ route('admin.posts.approve', $post->id) }}" method="POST" class="inline">
+                                @csrf
+                                <button type="submit" 
+                                    class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition text-sm"
+                                    onclick="return confirm('Setujui postingan {{ $post->id }}?')">
+                                    Setujui
+                                </button>
+                            </form>
+                        @endif
 
-                        <form action="{{ route('admin.posts.reject', $post->id) }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" 
-                                class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm"
-                                onclick="return confirm('Tolak postingan {{ $post->id }}?')">
+                        @if ($post->status == 'rejected')
+                            <span class="bg-red-300 text-red-900 px-3 py-1 rounded text-sm cursor-not-allowed">Ditolak</span>
+                        @elseif($post->status != 'approved')
+                            <a href="{{ route('admin.posts.showRejectForm', $post->id) }}" 
+                                class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm inline-block">
                                 Tolak
-                            </button>
-                        </form>
+                            </a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

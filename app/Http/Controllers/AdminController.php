@@ -109,12 +109,28 @@ class AdminController extends Controller
         $post->save();
         return redirect()->back()->with('success', 'Postingan berhasil disetujui.');
     }
-    public function rejectPost($id)
+
+    public function showRejectForm($id)
     {
         $post = Post::findOrFail($id);
+        return view('components-admin.reject', compact('post'));
+    }
+     public function rejectPost(Request $request, $id)
+    {
+        $request->validate([
+            'rejection_reason' => 'required|string|min:10',
+        ], [
+            'rejection_reason.required' => 'Alasan penolakan wajib diisi.',
+            'rejection_reason.min' => 'Alasan penolakan minimal harus 10 karakter.',
+        ]);
+
+        $post = Post::findOrFail($id);
+
         $post->status = 'rejected';
+        $post->rejection_reason = $request->input('rejection_reason'); // Menyimpan alasan
         $post->save();
-        return redirect()->back()->with('success', 'Postingan berhasil ditolak.');
+
+        return redirect()->route('admin.posts')->with('success', 'Postingan berhasil ditolak.');
     }
 
 }
