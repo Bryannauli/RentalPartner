@@ -51,6 +51,8 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     
     Route::post('/pesanan/store', [PesananController::class, 'store'])->name('pesanan.store');
     Route::get('/payment/form/{id}', [PesananController::class, 'form'])->name('payment.form');
+
+    Route::get('/history', [UserController::class, 'history'])->name('user.history');
     
 
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store')->middleware('auth');

@@ -8,28 +8,28 @@
 
         <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Riwayat Pesanan Anda</h2>
 
-        @if($orders && !$orders->isEmpty())
+        @if($pesanans && !$pesanans->isEmpty())
             <div class="space-y-6">
-                @foreach ($orders as $order)
+                @foreach ($pesanans as $pesanan)
                     <div class="bg-white p-5 rounded-xl shadow-md border border-gray-200 transition duration-300 hover:shadow-lg hover:border-blue-300">
                         <div class="flex flex-col md:flex-row items-center gap-6">
                             <div class="w-full md:w-1/4">
-                                @if($order->car)
-                                    <img src="{{ asset('storage/' . $order->car->photo) }}" alt="{{ $order->car->car_name }}" class="w-full h-32 object-cover rounded-lg">
+                                @if($pesanan->car)
+                                    <img src="{{ asset('storage/' . $pesanan->car->photo) }}" alt="{{ $pesanan->car->car_name }}" class="w-full h-32 object-cover rounded-lg">
                                 @endif
                             </div>
 
                             <div class="w-full md:w-2/4">
-                                <h3 class="text-xl font-bold text-gray-900">{{ $order->car->car_name ?? 'Mobil tidak ditemukan' }}</h3>
+                                <h3 class="text-xl font-bold text-gray-900">{{ $pesanan->car->car_name ?? 'Mobil tidak ditemukan' }}</h3>
                                 <p class="text-sm text-gray-500">
-                                    Order ID: #{{ $order->invoice_number ?? $order->id }}
+                                    Order ID: #{{ $pesanan->invoice_number ?? $pesanan->id }}
                                 </p>
                                 <p class="text-sm text-gray-600 mt-2">
                                     <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
-                                    {{ \Carbon\Carbon::parse($order->start_date)->format('d M Y') }} &mdash; {{ \Carbon\Carbon::parse($order->end_date)->format('d M Y') }}
+                                    {{ \Carbon\Carbon::parse($pesanan->start_date)->format('d M Y') }} &mdash; {{ \Carbon\Carbon::parse($pesanan->end_date)->format('d M Y') }}
                                 </p>
                                 <p class="text-lg font-semibold text-blue-600 mt-1">
-                                    Total: Rp {{ number_format($order->total_price, 0, ',', '.') }}
+                                    Total: Rp {{ number_format($pesanan->total_price, 0, ',', '.') }}
                                 </p>
                             </div>
 
@@ -41,14 +41,14 @@
                                         'Dibatalkan' => 'bg-red-100 text-red-800',
                                         'Menunggu Pembayaran' => 'bg-yellow-100 text-yellow-800',
                                     ];
-                                    $statusClass = $statusClasses[$order->status] ?? 'bg-gray-100 text-gray-800';
+                                    $statusClass = $statusClasses[$pesanan->status] ?? 'bg-gray-100 text-gray-800';
                                 @endphp
 
                                 <span class="text-sm font-medium px-3 py-1 rounded-full {{ $statusClass }}">
-                                    {{ $order->status }}
+                                    {{ $pesanan->status }}
                                 </span>
 
-                                <a href="{{-- route('history.detail', $order->id) --}}" class="mt-3 block w-full md:w-auto bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 text-sm font-semibold text-center transition duration-200">
+                                <a href="{{-- route('history.detail', $pesanan->id) --}}" class="mt-3 block w-full md:w-auto bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 text-sm font-semibold text-center transition duration-200">
                                     Lihat Detail
                                 </a>
                             </div>

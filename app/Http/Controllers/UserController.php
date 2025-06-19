@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Http\Middleware\PreventBackHistory;
-
+use App\Models\Pesanan;
 
 class UserController extends Controller
 {
@@ -83,6 +83,16 @@ class UserController extends Controller
 
     public function home(){
         return view('user.main');    
+    }
+
+    public function history(){
+        $user = Auth::user();
+
+        $pesanans = Pesanan::with(['user', 'postingan'])
+                    ->where('user_id', $user->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+        return view('user.history', compact('pesanans'));    
     }
 
     public function submitUpgrade(Request $request){

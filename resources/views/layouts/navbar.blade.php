@@ -25,7 +25,7 @@
         </a>
       </li>
       <li>
-        <a href="{{-- route('user.history') --}}" title="Riwayat Pesanan" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
+        <a href="{{ route('user.history') }}" title="Riwayat Pesanan" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
           <i class="fas fa-history text-xl"></i>
         </a>
       </li>
