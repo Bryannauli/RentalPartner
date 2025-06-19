@@ -50,6 +50,15 @@ class AdminController extends Controller
     public function history() {
         return view('admin.history');
     }
+
+     public function destroy(User $user)
+    {
+        $user->is_active = false;
+        $user->save();
+
+        return redirect()->route('admin.user')
+                         ->with('success', 'Pengguna berhasil ditangguhkan.');
+    }
     
     // OWNER
     // Daftar permintaan owner
