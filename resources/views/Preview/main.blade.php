@@ -83,11 +83,6 @@
   <button type="submit" class="search-button">Cari</button>
 </form>
 
-
-
-
-
-
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
 
 

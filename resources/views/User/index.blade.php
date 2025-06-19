@@ -20,8 +20,8 @@
     <option value="brand" {{ request('kategori') == 'brand' ? 'selected' : '' }}>Merek Kendaraan</option>
     <option value="type" {{ request('kategori') == 'type' ? 'selected' : '' }}>Tipe Kendaraan</option>
     <option value="location" {{ request('kategori') == 'location' ? 'selected' : '' }}>Lokasi</option>
-    <option value="facilities" {{ request('kategori') == 'facilities' ? 'selected' : '' }}>Fasilitas Kendaraan</option>
   </select>
+
 
   <button type="submit" class="search-button">Cari</button>
 </form>
@@ -39,10 +39,10 @@
 
       @foreach ($posts as $post)
       <div class="bg-white rounded-2xl shadow-md flex flex-col h-full transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 !mb-0 ">
-        <img src="{{ asset('storage/' . $post->photo) }}" alt="{{ $post->name }}" class="w-full h-48 object-cover rounded-t-2xl" />
+        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->name }}" class="w-full h-48 object-cover rounded-t-2xl" />
         <div class="p-6 flex flex-col flex-grow justify-between">
           <div>
-            <h3 class="text-2xl font-bold mb-2 text-gray-800 text-center !mt-10">{{ $post->car_name }}</h3>
+            <h3 class="text-2xl font-bold mb-2 text-gray-800 text-center !mt-10">{{ $post->name }}</h3>
             <p class="text-center text-blue-700 font-bold text-lg mb-4">Rp {{ number_format($post->price, 0, ',', '.') }}<span class="text-gray-600 font-normal text-sm">/ DAY</span></p>
             <div class="flex justify-center space-x-4 text-gray-500 text-sm mb-6 mt-7">
               <div class="flex items-center space-x-1">

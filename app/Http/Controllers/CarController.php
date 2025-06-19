@@ -18,19 +18,23 @@ class CarController extends Controller
         }
 
     public function search(Request $request)
-{
-    $query = $request->input('query');
-    $kategori = $request->input('kategori');
+    {
+        $query = $request->input('query');
+        $kategori = $request->input('kategori');
 
-    $cars = Car::query();
+        $allowedKategori = ['name', 'brand', 'type', 'location'];
 
-    if ($query && $kategori) {
-        $cars->where($kategori, 'like', '%' . $query . '%');
+        if (!in_array($kategori, $allowedKategori)) {
+            return redirect()->back()->with('error', 'Kategori tidak valid.');
+        }
+
+        $posts = Car::where($kategori, 'like', '%' . $query . '%')->get();
+
+        return view('user.index', [
+            'posts' => $posts,
+            'isSearch' => true,
+            'query' => $query,
+            'kategori' => $kategori,
+        ]);
     }
-
-    $cars = $cars->get();
-
-    return view('components.featured', compact('cars', 'query', 'kategori'));
 }
-}
-
