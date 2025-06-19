@@ -9,7 +9,7 @@
   <div class="flex items-center space-x-4 sm:space-x-6">
     <ul class="hidden md:flex items-center text-white font-medium space-x-6">
       <li>
-        <a href="{{ route('user.home') }}" title="Home" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
+        <a href="{{ route('home') }}" title="Home" class="block p-3 rounded-full hover:bg-white/20 hover:text-blue-400 transition-all duration-300">
           <i class="fas fa-home text-xl"></i>
         </a>
       </li>
