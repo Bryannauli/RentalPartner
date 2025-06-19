@@ -24,6 +24,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Owner</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga/Hari</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Upload</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Update</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
@@ -33,9 +34,10 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->id}}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->car_name }} {{ $post->year }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->owner->name ?? 'Unknown' }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->owner->user->name ?? 'Unknown' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($post->price, 0, ',', '.') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->created_at->format('d M Y') }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->updated_at->format('d M Y') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                          @php
                             $statusColors = [

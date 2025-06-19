@@ -1,31 +1,3 @@
-@php
-    $cars = collect([
-        (object)[
-            'id' => 1,
-            'name' => 'Toyota Avanza',
-            'brand' => 'Toyota',
-            'year' => 2022,
-            'description' => 'Mobil keluarga irit dan nyaman.',
-            'price_per_day' => 350000,
-            'status' => 'available',
-            'transmission' => 'manual',
-            'fuel_type' => 'bensin',
-            'image' => null
-        ],
-        (object)[
-            'id' => 2,
-            'name' => 'Honda Brio',
-            'brand' => 'Honda',
-            'year' => 2021,
-            'description' => 'Mobil city car cocok buat harian.',
-            'price_per_day' => 300000,
-            'status' => 'rented',
-            'transmission' => 'automatic',
-            'fuel_type' => 'bensin',
-            'image' => null
-        ]
-    ]);
-@endphp
 
 @extends('owner.layout')
 
@@ -43,21 +15,26 @@
         @endif
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($cars as $car)
+            @foreach ($posts as $post)
                 <div class="bg-white shadow rounded-lg overflow-hidden">
-                    <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->name }}" class="w-full h-48 object-cover">
+                    <img src="{{ asset('storage/' . $post->photo) }}" alt="{{ $post->car_name }}" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <h2 class="text-xl font-semibold">{{ $car->name }}</h2>
-                        <p class="text-gray-600">{{ $car->brand }} - {{ $car->year }}</p>
-                        <p class="text-gray-800 font-bold mt-2">Rp {{ number_format($car->price_per_day, 0, ',', '.') }} / hari</p>
-                        <p class="text-sm text-gray-600 mt-1">Transmisi: {{ ucfirst($car->transmission) }}</p>
-                        <p class="text-sm text-gray-600">BBM: {{ $car->fuel_type }}</p>
-                        <p class="text-sm mt-2 text-gray-500 italic">{{ $car->description }}</p>
+                        <h2 class="text-xl font-semibold">{{ $post->car_name }}</h2>
+                        <p class="text-gray-600">{{ $post->brand }} - {{ $post->year }}</p>
+                        <p class="text-gray-800 font-bold mt-2">Rp {{ number_format($post->price, 0, ',', '.') }} / hari</p>
+                        <p class="text-sm text-gray-600 mt-1">Tipe: {{ $post->type }}</p>
+                        <p class="text-sm text-gray-600 mt-1">Transmisi: {{ ucfirst($post->transmission) }}</p>
+                        <p class="text-sm text-gray-600">Jarak tempuh: {{ $post->mileage }}</p>
+                        <p class="text-sm text-gray-600">Kapasitas: {{ $post->capacity }}</p>
+                        <p class="text-sm text-gray-600">Bagasi: {{ $post->baggage }}</p>
+                        <p class="text-sm text-gray-600">Fasilitas: {{ $post->facilities }}</p>
+                        <p class="text-sm text-gray-600">Lokasi: {{ $post->location }}</p>
+                        <p class="text-sm mt-2 text-gray-500 italic">{{ $post->description }}</p>
 
                         <div class="flex justify-between mt-4">
-                            <form action="" method="GET">
+                            <form action="{{route('owner.posts.edit', $post->id)}}" method="GET">
                                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded text-sm">
-                                    Update
+                                    Edit
                                 </button>
                             </form>
                             <form action="" method="POST" onsubmit="return confirm('Yakin ingin menghapus mobil ini?')">

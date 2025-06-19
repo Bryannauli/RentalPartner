@@ -11,19 +11,11 @@
     
 <div class="bg-white p-6 rounded-lg shadow-md">
     <div class="flex justify-between items-center mb-4">
-        <h2 class="text-xl font-bold text-slate-800">Manajemen Pengguna</h2>
-        <a href="{{-- route('admin.users.create') --}}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
-            <i class="fas fa-plus"></i> Tambah Pengguna
-        </a>
+        <h2 class="text-xl font-bold text-slate-800">Manajemen Owner</h2>
     </div>
 
     <div class="flex gap-4 mb-4">
         <input type="text" placeholder="Cari pengguna..." class="flex-grow p-2 border rounded-md">
-        <select class="p-2 border rounded-md">
-            <option>Semua Tipe</option>
-            <option>Pengguna</option>
-            <option>Owner</option>
-        </select>
         <select class="p-2 border rounded-md">
             <option>Semua Status</option>
             <option>Aktif</option>

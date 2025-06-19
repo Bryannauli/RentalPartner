@@ -14,11 +14,6 @@
     <div class="flex gap-4 mb-4">
         <input type="text" placeholder="Cari pengguna..." class="flex-grow p-2 border rounded-md">
         <select class="p-2 border rounded-md">
-            <option>Semua Tipe</option>
-            <option>Pengguna</option>
-            <option>Owner</option>
-        </select>
-        <select class="p-2 border rounded-md">
             <option>Semua Status</option>
             <option>Aktif</option>
             <option>Ditangguhkan</option>

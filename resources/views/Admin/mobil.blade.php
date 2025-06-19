@@ -40,37 +40,7 @@
                     <td class="p-3">Manual</td>
                     <td class="p-3">2023</td>
                     </td>
-                </tr>
-                <tr class="border-b hover:bg-slate-50 transition-colors">
-                    <td class="p-3">
-                        <div class="flex items-center gap-3">
-                            <img src="https://placehold.co/100x60/e2e8f0/475569?text=Pajero" alt="Car" class="w-20 h-12 object-cover rounded-md">
-                            <div>
-                                <div class="font-bold">Mitsubishi Pajero Sport</div>
-                                <div class="text-sm text-slate-500">ID: 2</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="p-3">SUV</td>
-                    <td class="p-3">Otomatis</td>
-                    <td class="p-3">2024</td>
-                    </td>
-                </tr>
-                <tr class="border-b hover:bg-slate-50 transition-colors">
-                    <td class="p-3">
-                        <div class="flex items-center gap-3">
-                            <img src="https://placehold.co/100x60/e2e8f0/475569?text=Brio" alt="Car" class="w-20 h-12 object-cover rounded-md">
-                            <div>
-                                <div class="font-bold">Honda Brio Satya</div>
-                                <div class="text-sm text-slate-500">ID: 3</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="p-3">Hatchback</td>
-                    <td class="p-3">Manual</td>
-                    <td class="p-3">2022</td>
-                    </td>
-                </tr>
+                </tr> 
                 </tbody>
         </table>
     </div>

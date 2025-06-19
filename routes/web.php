@@ -77,6 +77,8 @@ Route::prefix('owner')->name('owner.')->group(function () {
     Route::get('/order', [OwnerController::class, 'order'])->name('order');
     Route::get('/posts', [OwnerController::class, 'posts'])->name('posts');
     Route::post('/posts/store', [OwnerController::class, 'storePost'])->name('posts.store');
+    Route::get('/posts/edit/{id}', [OwnerController::class, 'editPost'])->name('posts.edit');
+    Route::put('/posts/update/{id}', [OwnerController::class, 'updatePost'])->name('posts.update');
 });
 
 Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');
