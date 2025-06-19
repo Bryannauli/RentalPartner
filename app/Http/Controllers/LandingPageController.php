@@ -9,7 +9,8 @@ class LandingPageController extends Controller
 {
     public function main()
     {
-        return view('preview.main');
+        $cars = Car::all();
+        return view('preview.main',  compact('cars'));
     }
 
     public function login(){

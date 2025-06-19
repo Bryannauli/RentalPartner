@@ -5,7 +5,7 @@
     @include('user.about') 
     @include('user.service')
     @include('user.review')
-    
+  
 <div class="search-container">
   <input 
     type="text" 

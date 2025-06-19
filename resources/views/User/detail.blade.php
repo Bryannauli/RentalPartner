@@ -1,3 +1,8 @@
+@extends('layouts.app')
+
+@section('content')
+
+
 <div class="flex flex-col md:flex-row items-center justify-center min-h-screen bg-white text-black p-4">
     <div class="md:w-1/2 mb-6 md:mb-0"> 
         <img src="{{ asset('images/' . $car->image) }}" alt="{{ $car->name }}" class="rounded-xl"> 
@@ -48,7 +53,7 @@
             </div>
 
             <!-- Tombol Rent -->
-            <a href="{{ route('user.payment', ['id' => $car->id]) }}" class="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !text-white font-bold text-center py-4 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-l !mt-10 !mx-20">
+            <a href="{{ route('payment.form', ['id' => $car->id]) }}" class="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !text-white font-bold text-center py-4 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-l !mt-10 !mx-20">
                 RENT NOW
             </a>
         </div>
@@ -251,7 +256,7 @@
         </form>
     </div>
 </div>
-
+@endsection
 <script>
     // Mengubah warna bintang saat diklik
     document.querySelectorAll('.stars span').forEach(star => {
@@ -302,8 +307,6 @@
         });
     });
 </script>
-
-@endsection
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

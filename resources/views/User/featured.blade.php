@@ -99,7 +99,7 @@
 
 
 
-
+@section('content')
 
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
 
@@ -149,3 +149,4 @@
     </div>
   </div>
 </section>
+@endsection
