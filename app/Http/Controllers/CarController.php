@@ -1,21 +1,21 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Car;
+use App\Models\Post;
 
 class CarController extends Controller
 {
     public function featured()
     {
-        $cars = Car::all();
-        return view('user.featured', compact('cars'));
+        $posts = Post::all();
+        return view('user.featured', compact('posts'));
     }
 
  public function detail($id)
-{
-    $car = Car::findOrFail($id);
-    return view('user.detail', compact('car'));
-}
+    {
+        $post = Post::findOrFail($id);
+        return view('user.detail', compact('post'));
+    }
 
 }
 

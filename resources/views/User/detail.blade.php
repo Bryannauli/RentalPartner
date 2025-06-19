@@ -5,13 +5,13 @@
 
 <div class="flex flex-col md:flex-row items-center justify-center min-h-screen bg-white text-black p-4">
     <div class="md:w-1/2 mb-6 md:mb-0"> 
-        <img src="{{ asset('images/' . $car->image) }}" alt="{{ $car->name }}" class="rounded-xl"> 
+        <img src="{{ asset('storage/' . $post->photo) }}" alt="{{ $post->car_name }}" class="rounded-xl"> 
     </div>
 
     <div class="md:w-1/2 md:ml-10 ">
         <div class="max-w-xl mx-auto bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden !pb-16 !px-10 ">
             <!-- Nama Mobil -->
-            <h2 class="text-4xl font-bold mb-4">{{ $car->name }}</h2>
+            <h2 class="text-4xl font-bold mb-4">{{ $post->car_name }}</h2>
 
             <!-- Spesifikasi Singkat -->
             <div class="flex gap-6 text-sm mb-6">
@@ -20,48 +20,50 @@
                         <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z" />
                         <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3" />
                     </svg>
-                    <span>{{ $car->transmission }}</span>
+                    <span>{{ $post->transmission }}</span>
                 </div>
 
                 <div class="flex items-center gap-2 text-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
                     </svg>
-                    <span>{{ $car->year }}</span>
+                    <span>{{ $post->year }}</span>
                 </div>
 
                 <div class="flex items-center gap-2 text-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                         <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
                     </svg>
-                    <span>{{ $car->seat }} Seats</span>
+                    <span>{{ $post->capacity }} </span>
                 </div>
             </div>
 
             <!-- Deskripsi -->
             <div class="mb-6">
                 <h3 class="text-sm font-semibold text-gray-500 whitespace-pre-line">
-                    {!! nl2br(e($car->description)) !!}
+                    {!! nl2br(e($post->description)) !!}
                 </h3>
             </div>
 
             <!-- Harga -->
             <div class="mb-6">
                 <div class="text-xl font-bold text-blue-600">
-                    Rp {{ number_format($car->price, 0, ',', '.') }} / DAY
+                    Rp {{ number_format($post->price, 0, ',', '.') }} / DAY
                 </div>
             </div>
 
             <!-- Tombol Rent -->
-            <a href="{{ route('payment.form', ['id' => $car->id]) }}" class="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !text-white font-bold text-center py-4 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-l !mt-10 !mx-20">
+            <a href="{{ route('payment.form', ['id' => $post->id]) }}" class="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !text-white font-bold text-center py-4 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-l !mt-10 !mx-20">
                 RENT NOW
             </a>
         </div>
     </div>
 </div>
 
-<h1 class="!ml-10 !mb-5">Contact Us : <i class="fas fa-phone-alt text-blue-600"></i>+62 811-659-0888
-<br> <i class="fas fa-envelope text-blue-600 !ml-21"></i>info@rentalpartner.com</h1>
+<h1 class="!ml-10 !mb-5">Contact Owner : 
+<i class="fas fa-user-alt text-blue-600"></i>{{ $post->owner->user->name}}
+    <br><i class="fas fa-phone-alt text-blue-600"></i>{{ $post->owner->user->phone}}
+    <br><i class="fas fa-envelope text-blue-600 !ml-21"></i>{{ $post->owner->user->email}}</h1>
 
 <div class="container mx-auto px-6">
     <!-- Tab Navigation -->
@@ -89,14 +91,14 @@
         <div id="panel-specification" role="tabpanel" aria-labelledby="tab-specification" class="block ">
             <div class="text-left text-gray-500">
                 <div class="grid grid-cols-2 gap-y-2 gap-x-4">
-                    <div class="text-black">Mileage:</div>    <div>{{ $car->mileage }}</div>
-                    <div class="text-black">Transmission:</div> <div>{{ $car->transmission }}</div>
-                    <div class="text-black">Seats:</div>       <div>{{ $car->seat }}</div>
-                    <div class="text-black">Baggage:</div>     <div>{{ $car->baggage }}</div>
-                    <div class="text-black">Year:</div>        <div>{{ $car->year }}</div>
-                    <div class="text-black">Type:</div>        <div>{{ $car->type }}</div>
-                    <div class="text-black">Brand:</div>       <div>{{ $car->brand }}</div>
-                    <div class="text-black">Location:</div>    <div>{{ $car->location }}</div>
+                    <div class="text-black">Mileage:</div>    <div>{{ $post->mileage }}</div>
+                    <div class="text-black">Transmission:</div> <div>{{ $post->transmission }}</div>
+                    <div class="text-black">Seats:</div>       <div>{{ $post->capacity }}</div>
+                    <div class="text-black">Baggage:</div>     <div>{{ $post->baggage }}</div>
+                    <div class="text-black">Year:</div>        <div>{{ $post->year }}</div>
+                    <div class="text-black">Type:</div>        <div>{{ $post->type }}</div>
+                    <div class="text-black">Brand:</div>       <div>{{ $post->brand }}</div>
+                    <div class="text-black">Location:</div>    <div>{{ $post->location }}</div>
                 </div>
             </div>
         </div>
@@ -104,7 +106,7 @@
         <!-- Fasilitas Panel -->
         <div id="panel-facilities" role="tabpanel" aria-labelledby="tab-facilities" class="hidden">
             @php
-                $facilities = explode("\n", $car->facilities);
+                $facilities = explode("\n", $post->facilities);
             @endphp
 
             <ul class="list-disc list-inside text-gray-700 space-y-1 text-left">
