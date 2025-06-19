@@ -45,7 +45,6 @@
     <i id="eyeIcon" class="fa-solid fa-eye"></i>
   </button>
 </div>
-
         
         <div class="mb-6 mt-3">
             <label for="password_confirmation" class="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>

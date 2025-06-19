@@ -256,7 +256,7 @@
         </form>
     </div>
 </div>
-@endsection
+
 <script>
     // Mengubah warna bintang saat diklik
     document.querySelectorAll('.stars span').forEach(star => {
@@ -403,3 +403,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
+@endsection
