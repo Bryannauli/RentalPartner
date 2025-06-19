@@ -141,5 +141,12 @@ class OwnerController extends Controller
         return redirect()->route('owner.dashboard')->with('success', 'Data mobil berhasil diperbarui dan menunggu persetujuan ulang.');
     }
 
+    public function showPost(){
+        $user = Auth::user();
+        $owner = $user->owner;
+        $posts= Post::where('owner_id', $owner->id)->get();
+        return view('owner.postingan', compact('posts'));
+    }
+
 
 }

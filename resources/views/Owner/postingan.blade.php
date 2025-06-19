@@ -35,11 +35,15 @@
                                     <p class="text-lg text-gray-800 font-semibold mt-1">Rp {{ number_format($post->price, 0, ',', '.') }} / hari</p>
                                 </div>
                                 <div class="mt-3 sm:mt-0">
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
-                                        @if($post->status === 'Dikonfirmasi') bg-green-100 text-green-800
-                                        @elseif($post->status === 'Menunggu Konfirmasi') bg-yellow-100 text-yellow-800
-                                        @else bg-red-100 text-red-800 @endif">
-                                        {{ $post->status }}
+                                        @php
+                                        $statusColors = [
+                                            'pending' => 'bg-yellow-100 text-yellow-800',
+                                            'approved' => 'bg-green-100 text-green-800',
+                                            'rejected' => 'bg-red-100 text-red-800',
+                                        ];
+                                    @endphp
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium  {{$statusColors[$post->status] ?? 'bg-gray-100 text-gray-800'}}">
+                                        {{ucfirst($post->status)}}
                                     </span>
                                 </div>
                             </div>
