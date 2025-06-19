@@ -31,9 +31,9 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
 Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/home', [UserController::class, 'home'])->name('home');
     
+    Route::get('/featured', [CarController::class, 'featured'])->name('user.index');
     Route::get('/index', [LandingPageController::class, 'index'])->name('user.index');
     Route::get('/cars/search', [CarController::class, 'search'])->name('cars.search');
-    Route::get('/featured', [CarController::class, 'featured'])->name('user.index');
     Route::get('/detail/{id}', [CarController::class, 'detail'])->name('cars.detail');
     
     Route::get('/payment', [LandingPageController::class, 'payment'])->name('user.payment');
