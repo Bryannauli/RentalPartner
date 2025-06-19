@@ -62,26 +62,6 @@
   @include('user.service')
   @include('user.review')
       
-<div class="search-container">
-  <input 
-    type="text" 
-    id="carSearch" 
-    placeholder="Cari mobil, merk, tipe, lokasi..." 
-    class="search-input"
-  />
-  <button 
-    id="searchBtn"
-    class="search-button"
-  >
-    Cari
-  </button>
-</div>
-
-
-
-
-
-
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
 
 
