@@ -6,7 +6,7 @@
     @include('user.service')
     @include('user.review')
   
-<form action="{{ route('cars.search') }}" method="GET" class="search-container" style="margin-bottom: 20px;">
+<form action="{{ route('cars.search') }}" method="GET" class="search-container" style="">
   <input 
     type="text" 
     name="query" 
