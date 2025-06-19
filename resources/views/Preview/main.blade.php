@@ -61,7 +61,33 @@
   @include('user.about')
   @include('user.service')
   @include('user.review')
+  
       
+<form action="{{ route('cars.search') }}" method="GET" class="search-container" style="margin-bottom: 20px;">
+  <input 
+    type="text" 
+    name="query" 
+    placeholder="Cari mobil..." 
+    class="search-input"
+    value="{{ request('query') }}"
+  />
+
+  <select name="kategori" class="search-select">
+    <option value="name" {{ request('kategori') == 'name' ? 'selected' : '' }}>Nama Kendaraan</option>
+    <option value="brand" {{ request('kategori') == 'brand' ? 'selected' : '' }}>Merek Kendaraan</option>
+    <option value="type" {{ request('kategori') == 'type' ? 'selected' : '' }}>Tipe Kendaraan</option>
+    <option value="location" {{ request('kategori') == 'location' ? 'selected' : '' }}>Lokasi</option>
+    <option value="facilities" {{ request('kategori') == 'facilities' ? 'selected' : '' }}>Fasilitas Kendaraan</option>
+  </select>
+
+  <button type="submit" class="search-button">Cari</button>
+</form>
+
+
+
+
+
+
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
 
 

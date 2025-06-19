@@ -61,6 +61,18 @@
     outline: none;
   }
 
+
+  .search-select {
+    width: 24rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem; /* tidak terlalu bundar */
+    border: 1px solid #2563eb;
+    color: #374151;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    outline: none;
+    background-color: white;
+  }
+
   .search-input:focus {
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
     border-color: #2563eb;
@@ -81,7 +93,7 @@
   }
   </style>
 
-<div class="search-container !mt-12">
+<!-- <div class="search-container !mt-12">
   <input 
     type="text" 
     id="carSearch" 
@@ -94,12 +106,29 @@
   >
     Cari
   </button>
-</div>
-
-
-
+</div> -->
 
 @section('content')
+
+<form action="{{ route('cars.search') }}" method="GET" class="search-container" style="margin-bottom: 20px;">
+  <input 
+    type="text" 
+    name="query" 
+    placeholder="Cari mobil..." 
+    class="search-input"
+    value="{{ request('query') }}"
+  />
+
+  <select name="kategori" class="search-select">
+    <option value="name" {{ request('kategori') == 'name' ? 'selected' : '' }}>Nama Kendaraan</option>
+    <option value="brand" {{ request('kategori') == 'brand' ? 'selected' : '' }}>Merek Kendaraan</option>
+    <option value="type" {{ request('kategori') == 'type' ? 'selected' : '' }}>Tipe Kendaraan</option>
+    <option value="location" {{ request('kategori') == 'location' ? 'selected' : '' }}>Lokasi</option>
+    <option value="facilities" {{ request('kategori') == 'facilities' ? 'selected' : '' }}>Fasilitas Kendaraan</option>
+  </select>
+
+  <button type="submit" class="search-button">Cari</button>
+</form>
 
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
   <div class="container mx-auto px-4 !mb-20">
