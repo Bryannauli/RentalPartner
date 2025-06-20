@@ -29,13 +29,22 @@ class OwnerController extends Controller
     }
 
     public function riwayat(){
-        return view('owner.riwayat');    
+        $owner = Auth::user()->owner;
+        $pesanans = Pesanan::with(['user', 'postingan'])
+                    ->where('owner_id', $owner->id)
+                    ->where('status', 'Selesai') 
+                    ->orderBy('updated_at', 'desc')
+                    ->get();
+        return view('owner.riwayat', compact('pesanans'));    
     }
+
+    
     public function order(){
         $owner = Auth::user()->owner;
 
         $pesanans = Pesanan::with(['user', 'postingan'])
                     ->where('owner_id', $owner->id)
+                    ->where('status', '!=', 'Selesai') 
                     ->orderBy('created_at', 'desc')
                     ->get();
 
