@@ -13,13 +13,14 @@
         @if(count($pesanans) > 0)
             <div class="space-y-6">
                 @foreach($pesanans as $pesanan)
-                <div class="bg-white shadow rounded-lg">
+                <div class="bg-white shadow rounded-lg overflow-hidden">
                     <div class="px-6 py-4 border-b border-gray-200">
                         <div class="flex items-center justify-between">
                             <h3 class="text-lg font-medium text-gray-900">
                                 Pesanan #{{ $pesanan->id }} - {{ $pesanan->car_name }}
                             </h3>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium 
+                                {{ $pesanan->status === 'Selesai' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                 {{ $pesanan->status }}
                             </span>
                         </div>
@@ -27,9 +28,10 @@
                             Dipesan pada {{ $pesanan->created_at->format('d M Y, H:i') }}
                         </p>
                     </div>
-                    
-                    <div class="px-6 py-4">
+
+                    <div class="px-6 py-4 space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Informasi Penyewa -->
                             <div>
                                 <h4 class="text-sm font-medium text-gray-900 mb-3">Informasi Penyewa</h4>
                                 <div class="space-y-2">
@@ -47,7 +49,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
+                            <!-- Detail Pemesanan -->
                             <div>
                                 <h4 class="text-sm font-medium text-gray-900 mb-3">Detail Pemesanan</h4>
                                 <div class="space-y-2">
@@ -70,18 +73,19 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         @if($pesanan->notes)
-                        <div class="mt-4">
+                        <div>
                             <h4 class="text-sm font-medium text-gray-900 mb-2">Catatan Tambahan</h4>
                             <p class="text-sm text-gray-600 bg-gray-50 p-3 rounded">{{ $pesanan->notes }}</p>
                         </div>
                         @endif
-                        <div class="mt-4 p-4 bg-gray-50 rounded-lg flex items-center space-x-4">
-                            <h4 class="text-sm font-medium text-gray-900 mb-2">Postingan</h4>
 
+                        <!-- Postingan -->
+                        <div class="p-4 bg-gray-50 rounded-lg flex items-center space-x-4">
+                            <h4 class="text-sm font-medium text-gray-900">Postingan</h4>
                             @if($pesanan->postingan->photo)
-                                <img src="{{ asset('storage/' . $pesanan->postingan->photo) }}" alt="{{ $pesanan->car_name }}" class="w-40 ">
+                                <img src="{{ asset('storage/' . $pesanan->postingan->photo) }}" alt="{{ $pesanan->car_name }}" class="w-40 rounded" />
                             @else
                                 <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
                                     <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,73 +93,64 @@
                                     </svg>
                                 </div>
                             @endif
-                        
-                        <div class="mt-4 p-4 bg-gray-50 rounded-lg flex items-center space-x-4">
-                            <h4 class="text-sm font-medium text-gray-900 mb-2">Dokumen Pendukung</h4>
-                            @if($pesanan->sim_path)
-                                <img src="{{ asset('storage/' . $pesanan->sim_path) }}" alt="{{ $pesanan->car_name }}" class="w-40 ">
-                            @else
-                                <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"></path>
-                                    </svg>
-                                </div>
-                            @endif
-                            @if($pesanan->ktp_path)
-                                <img src="{{ asset('storage/' . $pesanan->ktp_path) }}" alt="{{ $pesanan->car_name }}" class="w-40 ">
-                            @else
-                                <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"></path>
-                                    </svg>
-                                </div>
-                            @endif
-                            
-                            <div class="mt-4 p-4 bg-gray-50 rounded-lg flex items-center space-x-4">
-                                @if($pesanan->payment_proof)
-                                    <h4 class="text-sm font-medium text-gray-900 mb-2">Bukti Pembayaran</h4>
-                                    <img src="{{ asset('storage/' . $pesanan->payment_proof) }}" alt="Bukti Pembayaran" class="w-40 rounded-md shadow" />
-                                @else
-                                    <p class="text-sm text-gray-500">Belum ada bukti pembayaran.</p>
-                                @endif
-                            </div>
+                        </div>
 
-
-                            <div>
-                                <h5 class="text-sm font-medium text-gray-900">{{ $pesanan->car_name }}</h5>
-                                <p class="text-sm text-gray-500">{{ $pesanan->brand }} • {{ $pesanan->year }}</p>
-                                <p class="text-sm text-gray-500">{{ ucfirst($pesanan->transmission) }}</p>
+                        <!-- Dokumen Pendukung -->
+                        <div class="p-4 bg-gray-50 rounded-lg space-y-4">
+                            <h4 class="text-sm font-medium text-gray-900">Dokumen Pendukung</h4>
+                            <div class="flex flex-wrap gap-4">
+                                @foreach (['sim_path' => 'SIM', 'ktp_path' => 'KTP'] as $path => $label)
+                                    @if($pesanan->$path)
+                                        <img src="{{ asset('storage/' . $pesanan->$path) }}" alt="{{ $pesanan->car_name }}" class="w-40 rounded" />
+                                    @else
+                                        <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
+                                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"></path>
+                                            </svg>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
+                        </div>
+
+                        <!-- Bukti Pembayaran -->
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            @if($pesanan->payment_proof)
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Bukti Pembayaran</h4>
+                                <img src="{{ asset('storage/' . $pesanan->payment_proof) }}" alt="Bukti Pembayaran" class="w-40 rounded-md shadow" />
+                            @else
+                                <p class="text-sm text-gray-500">Belum ada bukti pembayaran.</p>
+                            @endif
+                        </div>
+
+                        <!-- Informasi Mobil -->
+                        <div>
+                            <h5 class="text-sm font-medium text-gray-900">{{ $pesanan->car_name }}</h5>
+                            <p class="text-sm text-gray-500">{{ $pesanan->brand }} • {{ $pesanan->year }}</p>
+                            <p class="text-sm text-gray-500">{{ ucfirst($pesanan->transmission) }}</p>
                         </div>
                     </div>
 
-                    {{-- tombol sesuai status --}}
+                    {{-- Tombol Aksi --}}
                     @if($pesanan->status === 'Menunggu Konfirmasi Owner')
-                    <form method="POST" action="{{ route('owner.pesanan.konfirmasi', $pesanan->id) }}" class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex flex-col space-y-4">
+                    <form method="POST" action="{{ route('owner.pesanan.konfirmasi', $pesanan->id) }}" class="px-6 py-4 bg-gray-50 border-t border-gray-200 space-y-4">
                         @csrf
                         @method('PUT')
 
-                        {{-- tombol konfirmasi --}}
                         <button type="submit" name="action" value="accept" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-200">
                             Konfirmasi
                         </button>
 
-                        {{-- form penolakan --}}
                         <div>
                             <label for="rejection_reason_{{ $pesanan->id }}" class="block text-sm font-medium text-gray-700 mb-1">Alasan Penolakan</label>
-                            <textarea
-                                id="rejection_reason_{{ $pesanan->id }}"
-                                name="rejection_reason"
-                                rows="3"
-                                placeholder="Tulis alasan penolakan..."
-                                class="w-full border border-gray-300 rounded-md px-3 py-2 resize-none focus:outline-none focus:ring-1 focus:ring-red-500"
-                            ></textarea>
+                            <textarea id="rejection_reason_{{ $pesanan->id }}" name="rejection_reason" rows="3" placeholder="Tulis alasan penolakan..." class="w-full border border-gray-300 rounded-md px-3 py-2 resize-none focus:outline-none focus:ring-1 focus:ring-red-500"></textarea>
                             <button type="submit" name="action" value="reject" class="mt-2 px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition duration-200">
                                 Tolak Pesanan
                             </button>
                         </div>
                     </form>
-                 @elseif($pesanan->status === 'Menunggu Konfirmasi Pembayaran')
+
+                    @elseif($pesanan->status === 'Menunggu Konfirmasi Pembayaran')
                     <form method="POST" action="{{ route('owner.pesanan.konfirmasi.pembayaran', $pesanan->id) }}" class="px-6 py-4 bg-gray-50 border-t border-gray-200">
                         @csrf
                         @method('PUT')
@@ -163,7 +158,7 @@
                             Konfirmasi Pembayaran
                         </button>
                     </form>
-                @endif   
+                    @endif
                 </div>
                 @endforeach
             </div>
