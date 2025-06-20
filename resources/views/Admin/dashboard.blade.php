@@ -95,41 +95,38 @@
 
 {{-- Baris Baru untuk Tabel-Tabel Tambahan --}}
 <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-    <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-bold text-slate-800">Pengguna Terbaru</h2>
-            <a href="{{ route('admin.users') }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
-        </div>
-        <div class="overflow-x-auto">
-            <table class="w-full text-left">
-                <thead class="bg-slate-50">
-                    <tr>
-                        <th class="p-3 font-semibold text-slate-600">Nama</th>
-                        <th class="p-3 font-semibold text-slate-600">Email</th>
-                        <th class="p-3 font-semibold text-slate-600">Bergabung</th>
-                        <th class="p-3 font-semibold text-slate-600">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($latestUser as $user)
-                    <tr class="border-b">
-                        <td class="p-3">{{ $user->name }}</td>
-                        <td class="p-3">{{ $user->email }}</td>
-                        <td class="p-3">{{ $user->created_at->format('d M Y') }}</td>
-                        <td class="p-3">
-                            <a href="{{ route('admin.users', $user->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold text-slate-800">Pengguna Terbaru</h2>
+        <a href="{{ route('admin.users') }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left">
+            <thead class="bg-slate-50">
+                <tr>
+                    <th class="p-3 font-semibold text-slate-600">Nama</th>
+                    <th class="p-3 font-semibold text-slate-600">Email</th>
+                    <th class="p-3 font-semibold text-slate-600">Bergabung</th>
+                    <th class="p-3 font-semibold text-slate-600">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($latestUser as $user)
+                <tr class="border-b">
+                    <td class="p-3">{{ $user->name }}</td>
+                    <td class="p-3">{{ $user->email }}</td>
+                    <td class="p-3">{{ $user->created_at->format('d M Y') }}</td>
+                    <td class="p-3">
+                        <a href="{{ route('admin.users', $user->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 
 <div class="bg-white p-6 rounded-lg shadow-md mb-6">
     {{-- Tabel Owner Terbaru (yang sudah disetujui) --}}
-    <div class="bg-white p-6 rounded-lg shadow-md">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-bold text-slate-800">Owner Terbaru</h2>
             <a href="{{ route('admin.owner') }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
@@ -159,11 +156,9 @@
             </table>
         </div>
     </div>
-</div>
 
 <div class="bg-white p-6 rounded-lg shadow-md mb-6">
     {{-- Tabel Postingan Mobil Terbaru --}}
-    <div class="bg-white p-6 rounded-lg shadow-md">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-bold text-slate-800">Postingan Mobil Terbaru</h2>
             <a href="{{ route('admin.posts') }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
@@ -193,11 +188,9 @@
             </table>
         </div>
     </div>
-</div>
 
 <div class="bg-white p-6 rounded-lg shadow-md mb-6">
     {{-- Tabel Review Terbaru --}}
-    <div class="bg-white p-6 rounded-lg shadow-md">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-bold text-slate-800">Review Terbaru</h2>
             <a href="{{ route('admin.review') }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
@@ -229,9 +222,7 @@
             </table>
         </div>
     </div>
-</div>
 
-<div class="bg-white p-6 rounded-lg shadow-md mb-6">
     {{-- Tabel History Pemesanan Terbaru --}}
     <div class="bg-white p-6 rounded-lg shadow-md col-span-1 lg:col-span-2">
         <div class="flex justify-between items-center mb-4">
@@ -267,5 +258,4 @@
             </table>
         </div>
     </div>
-</div>
 @endsection
