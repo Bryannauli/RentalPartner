@@ -3,11 +3,11 @@
 ## Deskripsi tim
 
 Mahasiswa Universitas Sumatera Utara
-- Ahmad Arif Fatahillah - 241402036 (Frontend: Web preview, Web admin, Tombol Rent)
-- Rahma Sarita Nasution - 241402043 (Frontend: Web main, Detail Kendaraan)
-- Agnes Olivia Ketaren  - 241402066 (Backend : Login User, Posting, Order)
-- Richard Lim           - 241402073 (Backend : Seeder Admin, Searching, Rating, Aprove post)
-- Bryan Sullivan Nauli  - 241402108 (Backend : Login Admin, History, Upgrade akun)
+- Ahmad Arif Fatahillah - 241402036 (Frontend: Web preview, Login dan registrasi, Forgot password, Web admin, Web owner, Form pembayaran user, History pemesanan user)
+- Rahma Sarita Nasution - 241402043 (Frontend: Web main, Upgrade akun, Detail Kendaraan)
+- Agnes Olivia Ketaren  - 241402066 (Backend : History owner, Owner posting, Order bagian user dan owner, Review halaman Owner, History pemesanan di Owner)
+- Richard Lim           - 241402073 (Backend : Logout user, Search Pengguna, owner, daftar mobil, Approve, Suspend, activate user & Owner, Tolak approve postingan, Tampilan daftar mobil, Tambah user, Search mobil, Hak akses login, Seeder Admin)
+- Bryan Sullivan Nauli  - 241402108 (Backend : Login Admin, History pemesanan di dashboard Admin, Review user, Search Postingan)
 
 ## Deskripsi Aplikasi
 
@@ -17,7 +17,7 @@ Melalui Rental Partner, pengguna dapat dengan mudah mencari mobil yang tersedia 
 
 Bagi pemilik mobil, Rental Partner memberikan kesempatan untuk menghasilkan pendapatan pasif dari kendaraan yang jarang digunakan. Proses pendaftaran kendaraan sangat mudah, dan pemilik dapat mengatur sendiri ketersediaan, harga, serta ketentuan sewa. Semua transaksi dilakukan secara aman melalui sistem pembayaran digital yang transparan dan terlindungi.
 
-Keamanan dan kenyamanan menjadi prioritas utama di Rental Partner. Sistem verifikasi pengguna, fitur ulasan dan rating, serta dukungan layanan pelanggan 24/7 menjadikan platform ini terpercaya dan nyaman digunakan oleh siapa saja. Selain itu, platform ini juga menyediakan opsi perlindungan tambahan seperti asuransi dan pelacakan kendaraan untuk memberikan rasa tenang bagi kedua belah pihak.
+Keamanan dan kenyamanan menjadi prioritas utama di Rental Partner. Sistem verifikasi pengguna, fitur ulasan dan rating, menjadikan platform ini terpercaya dan nyaman digunakan oleh siapa saja.
 
 ## Fitur-fitur yang tersedia
 
@@ -29,6 +29,7 @@ Keamanan dan kenyamanan menjadi prioritas utama di Rental Partner. Sistem verifi
 - Upgrade Akun
 - Posting
 - Aprove Post
+
 
 ## Syarat Menjalankan Aplikasi
 - PHP 8.4.4
