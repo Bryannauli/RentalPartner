@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
@@ -12,29 +14,26 @@ class CarController extends Controller
     }
 
     public function detail($id)
-        {
-            $post = Post::findOrFail($id);
-            return view('user.detail', compact('post'));
-        }
+    {
+        $post = Post::findOrFail($id);
+        return view('user.detail', compact('post'));
+    }
 
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $kategori = $request->input('kategori');
 
-        $allowedKategori = ['name', 'brand', 'type', 'location'];
-
-        if (!in_array($kategori, $allowedKategori)) {
-            return redirect()->back()->with('error', 'Kategori tidak valid.');
+        if ($query) {
+            $posts = Post::where('car_name', 'like', '%' . $query . '%')
+                ->orWhere('brand', 'like', '%' . $query . '%')
+                ->orWhere('type', 'like', '%' . $query . '%')
+                ->orWhere('location', 'like', '%' . $query . '%')
+                ->get();
+        } else {
+            // tampilkan semua jika tidak ada query
+            $posts = Post::all();
         }
 
-        $posts = Car::where($kategori, 'like', '%' . $query . '%')->get();
-
-        return view('user.index', [
-            'posts' => $posts,
-            'isSearch' => true,
-            'query' => $query,
-            'kategori' => $kategori,
-        ]);
+        return view('user.featured', compact('posts'));
     }
 }

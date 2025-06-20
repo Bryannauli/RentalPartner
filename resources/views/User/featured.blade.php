@@ -119,14 +119,6 @@
     value="{{ request('query') }}"
   />
 
-  <select name="kategori" class="search-select">
-    <option value="name" {{ request('kategori') == 'name' ? 'selected' : '' }}>Nama Kendaraan</option>
-    <option value="brand" {{ request('kategori') == 'brand' ? 'selected' : '' }}>Merek Kendaraan</option>
-    <option value="type" {{ request('kategori') == 'type' ? 'selected' : '' }}>Tipe Kendaraan</option>
-    <option value="location" {{ request('kategori') == 'location' ? 'selected' : '' }}>Lokasi</option>
-  </select>
-
-
   <button type="submit" class="search-button">Cari</button>
 </form>
 

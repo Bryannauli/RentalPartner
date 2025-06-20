@@ -11,11 +11,11 @@
         <div class="space-y-6">
             <div>
                 <label for="brand" class="block text-sm font-medium text-slate-700">Brand Mobil</label>
-                <input type="text" name="brand" id="brand" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Honda">
+                <input type="text" name="brand" id="brand" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Toyota">
             </div>
             <div>
                 <label for="car_name" class="block text-sm font-medium text-slate-700">Model Mobil</label>
-                <input type="text" name="car_name" id="car_name" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Toyota">
+                <input type="text" name="car_name" id="car_name" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Avanza">
             </div>
             <div>
                 <label for="capacity" class="block text-sm font-medium text-slate-700">Kapasitas</label>
