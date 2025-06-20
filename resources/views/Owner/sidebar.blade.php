@@ -11,8 +11,8 @@
         <a href="{{ route('owner.postingan') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('owner.postingan') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('owner.postingan') ? 'page' : '' }}">
             <i class="fas fa-newspaper w-5"></i> <span>Postingan</span>
         </a>
-        <a href="{{ route('owner.review') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('owner.postingan') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('owner.postingan') ? 'page' : '' }}">
-            <i class="fas fa-newspaper w-5"></i> <span>Review</span>
+        <a href="{{ route('owner.review') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('owner.review') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('owner.postingan') ? 'page' : '' }}">
+            <i class="fas fa-star w-5"></i> <span>Review</span>
         </a>
         <a href="{{ route('owner.order') }}" class="menu-item flex items-center gap-3 rounded-md px-3 py-2 {{ request()->routeIs('owner.order') ? 'bg-blue-700' : 'hover:bg-gray-800' }}" aria-current="{{ request()->routeIs('owner.order') ? 'page' : '' }}">
             <i class="fas fa-inbox w-5"></i> <span>Pesanan</span>
