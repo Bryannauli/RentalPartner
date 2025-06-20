@@ -123,7 +123,7 @@
 
             <div class="mt-12 text-center text-sm text-gray-400 border-t pt-6">
                 <p>Terima kasih telah menggunakan layanan kami.</p>
-                <p>www.website-rental-anda.com</p>
+                <p>www.rentalpartner.com</p>
             </div>
         </div>
     </div>
