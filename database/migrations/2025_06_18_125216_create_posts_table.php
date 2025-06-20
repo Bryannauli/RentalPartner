@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('photo')->nullable(); 
             $table->enum('status_verifikasi', ['pending', 'approved', 'rejected'])->default('pending');
-            $table->text('rejection_reason')->nullable()->after('status_verifikasi');
+            $table->text('rejection_reason')->nullable();
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade');        
