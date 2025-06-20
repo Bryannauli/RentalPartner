@@ -54,7 +54,7 @@
           <a href="{{route('login')}}" class=" !text-white bg-gradient-to-r !ml-5 !mt-4 !mr-3 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm !px-7 !py-3 text-center me-2 !mb-5">LOGIN NOW</a>
   </header>
 
-  @include('user.hero')
+  @include('user.hero2')
   @include('user.about')
   @include('user.service')
   @include('user.review')
@@ -98,7 +98,7 @@
               </div>
             </div>
           </div>
-          <a href="{{ route('cars.detail', ['id' => $car->id]) }}" class="book block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !text-white font-bold text-center py-5 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-lg mt-4">
+          <a href="{{ route('login') }}" class="book block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !text-white font-bold text-center py-5 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-lg mt-4">
             VIEW DETAILS
           </a>
         </div>
