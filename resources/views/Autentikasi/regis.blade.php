@@ -11,17 +11,17 @@
 
   <div class="mb-4">
     <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-    <input type="text" name="name" id="name" value="{{ old('name') }}" class="w-full px-4 py-3  bg-gray-700 border hover:bg-gray-700 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name" required>
+    <input type="text" name="name" id="name" value="{{ old('name') }}" class="w-full px-4 py-3 text-white border hover:bg-gray-700 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name" required>
   </div>
 
   <div class="mb-4">
     <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-    <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-4 py-3 bg-gray-700 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email" required>
+    <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-4 py-3 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email" required>
   </div>
 
   <div class="mb-4">
     <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
-    <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 bg-gray-700 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your phone number" required>
+    <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your phone number" required>
   </div>
 
   <div class="mb-4">
@@ -31,7 +31,7 @@
         type="password"
         name="password"
         id="password"
-        class="w-full  px-4 py-3 pr-12 bg-gray-700 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+        class="w-full  px-4 py-3 pr-12 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
         placeholder="Enter your password"
         required>
 
@@ -51,7 +51,7 @@
           type="password"
           name="password_confirmation"
           id="password_confirmation"
-          class="w-full  px-4 py-3 pr-12 bg-gray-700 hover:bg-gray-700 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+          class="w-full  px-4 py-3 pr-12 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
           placeholder="Confirm your password"
           required>
 
@@ -66,7 +66,7 @@
 
 
       <div class="flex items-center mb-6 mt-3">
-        <input type="checkbox" id="terms" name="terms" class="h-4 w-4 text-blue-600 border-gray-300 !bg-gray-700 rounded focus:ring-blue-500" required>
+        <input type="checkbox" id="terms" name="terms" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" required>
         <label for="terms" class="ml-2 block text-sm text-gray-300">I agree to the <a href="#" class="text-blue-600 hover:underline">Terms & Conditions</a></label>
       </div>
 

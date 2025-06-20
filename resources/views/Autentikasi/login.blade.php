@@ -11,7 +11,7 @@
 
     <div class="mb-4">
         <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-        <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-4 py-3 bg-gray-700 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email" required>
+        <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-4 py-3 text-white border border-black-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email" required>
     </div>
 
     <div class="mb-6">
@@ -24,7 +24,7 @@
                 type="password"
                 name="password"
                 id="password"
-                class="w-full mt-2 px-4 py-3 pr-12 bg-gray-700 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                class="w-full mt-2 px-4 py-3 pr-12 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your password"
                 required>
 
