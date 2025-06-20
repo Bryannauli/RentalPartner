@@ -9,9 +9,11 @@ use App\Models\User;
 
 class ResetPasswordController extends Controller
 {
-    public function showResetForm($token)
+    public function showResetForm(Request $request, $token)
     {
-        return view('autentikasi.resetpass', ['token' => $token]);
+        return view('autentikasi.resetpass', ['token' => $token,
+            'email' => $request->email,
+        ]);
     }
 
     public function reset(Request $request)
