@@ -16,7 +16,7 @@
                     <th class="p-3 font-semibold text-slate-600">Tanggal Sewa</th>
                     <th class="p-3 font-semibold text-slate-600">Total Harga</th>
                     <th class="p-3 font-semibold text-slate-600">Status</th>
-                    <th class="p-3 font-semibold text-slate-600">Aksi</th>
+                    <th class="p-3 font-semibold text-slate-600">Bukti Pembayaran</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
                         </span>
                     </td>
                     <td class="p-3">
-                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Detail</a>
+                        <img src="{{ asset('storage/' . $pesanan->payment_proof) }}" alt=" " class="w-24 h-16 object-cover rounded">
                     </td>
                 </tr>
                     @endforeach
