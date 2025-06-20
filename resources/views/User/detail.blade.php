@@ -275,7 +275,7 @@
 
     {{-- Submit --}}
     <div style="text-align: center;">
-        <button type="submit" class="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold text-center py-4 px-10 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-lg mt-10 mx-20 ml-50">
+        <button type="submit" class="buttonreview block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800  font-bold text-center py-4 px-10 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-lg mt-10 mx-20">
             Kirim Review
         </button>
     </div>

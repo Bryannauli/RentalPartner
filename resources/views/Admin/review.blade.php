@@ -18,21 +18,23 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse($reviews as $review)
                 <tr class="border-b">
-                    <td class="p-3">Toyota Avanza 2023</td>
-                    <td class="p-3">Siti Nurhayati</td>
-                    <td class="p-3 text-yellow-500"><i class="fas fa-star"></i> 4.5</td>
-                    <td class="p-3 max-w-xs truncate">Mobilnya bersih dan nyaman, pemilik ramah.</td>
-                    <td class="p-3">16 Mei 2025</td>
+                    <td class="p-3">{{ $review->post->car_name ?? '-' }}</td>
+                    <td class="p-3">{{ $review->user->name ?? 'User' }}</td>
+                    <td class="p-3 text-yellow-500"><i class="fas fa-star"></i> {{ $review->rating }}</td>
+                    <td class="p-3 max-w-xs truncate">{{ $review->comment }}</td>
+                    <td class="p-3">{{ $review->created_at->format('d M Y') }}</td>
                     <td class="p-3 flex gap-2">
                         <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
-                        <form action="#" method="POST" onsubmit="return confirm('Sembunyikan ulasan ini?');">
-                            @csrf
-                            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-1 px-3 rounded">Sembunyikan</button>
-                        </form>
                     </td>
                 </tr>
-                </tbody>
+                @empty
+                <tr>
+                    <td colspan="6" class="p-3 text-center text-gray-500">Belum ada ulasan.</td>
+                </tr>
+                @endforelse
+            </tbody>
         </table>
     </div>
 </div>

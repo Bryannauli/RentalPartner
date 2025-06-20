@@ -99,6 +99,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-histor
     Route::post('/posts/reject/{id}', [AdminController::class, 'rejectPost'])->name('posts.reject');
 
     Route::get('/history', [AdminController::class, 'showHistory'])->name('history');
+    Route::get('/review', [AdminController::class, 'showReview'])->name('review');
 });
 
 Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-history'])->group(function () {
