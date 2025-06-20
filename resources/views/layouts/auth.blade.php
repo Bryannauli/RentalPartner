@@ -30,7 +30,15 @@
             }
         }
     </script>
+    <style>
+  input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px #374151 inset !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+</style>
+
 </head>
+<body class="font-poppins bg-gradient-to-t from-gray-700 via-black to-black text-white">
 
 
     <div class="flex min-h-screen">
