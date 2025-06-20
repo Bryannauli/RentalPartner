@@ -47,6 +47,14 @@
                                         <span class="text-sm text-gray-500 w-24">No. HP:</span>
                                         <span class="text-sm text-gray-900">{{ $pesanan->phone ?? '-' }}</span>
                                     </div>
+                                    <div class="flex">
+                                        <span class="text-sm text-gray-500 w-24">Lokasi penjemputan:</span>
+                                        <span class="text-sm text-gray-900">{{ $pesanan->pickup_location ?? '-' }}</span>
+                                    </div>
+                                    <div class="flex">
+                                        <span class="text-sm text-gray-500 w-24">Lokasi pengantaran:</span>
+                                        <span class="text-sm text-gray-900">{{ $pesanan->return_location ?? '-' }}</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -65,6 +73,10 @@
                                     <div class="flex">
                                         <span class="text-sm text-gray-500 w-32">Durasi:</span>
                                         <span class="text-sm text-gray-900">{{ $pesanan->duration }} hari</span>
+                                    </div>
+                                    <div class="flex">
+                                        <span class="text-sm text-gray-500 w-32">Metode pembayaran:</span>
+                                        <span class="text-sm font-semibold text-gray-900">{{ $pesanan->payment_method }}</span>
                                     </div>
                                     <div class="flex">
                                         <span class="text-sm text-gray-500 w-32">Total Biaya:</span>
