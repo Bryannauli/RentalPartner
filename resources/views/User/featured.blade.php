@@ -114,7 +114,7 @@
   <input 
     type="text" 
     name="query" 
-    placeholder="Cari mobil..." 
+    placeholder="Cari mobil, brand, tipe, lokasi..." 
     class="search-input"
     value="{{ request('query') }}"
   />
