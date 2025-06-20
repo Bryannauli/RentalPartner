@@ -12,11 +12,10 @@
     </div>
     @endif
 
-    <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
-
 
         <div class="mb-4">
             <label class="block font-medium mb-1">Nama</label>
@@ -38,8 +37,7 @@
             <input
                 type="file"
                 name="sim"
-                accept="jpg,.jpeg,.png"
-                required
+                accept=".jpg,.jpeg,.png"
                 class="w-full text-sm text-gray-500
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-md file:border-2 
@@ -58,7 +56,7 @@
 
         <div class="mb-6">
             <label class="block font-medium mb-1">Konfirmasi Password Baru</label>
-            <input type="password" name="password_confirmation" class="w-full p-2 border rounded">
+            <input type="password" name="password_confirmation" placeholder="Kosongkan jika tidak ingin mengubah" class="w-full p-2 border rounded">
         </div>
 
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mr-50">Simpan</button>
