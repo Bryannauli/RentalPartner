@@ -23,6 +23,18 @@
                 <img src="https://cdn-icons-png.flaticon.com/256/6522/6522516.png" alt="Admin" class="h-10 w-10 rounded-full object-cover" />
             </div>
         </header>
+        
+        @if (session('success'))
+            <div class="mb-4 px-4 py-3 rounded bg-green-100 text-green-800 font-semibold">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="mb-4 px-4 py-3 rounded bg-red-100 text-red-800 font-semibold">
+                {{ session('error') }}
+            </div>
+        @endif
 
         @yield('content')
     </main>

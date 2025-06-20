@@ -3,11 +3,7 @@
 @section('title', 'Daftar Pengguna')
 
 @section('content')
-@if(session('success'))
-<div class="bg-green-200 text-green-800 p-3 rounded mb-4">
-    {{ session('success') }}
-</div>
-@endif
+
 
 <div class="bg-white p-6 rounded-lg shadow-md">
     <div class="flex justify-between items-center mb-4">

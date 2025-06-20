@@ -138,7 +138,7 @@ class OwnerController extends Controller
         }
         $post->save();
 
-        return redirect()->back()->with('success', 'Postingan mobil berhasil dibuat!');
+        return redirect()->route('owner.postingan')->with('success', 'Postingan mobil berhasil dibuat!');
     }
 
     public function editPost($id)
@@ -197,7 +197,7 @@ class OwnerController extends Controller
         
         $post->save();
 
-        return redirect()->route('owner.dashboard')->with('success', 'Data mobil berhasil diperbarui dan menunggu persetujuan ulang.');
+        return redirect()->route('owner.postingan')->with('success', 'Data mobil berhasil diperbarui dan menunggu persetujuan ulang.');
     }
 
     public function showPost(){
