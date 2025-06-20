@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
     public function edit()
     {
-        $user = auth()->user(); // atau ambil user sesuai kebutuhan
+        $user = Auth::user(); // atau ambil user sesuai kebutuhan
         return view('user.profile', compact('user'));
     }
 
@@ -22,24 +24,34 @@ class ProfileController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'phone' => 'required|string|max:20|unique:users,phone,' . $user->id,
+            'sim' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'password' => 'nullable|string|min:6|confirmed'
         ]);
 
+        // Update data user
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
 
-        if ($request->hasFile('photo')) {
-            if ($user->photo) {
-                Storage::delete('public/photos/' . $user->photo);
+        // Simpan foto jika diupload
+        if ($request->hasFile('sim')) {
+            // Hapus foto lama jika ada
+            if ($user->photo && Storage::exists('photos/' . $user->photo)) {
+                Storage::delete('photos/' . $user->photo);
             }
 
-            $filename = time() . '.' . $request->photo->extension();
-            $request->photo->storeAs('public/photos', $filename);
+            $file = $request->file('sim');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('photos', $filename);
             $user->photo = $filename;
         }
 
         $user->save();
 
-        return back()->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
     }
 }

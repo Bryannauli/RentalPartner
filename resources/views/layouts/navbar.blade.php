@@ -31,7 +31,10 @@
     </ul>
 
     <div class="relative ">
-      <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full okay cursor-pointer" src="https://www.gravatar.com/avatar/?d=mp" alt="User avatar">
+      <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start"
+          class="w-10 h-10 rounded-full okay cursor-pointer"
+          src="{{ auth()->user()->photo ? asset('storage/photos/' . auth()->user()->photo) : 'https://www.gravatar.com/avatar/?d=mp' }}"
+          alt="User avatar">
 
       <div id="userDropdown" class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-black dark:divide-gray-600">
         <div class="px-4 py-3 text-sm !text-white dark:text-white">
