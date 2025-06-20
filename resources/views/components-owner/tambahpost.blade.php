@@ -5,12 +5,16 @@
 @section('content')
 <div class="bg-white p-8 rounded-lg shadow-md">
     <h2 class="text-2xl font-bold text-slate-800 mb-6">Formulir Postingan Mobil Baru</h2>
-    
+
     <form action="{{route('owner.posts.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="space-y-6">
             <div>
-                <label for="car_name" class="block text-sm font-medium text-slate-700">Nama Mobil</label>
+                <label for="brand" class="block text-sm font-medium text-slate-700">Brand Mobil</label>
+                <input type="text" name="brand" id="brand" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Honda">
+            </div>
+            <div>
+                <label for="car_name" class="block text-sm font-medium text-slate-700">Model Mobil</label>
                 <input type="text" name="car_name" id="car_name" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Toyota">
             </div>
             <div>
@@ -41,26 +45,22 @@
                 <label for="type" class="block text-sm font-medium text-slate-700">Tipe Mobil</label>
                 <input type="text" name="type" id="type" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Luxury">
             </div>
-            <div>
-                <label for="brand" class="block text-sm font-medium text-slate-700">Brand Mobil</label>
-                <input type="text" name="brand" id="brand" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Honda">
-            </div>
 
             <div>
-                 <label for="price" class="block text-sm font-medium text-slate-700">Harga Sewa per Hari</label>
-                 <div class="relative mt-1">
+                <label for="price" class="block text-sm font-medium text-slate-700">Harga Sewa per Hari</label>
+                <div class="relative mt-1">
                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                         <span class="text-gray-500 sm:text-sm">Rp</span>
                     </div>
                     <input type="number" name="price" id="price" class="block w-full rounded-md border-slate-300 pl-8 pr-12" placeholder="0" required>
-                 </div>
+                </div>
             </div>
-            
+
             <div>
                 <label for="description" class="block text-sm font-medium text-slate-700">Deskripsi</label>
                 <textarea id="description" name="description" rows="4" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Jelaskan kondisi mobil, fitur, dan syarat ketentuan..."></textarea>
             </div>
-            
+
             <div>
                 <label class="block text-sm font-medium text-slate-700">Foto Mobil</label>
                 <div class="mt-1 flex justify-center rounded-md border-2 border-dashed border-slate-300 px-6 pt-5 pb-6">

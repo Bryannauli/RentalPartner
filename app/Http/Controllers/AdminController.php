@@ -119,11 +119,26 @@ class AdminController extends Controller
         return view('admin.ownerinfo', compact('owners'));
     }
 
-    public function mobil()
+    // menampilkan daftar mobil
+    public function mobil(Request $request)
     {
-        return view('admin.mobil');
+        $query = Post::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('brand', 'like', "%$search%")
+                    ->orWhere('car_name', 'like', "%$search%")
+                    ->orWhere('type', 'like', "%$search%");
+            });
+        }
+
+        $mobil = $query->latest()->get();
+
+        return view('admin.mobil', compact('mobil'));
     }
 
+    // menampilkan postingan
     public function posts(Request $request)
     {
         $query = Post::with('owner.user');
@@ -285,9 +300,8 @@ class AdminController extends Controller
     }
 
     public function showReview()
-        {
-            $reviews = Review::with(['user', 'post'])->latest()->get();
-            return view('admin.review', compact('reviews'));
-        }
-
+    {
+        $reviews = Review::with(['user', 'post'])->latest()->get();
+        return view('admin.review', compact('reviews'));
+    }
 }

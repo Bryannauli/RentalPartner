@@ -114,7 +114,7 @@
         <div class="bg-white p-6 rounded-lg shadow-md">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-bold text-slate-800">Owner Terbaru</h2>
-                <a href="{{ route('admin.activateOwner', $owner->id) }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
+                <a href="{{ route('admin.owner') }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
