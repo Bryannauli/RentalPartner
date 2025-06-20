@@ -27,12 +27,30 @@ class AdminController extends Controller
         $totalOwners = Owner::where('status_verifikasi', 'approved')->count();
         $totalPosts = Post::where('status_verifikasi', 'approved')->count();
         $pendingRequests = Owner::where('status_verifikasi', 'pending')->count();
-        return view('admin.dashboard', compact('recentOwners', 'totalUsers', 'totalOwners', 'totalPosts', 'pendingRequests'));
+        $recentOwners = Owner::latest()->take(5)->get();
+        $latestUser = User::latest()->take(5)->get(); // <- ini bagian penting
+        $latestApprovedOwners = Owner::where('status_verifikasi', 'approved')->latest()->take(5)->get();
+        $latestPosts = Post::latest()->take(5)->get();
+        $latestReviews = Review::latest()->take(5)->get();
+        $latestBookings = Pesanan::latest()->take(5)->get();
+
+        return view('admin.dashboard', compact(
+        'totalUsers',
+        'totalOwners',
+        'totalPosts',
+        'pendingRequests',
+        'recentOwners',
+        'latestUser', // <- pastikan dikirim ke view
+        'latestApprovedOwners',
+        'latestPosts',
+        'latestReviews',
+        'latestBookings'
+    ));
     }
 
     public function users(Request $request)
     {
-        $query = User::where('access_level', 1);
+        $query = User::with('owner')->whereIn('access_level', [1, 2]);
 
         // Filter berdasarkan kata kunci pencarian
         if ($request->filled('search')) {
@@ -101,11 +119,26 @@ class AdminController extends Controller
         return view('admin.ownerinfo', compact('owners'));
     }
 
-    public function mobil()
+    // menampilkan daftar mobil
+    public function mobil(Request $request)
     {
-        return view('admin.mobil');
+        $query = Post::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('brand', 'like', "%$search%")
+                    ->orWhere('car_name', 'like', "%$search%")
+                    ->orWhere('type', 'like', "%$search%");
+            });
+        }
+
+        $mobil = $query->latest()->get();
+
+        return view('admin.mobil', compact('mobil'));
     }
 
+    // menampilkan postingan
     public function posts(Request $request)
     {
         $query = Post::with('owner.user');
@@ -142,6 +175,12 @@ class AdminController extends Controller
     {
         $user->status = 'suspended';
         $user->save();
+
+        // jika user adalah owner, tangguhkan owner juga
+        if ($user->access_level == 2 && $user->owner) {
+            $user->owner->status = 'suspended';
+            $user->owner->save();
+        }
 
         return redirect()->route('admin.users')
             ->with('success', 'Pengguna berhasil ditangguhkan.');
@@ -261,9 +300,8 @@ class AdminController extends Controller
     }
 
     public function showReview()
-        {
-            $reviews = Review::with(['user', 'post'])->latest()->get();
-            return view('admin.review', compact('reviews'));
-        }
-
+    {
+        $reviews = Review::with(['user', 'post'])->latest()->get();
+        return view('admin.review', compact('reviews'));
+    }
 }

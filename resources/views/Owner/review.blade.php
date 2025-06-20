@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('owner.layout')
 
 @section('title', 'Ulasan (Reviews)')
 
@@ -9,6 +9,7 @@
         <table class="w-full text-left">
             <thead class="bg-slate-50">
                 <tr>
+                    <th class="p-3 font-semibold text-slate-600">Gambar</th>
                     <th class="p-3 font-semibold text-slate-600">Mobil</th>
                     <th class="p-3 font-semibold text-slate-600">Pengguna</th>
                     <th class="p-3 font-semibold text-slate-600">Rating</th>
@@ -19,6 +20,9 @@
             <tbody>
                 @forelse($reviews as $review)
                 <tr class="border-b">
+                    <td class="p-3">
+                        <img src="{{ asset('storage/' . $review->post->photo) }}" alt="{{ $review->post->name }}" class="w-30 h-20">
+                    </td>
                     <td class="p-3">{{ $review->post->car_name ?? '-' }}</td>
                     <td class="p-3">{{ $review->user->name ?? 'User' }}</td>
                     <td class="p-3 text-yellow-500"><i class="fas fa-star"></i> {{ $review->rating }}</td>

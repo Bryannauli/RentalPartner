@@ -43,13 +43,6 @@
                                     Edit
                                 </button>
                             </form>
-                            <form action="" method="POST" onsubmit="return confirm('Yakin ingin menghapus mobil ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded text-sm">
-                                    Hapus
-                                </button>
-                            </form>
                         </div>
                     </div>
                 </div>

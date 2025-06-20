@@ -31,12 +31,11 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showRese
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->name('password.update');
 
-// bagian user
-Route::middleware(['auth', 'prevent-back-history'])->group(function () {
-    Route::get('/home', [UserController::class, 'home'])->name('home');
-
-    Route::get('/featured', [CarController::class, 'featured'])->name('user.featured');
+// bagian user (bisa diakses owner juga)
+Route::middleware(['auth', 'isUser', 'prevent-back-history'])->group(function () {
     Route::get('/index', [LandingPageController::class, 'index'])->name('user.index');
+    Route::get('/home', [UserController::class, 'home'])->name('home');
+    Route::get('/featured', [CarController::class, 'featured'])->name('user.featured');
     Route::get('/cars/search', [CarController::class, 'search'])->name('cars.search');
     Route::get('/detail/{id}', [CarController::class, 'detail'])->name('cars.detail');
 
@@ -66,7 +65,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 });
 
 
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-history'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin', 'prevent-back-history'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
 
@@ -102,7 +101,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-histor
     Route::get('/review', [AdminController::class, 'showReview'])->name('review');
 });
 
-Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-history'])->group(function () {
+Route::prefix('owner')->name('owner.')->middleware(['auth', 'isOwner','prevent-back-history'])->group(function () {
     Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
     Route::get('/order', [OwnerController::class, 'order'])->name('order');
     Route::get('/posts/info', [OwnerController::class, 'showPost'])->name('postingan');
@@ -113,6 +112,8 @@ Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-histor
     Route::put('/pesanan/{id}/konfirmasi', [OwnerController::class, 'konfirmasiPesanan'])->name('pesanan.konfirmasi');
     Route::put('/pesanan/{id}/konfirmasi-pembayaran', [OwnerController::class, 'konfirmasiPembayaran'])->name('pesanan.konfirmasi.pembayaran');
     Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
+    Route::get('/reviews', [OwnerController::class, 'daftarReview'])->name('review');
+
 });
 
 Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');

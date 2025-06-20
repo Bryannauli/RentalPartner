@@ -4,11 +4,6 @@
 
 @section('content')
 <div class="bg-white p-6 rounded-lg shadow-md">
-    @if (session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold text-slate-800">Manajemen Pengguna</h2>
         <a href="{{ route('admin.users.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
@@ -49,9 +44,22 @@
                     <td class="p-3">{{ $user->phone }}</td>
                 <td class="p-3">
                     @if ($user->access_level == 2)
-                    <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
-                        Owner
-                    </span>
+                        <!-- user active, owner active -->
+                        @if ($user->status == 'active' && $user->owner->status == 'active')
+                            <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                                Owner
+                            </span>
+                        <!-- user active, owner suspended -->
+                        @elseif ($user->status == 'active' && $user->owner->status == 'suspended')
+                            <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
+                                Owner
+                            </span>
+                        <!-- user suspended, owner suspended -->
+                        @else
+                            <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
+                                Owner ditangguhkan
+                            </span>
+                        @endif
                     @elseif ($user->status == 'active')
                         <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
                     Aktif
@@ -61,6 +69,7 @@
                         Ditangguhkan
                     </span>
                     @endif
+                <!-- aksi -->
                 </td>
                     <td class="p-3 flex gap-2">
                         @if ($user->status === 'suspended')

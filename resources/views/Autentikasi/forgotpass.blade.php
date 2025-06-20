@@ -17,7 +17,7 @@
 
         <div class="mb-6">
             <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Alamat Email</label>
-            <input type="email" name="email" id="email" class="w-full px-4 py-3 border bg-gray-700 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 @error('email') border-red-500 @enderror" value="{{ old('email') }}" placeholder="Masukkan email terdaftar Anda" required>
+            <input type="email" name="email" id="email" class="w-full px-4 py-3 border bg-gray-700 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 @error('email') border-red-500 @enderror" value="{{ old('email', $email ?? '') }}" placeholder="Masukkan email terdaftar Anda" required>
             
             @error('email')
                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>

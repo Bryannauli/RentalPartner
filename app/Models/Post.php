@@ -39,4 +39,5 @@ class Post extends Model
     {
         return $this->hasMany(Pesanan::class, 'postingan_id');
     }
+
 }

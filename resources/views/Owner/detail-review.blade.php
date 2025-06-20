@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('owner.layout')
 
 @section('title', 'Review User')
 

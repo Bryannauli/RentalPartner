@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
-use App\Http\Middleware\PreventBackHistory;
 use App\Models\Pesanan;
 
 class UserController extends Controller
@@ -20,14 +19,19 @@ class UserController extends Controller
     {
         $this->middleware('auth')->except(['login', 'register']);
     }
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|max:20|unique:users,phone',
             'password' => 'required|min:6|same:password_confirmation',
             'password_confirmation' => 'required',
             'terms' => 'required',
+        ], [
+            'email.unique' => 'Email sudah terdaftar.',
+            'phone.unique' => 'Nomor HP sudah digunakan.',
+            'terms.required' => 'Anda harus menyetujui syarat & ketentuan.',
         ]);
 
         User::create([
@@ -38,11 +42,11 @@ class UserController extends Controller
             'status' => 'active',
         ]);
 
-    
-    return redirect('/login')->with('success', 'Registrasi berhasil! Silahkan login untuk melanjutkan.');
+        return redirect('/login')->with('success', 'Registrasi berhasil! Silahkan login untuk melanjutkan.');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -54,6 +58,13 @@ class UserController extends Controller
             return back()->withErrors([
                 'email' => 'Email salah atau tidak terdaftar',
             ])->withInput();
+        }
+
+        //jika user ditangguhkan tidak bs login
+        if ($user->status === 'suspended') {
+            return back()->withErrors([
+                'email' => 'User ditangguhkan',
+            ]);
         }
 
         $credentials = $request->only('email', 'password');
@@ -72,29 +83,33 @@ class UserController extends Controller
         ])->withInput();
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
     }
 
-    public function home(){
+    public function home()
+    {
         return redirect()->route('user.index');
     }
 
-    public function history(){
+    public function history()
+    {
         $user = Auth::user();
 
         $pesanans = Pesanan::with(['user', 'postingan'])
-                    ->where('user_id', $user->id)
-                    ->orderBy('created_at', 'desc')
-                    ->get();
-                    
-        return view('user.history', compact('pesanans'));    
+            ->where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('user.history', compact('pesanans'));
     }
 
-    public function showhistoryDetail($id){
+    public function showhistoryDetail($id)
+    {
         $pesanan = Pesanan::with(['user', 'postingan'])->findOrFail($id);
         return view('user.history-detail', compact('pesanan'));
     }
@@ -129,40 +144,41 @@ class UserController extends Controller
     }
 
     // untuk upgrade ke owner
-    public function submitUpgrade(Request $request){
-    $request->validate([
-        'nik' => 'required|string|max:20|unique:owners,nik',
-        'phone' => 'required|string|max:15|unique:owners,phone',
-        'address' => 'required|string|max:255',
-        'ktp' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        'sim' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        'stnk' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-    ]);
+    public function submitUpgrade(Request $request)
+    {
+        $request->validate([
+            'nik' => 'required|string|max:20|unique:owners,nik',
+            'phone' => 'required|string|max:15|unique:owners,phone',
+            'address' => 'required|string|max:255',
+            'ktp' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'sim' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'stnk' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-    // cek apakah sudah pernah jadi owner
-    if ($user->owner) {
-        return back()->with('info', 'Kamu sudah terdaftar sebagai owner.');
-    }
-    
-    // upload file
-    $ktp = $request->file('ktp')->store('dokumen/ktp', 'public');
-    $sim = $request->file('sim')->store('dokumen/sim', 'public');
-    $stnk = $request->file('stnk')->store('dokumen/stnk', 'public');
+        // cek apakah sudah pernah jadi owner
+        if ($user->owner) {
+            return back()->with('info', 'Kamu sudah terdaftar sebagai owner.');
+        }
 
-    // simpan ke tabel owners
-    Owner::create([
-        'user_id' => $user->id,
-        'nik' => $request->nik,
-        'phone' => $request->phone,
-        'address' => $request->address,
-        'ktp' => $ktp,
-        'sim' => $sim,
-        'stnk' => $stnk,
-    ]);
+        // upload file
+        $ktp = $request->file('ktp')->store('dokumen/ktp', 'public');
+        $sim = $request->file('sim')->store('dokumen/sim', 'public');
+        $stnk = $request->file('stnk')->store('dokumen/stnk', 'public');
 
-    return redirect()->route('user.index')->with('success', 'Permintaan upgrade dikirim.');
+        // simpan ke tabel owners
+        Owner::create([
+            'user_id' => $user->id,
+            'nik' => $request->nik,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'ktp' => $ktp,
+            'sim' => $sim,
+            'stnk' => $stnk,
+        ]);
+
+        return redirect()->route('user.index')->with('success', 'Permintaan upgrade dikirim.');
     }
 
     public function selesaikanPeminjaman($id)
@@ -178,7 +194,4 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Peminjaman berhasil diselesaikan.');
     }
-
-
-
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Pesanan;
+use App\Models\Review;
 
 class OwnerController extends Controller
 {
@@ -137,7 +138,7 @@ class OwnerController extends Controller
         }
         $post->save();
 
-        return redirect()->back()->with('success', 'Postingan mobil berhasil dibuat!');
+        return redirect()->route('owner.postingan')->with('success', 'Postingan mobil berhasil dibuat!');
     }
 
     public function editPost($id)
@@ -196,7 +197,7 @@ class OwnerController extends Controller
         
         $post->save();
 
-        return redirect()->route('owner.dashboard')->with('success', 'Data mobil berhasil diperbarui dan menunggu persetujuan ulang.');
+        return redirect()->route('owner.postingan')->with('success', 'Data mobil berhasil diperbarui dan menunggu persetujuan ulang.');
     }
 
     public function showPost(){
@@ -204,6 +205,20 @@ class OwnerController extends Controller
         $owner = $user->owner;
         $posts= Post::where('owner_id', $owner->id)->get();
         return view('owner.postingan', compact('posts'));
+    }
+
+    public function daftarReview()
+    {
+        $owner = Auth::user()->owner;
+
+        $reviews = Review::with(['user', 'post'])
+                    ->whereHas('post', function ($query) use ($owner) {
+                        $query->where('owner_id', $owner->id);
+                    })
+                    ->latest()
+                    ->get();
+
+        return view('owner.review', compact('reviews'));
     }
 
 

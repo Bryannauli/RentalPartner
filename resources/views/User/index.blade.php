@@ -1,27 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('user.hero')
+@include('user.hero')
+@if (session('error'))
+<script>
+    alert("{{ session('error') }}");
+</script>
+@endif
     @include('user.about') 
     @include('user.service')
     @include('user.review')
   
-<form action="{{ route('cars.search') }}" method="GET" class="search-container" style="">
+<form action="{{ route('cars.search') }}" method="GET" class="search-container" style=" margin-top:60px">
   <input 
     type="text" 
     name="query" 
-    placeholder="Cari mobil..." 
+    placeholder="Cari mobil, brand, tipe, lokasi..." 
     class="search-input"
     value="{{ request('query') }}"
   />
-
-  <select name="kategori" class="search-select">
-    <option value="name" {{ request('kategori') == 'name' ? 'selected' : '' }}>Nama Kendaraan</option>
-    <option value="brand" {{ request('kategori') == 'brand' ? 'selected' : '' }}>Merek Kendaraan</option>
-    <option value="type" {{ request('kategori') == 'type' ? 'selected' : '' }}>Tipe Kendaraan</option>
-    <option value="location" {{ request('kategori') == 'location' ? 'selected' : '' }}>Lokasi</option>
-  </select>
-
 
   <button type="submit" class="search-button">Cari</button>
 </form>
