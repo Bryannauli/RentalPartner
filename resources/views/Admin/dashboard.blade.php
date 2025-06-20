@@ -59,15 +59,32 @@
                     <td class="p-3">{{ $owner->created_at->format('d M Y') }}</td>
                     <td class="p-3">
                         @if ($owner->status_verifikasi == 'pending')
-                        <span class="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">Pending</span>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
                         @elseif ($owner->status_verifikasi == 'approved')
-                        <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Disetujui</span>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Disetujui</span>
                         @else
-                        <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">Ditolak</span>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Ditolak</span>
                         @endif
                     </td>
                     <td class="p-3">
-                        <a href="{{ route('admin.owner.detail', $owner->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
+                        @if ($owner->status_verifikasi == 'pending')
+                        <form action="{{ route('admin.owner.approve', $owner->id) }}" method="POST" class="inline">
+                            @csrf
+                            <button class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition text-sm">
+                                Setujui
+                            </button>
+                        </form>
+                        <form action="{{ route('admin.owner.reject', $owner->id) }}" method="POST" class="inline">
+                            @csrf
+                            <button class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm">
+                                Tolak
+                            </button>
+                        </form>
+                        @endif
+                        <a href="{{ route('admin.owner.detail', $owner->id) }}"
+                            class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">
+                            Lihat
+                        </a>
                     </td>
                 </tr>
                 @endforeach
