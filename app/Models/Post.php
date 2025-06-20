@@ -20,7 +20,7 @@ class Post extends Model
         'price',
         'description',
         'location',
-        'status'
+        'status_verifikasi'
     ];
 
     public function owner()
