@@ -61,8 +61,8 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 
     Route::post('/user/pesanan/{id}/selesai', [UserController::class, 'selesaikanPeminjaman'])->name('user.rent.complete');
 
+    Route::post('/review/{post}', [ReviewController::class, 'store'])->name('review.store');
 
-    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store')->middleware('auth');
 });
 
 

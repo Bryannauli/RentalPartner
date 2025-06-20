@@ -31,7 +31,8 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function reviews() {
-        return $this->hasMany(Review::class);
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'posts_id');
     }
 }

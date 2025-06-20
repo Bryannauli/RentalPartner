@@ -172,101 +172,114 @@
 
 <div style="max-width: 600px; margin: 30px auto; ">
     {{-- Rating Umum --}}
-    <div style="display: flex; align-items: center; margin-bottom: 10px;">
-        <h2 style="margin: 0; font-size: 24px;">5.0</h2>
-        <div style="margin-left: 10px;">
-            @for ($i = 1; $i <= 5; $i++)
-                <span style="color: #ffcc00; font-size: 20px;">&#9733;</span>
-            @endfor
-            <span style="margin-left: 8px; font-size: 14px; color: #666;">(24)</span>
-        </div>
+    @php
+        $avgRating = number_format($post->reviews->avg('rating'), 1); // rata-rata rating
+        $totalReviews = $post->reviews->count(); // total review
+    @endphp
+
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <h2 style="margin: 0; font-size: 24px;">{{ $avgRating }}</h2>
+    <div style="margin-left: 10px;">
+        @for ($i = 1; $i <= 5; $i++)
+            <span style="color: {{ $i <= round($avgRating) ? '#ffcc00' : '#ccc' }}; font-size: 20px;">&#9733;</span>
+        @endfor
+        <span style="margin-left: 8px; font-size: 14px; color: #666;">({{ $totalReviews }})</span>
     </div>
+</div>
 
     {{-- Review List --}}
     @php
-        $reviews = [
-            [
-                'name' => 'Zii Vapes',
-                'date' => '3 ulasan',
-                'star' => 5,
-                'time_ago' => '29 menit lalu',
-                'comment' => 'Ceritan pengalaman Anda',
-                'likes' => 0,
-                'dislikes' => 0,
-            ],
-            [
-                'name' => 'Mbetz Ibanez',
-                'date' => '3 ulasan',
-                'star' => 5,
-                'time_ago' => 'sebulan lalu',
-                'comment' => 'Mantap bosku',
-                'likes' => 2,
-                'dislikes' => 0,
-            ],
-            [
-                'name' => 'mr. rival ramadan',
-                'date' => '1 ulasan',
-                'star' => 5,
-                'time_ago' => 'sebulan lalu',
-                'comment' => 'Review singkat sesuai contoh',
-                'likes' => 0,
-                'dislikes' => 0,
-            ],
-        ];
+        $reviews = $post->reviews()->with('user')->latest()->get();
     @endphp
 
     @foreach($reviews as $index => $review)
-        <div style="background: #fff; padding: 12px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; align-items: center;">
-                    <strong style="font-size: 14px; color: #333;">{{ $review['name'] }}</strong>
-                    <span style="margin-left: 10px; font-size: 12px; color: #999;">{{ $review['date'] }}</span>
-                </div>
-                <div style="display: flex; align-items: center;">
-                    {{-- Rating bintang interaktif --}}
-                    <div class="stars" data-review-index="{{ $index }}" style="cursor: pointer;">
-                        @for ($i = 1; $i <= 5; $i++)
-                            <span style="color: {{ $i <= $review['star'] ? '#ffcc00' : '#ccc' }}; font-size: 16px;" data-star="{{ $i }}">&#9733;</span>
-                        @endfor
-                    </div>
+    <div style="background: #fff; padding: 12px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center;">
+                <strong style="font-size: 14px; color: #333;">
+                    {{ $review->user->name ?? 'User' }}
+                </strong>
+                <span style="margin-left: 10px; font-size: 12px; color: #999;">
+                    {{ $review->created_at->format('d M Y') }}
+                </span>
+            </div>
+            <div style="display: flex; align-items: center;">
+                {{-- Rating bintang --}}
+                <div class="stars" data-review-index="{{ $index }}" style="cursor: pointer;">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <span style="color: {{ $i <= $review->rating ? '#ffcc00' : '#ccc' }}; font-size: 16px;" data-star="{{ $i }}">&#9733;</span>
+                    @endfor
                 </div>
             </div>
-            <p style="margin: 8px 0; font-size: 14px; color: #555;">{{ $review['comment'] }}</p>
-            <div style="display: flex; gap: 10px; font-size: 14px;">
-                <button class="like-btn" data-review-index="{{ $index }}" style="border: none; background: transparent; color: #3498db; cursor: pointer;">Membantu (<span class="like-count">{{ $review['likes'] }}</span>)</button>
-                <button class="dislike-btn" data-review-index="{{ $index }}" style="border: none; background: transparent; color: #3498db; cursor: pointer;">Tidak Membantu (<span class="dislike-count">{{ $review['dislikes'] }}</span>)</button>
-            </div>
-            <div style="margin-top: 8px; font-size: 12px; color: #999;">{{ $review['time_ago'] }}</div>
         </div>
-    @endforeach
+        <p style="margin: 8px 0; font-size: 14px; color: #555;">
+            {{ $review->comment }}
+        </p>
+        <div style="display: flex; gap: 10px; font-size: 14px;">
+            <button class="like-btn" data-review-index="{{ $index }}" style="border: none; background: transparent; color: #3498db; cursor: pointer;">
+                Membantu (<span class="like-count">0</span>)
+            </button>
+            <button class="dislike-btn" data-review-index="{{ $index }}" style="border: none; background: transparent; color: #3498db; cursor: pointer;">
+                Tidak Membantu (<span class="dislike-count">0</span>)
+            </button>
+        </div>
+        <div style="margin-top: 8px; font-size: 12px; color: #999;">
+            {{ $review->created_at->diffForHumans() }}
+        </div>
+    </div>
+@endforeach
+
+    @if(session('success'))
+    <div class="bg-green-100 text-green-700 px-4 py-2 rounded mb-4">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if ($errors->any())
+    <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+        <ul class="list-disc pl-5">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
     {{-- Form Tambah Review --}}
     <div style="margin-top: 30px;">
         <h3 style="text-align: center; color: #2c3e50;">Tinggalkan Review Anda</h3>
-        <form action="#" method="POST" style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            @csrf
-            {{-- Nama otomatis dari login --}}
-            <input type="hidden" name="name" value="{{ auth()->user()->name ?? 'User' }}">
-            {{-- Komentar --}}
-            <div style="margin-bottom: 15px;">
-                <label for="comment" style="display: block; margin-bottom: 5px; color: #34495e;">Komentar:</label>
-                <textarea id="comment" name="comment" rows="4" required style="width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 4px;"></textarea>
-            </div>
-            {{-- Rating interaktif --}}
-            <div style="margin-bottom: 15px; ">
-                <label style="display: block; margin-bottom: 5px; color: #34495e;">Rating:</label>
-                <div id="newRating" style="display: flex; gap: 5px; cursor: pointer;" class="!ml-57">
-                    @for ($i = 1; $i <=5; $i++)
-                        <span style="font-size: 20px; color: #ccc;" data-star="{{ $i }}">&#9733;</span>
-                    @endfor
-                </div>
-                <input type="hidden" name="rating" id="ratingValue" required>
-            </div>
-            {{-- Submit --}}
-            <div style="text-align: center;">
-                <button type="submit" class="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !text-white font-bold text-center py-4 !px-10 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-l !mt-10 !mx-20 !ml-50">Kirim Review</button>
-            </div>
-        </form>
+        <form action="{{ route('review.store', $post->id) }}" method="POST" style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    @csrf
+    {{-- Komentar --}}
+    <div style="margin-bottom: 15px;">
+        <label for="comment" style="display: block; margin-bottom: 5px; color: #34495e;">Komentar:</label>
+        <textarea id="comment" name="comment" rows="4" required style="width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 4px;"></textarea>
+    </div>
+
+    {{-- Rating interaktif --}}
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #34495e;">Rating:</label>
+        <div id="newRating" style="display: flex; gap: 5px; cursor: pointer;" class="!ml-57">
+            @for ($i = 1; $i <=5; $i++)
+                <span style="font-size: 20px; color: #ccc;" data-star="{{ $i }}">&#9733;</span>
+            @endfor
+        </div>
+        <input type="hidden" name="rating" id="ratingValue" required>
+    </div>
+
+    {{-- Submit --}}
+    <div style="text-align: center;">
+        <button type="submit" class="block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 text-white font-bold text-center py-4 px-10 rounded-xl transition duration-300 transform hover:scale-105 hover:shadow-lg mt-10 mx-20 ml-50">
+            Kirim Review
+        </button>
+    </div>
+</form>
     </div>
 </div>
 
