@@ -27,7 +27,7 @@ class LandingPageController extends Controller
     }
 
     public function index(){
-        $posts = Post::where('status_verifikasi', 'approved')->latest()->get();
+        $posts = Post::where('status', 'approved')->latest()->get();
         return view('user.index', compact('posts'))->with('layout', 'landing');
     }
 
