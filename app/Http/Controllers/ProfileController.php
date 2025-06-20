@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class ProfileController extends Controller
 {
     public function edit()
     {
-        $user = Auth::user(); // atau ambil user sesuai kebutuhan
+        $user = Auth::user();
         return view('user.profile', compact('user'));
     }
 
@@ -37,16 +36,16 @@ class ProfileController extends Controller
             $user->password = Hash::make($request->password);
         }
 
-        // Simpan foto jika diupload
-        if ($request->hasFile('sim')) {
+        if ($request->hasFile('photo')) {
             // Hapus foto lama jika ada
-            if ($user->photo && Storage::exists('photos/' . $user->photo)) {
-                Storage::delete('photos/' . $user->photo);
+            if ($user->photo && Storage::exists('public/photos/' . $user->photo)) {
+                Storage::delete('public/photos/' . $user->photo);
             }
 
-            $file = $request->file('sim');
+            // Simpan foto baru
+            $file = $request->file('photo');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('photos', $filename);
+            $file->storeAs('public/photos', $filename);
             $user->photo = $filename;
         }
 
