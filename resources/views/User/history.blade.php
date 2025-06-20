@@ -83,7 +83,7 @@
                 <h3 class="text-lg font-semibold text-gray-800">Tidak Ada Riwayat Pesanan</h3>
                 <p class="mt-2 text-sm text-gray-500">Anda belum pernah melakukan pemesanan mobil.</p>
                 <div class="mt-6">
-                    <a href="{{ url('/cars') }}"
+                    <a href="{{ url('index') }}"
                         class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm font-medium transition">
                         Mulai Sewa Sekarang
                     </a>

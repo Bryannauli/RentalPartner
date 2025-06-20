@@ -33,7 +33,6 @@
       <h4 class="font-bold text-blue-600 mb-4">Layanan</h4>
       <ul class="space-y-2">
         <li><a href="#" class="hover:text-white">Sewa Mobil Harian</a></li>
-        <li><a href="#" class="hover:text-white">Sewa Mobil dengan Supir</a></li>
         <li><a href="#" class="hover:text-white">Sewa Mobil Lepas Kunci</a></li>
         <li><a href="#" class="hover:text-white">Sewakan mobil Anda</a></li>
       </ul>
