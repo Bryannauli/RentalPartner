@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Owner;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Pesanan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -191,4 +192,11 @@ class AdminController extends Controller
 
         return redirect()->route('admin.posts')->with('success', 'Postingan berhasil ditolak.');
     }
+
+    public function showHistory()
+    {
+        $pesanans = Pesanan::with(['user', 'postingan'])->latest()->get();
+        return view('admin.history', compact('pesanans'));
+    }
+
 }

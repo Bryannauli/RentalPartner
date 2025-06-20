@@ -20,28 +20,28 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($pesanans as $pesanan)
                 <tr class="border-b">
-                    <td class="p-3">#TRX-00123</td>
-                    <td class="p-3">Rudi Hartono</td>
-                    <td class="p-3">Honda Brio 2022</td>
-                    <td class="p-3">20 Mei 2025 - 22 Mei 2025</td>
-                    <td class="p-3">Rp 600.000</td>
-                    <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Selesai</span></td>
+                    <td class="p-3">#TRX-{{ str_pad($pesanan->id, 5, '0', STR_PAD_LEFT) }}</td>
+                    <td class="p-3">{{ $pesanan->user->name ?? '-' }}</td>
+                    <td class="p-3">{{ $pesanan->postingan->judul ?? '-' }}</td>
+                    <td class="p-3">
+                        {{ \Carbon\Carbon::parse($pesanan->start_date)->format('d M Y') }}
+                        -
+                        {{ \Carbon\Carbon::parse($pesanan->end_date)->format('d M Y') }}
+                    </td>
+                    <td class="p-3">Rp {{ number_format($pesanan->postingan->harga * \Carbon\Carbon::parse($pesanan->start_date)->diffInDays($pesanan->end_date), 0, ',', '.') }}</td>
+                    <td class="p-3">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full
+                            {{ $pesanan->status == 'Selesai' ? 'bg-green-500 text-white' : 'bg-yellow-400 text-black' }}">
+                            {{ $pesanan->status }}
+                        </span>
+                    </td>
                     <td class="p-3">
                         <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Detail</a>
                     </td>
                 </tr>
-                 <tr class="border-b">
-                    <td class="p-3">#TRX-00124</td>
-                    <td class="p-3">Dewi Lestari</td>
-                    <td class="p-3">Mitsubishi Xpander 2023</td>
-                    <td class="p-3">18 Mei 2025 - 19 Mei 2025</td>
-                    <td class="p-3">Rp 450.000</td>
-                    <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">Dibatalkan</span></td>
-                    <td class="p-3">
-                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Detail</a>
-                    </td>
-                </tr>
+                    @endforeach
                 </tbody>
         </table>
     </div>
