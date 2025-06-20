@@ -21,6 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'status',
+    ];
+
+    protected $attributes = [
+        'access_level' => 1,
+        'status' => 'active',
     ];
 
     /**
@@ -31,6 +38,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'access_level',
     ];
 
     /**
@@ -45,4 +53,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    /**
+     * Get the owner associated with the user.
+     */
+    public function owner()
+    {
+        return $this->hasOne(Owner::class);
+    }
+
+    public function pesanans()
+    {
+        return $this->hasMany(Pesanan::class);
+    }
+
+
 }

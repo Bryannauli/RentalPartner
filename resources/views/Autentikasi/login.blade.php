@@ -1,53 +1,76 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
-@section('title', 'Login - Rental Partner')
+@section('title', 'Login')
 
 @section('content')
-<div class="flex min-h-screen bg-gray-100">
-    <div class="flex-1 flex items-center justify-center">
-        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-            <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+<h2 class="text-3xl font-bold text-center text-blue-600">Welcome Back!</h2>
+<p class="text-center text-gray-300 mt-2 mb-8">Sign in to continue to your account.</p>
 
-            @if (session('success'))
-                <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
-                    {{ session('success') }}
-                </div>
-            @endif
+<form method="POST" action="{{ route('login.submit') }}">
+    @csrf
 
-            @if ($errors->any())
-                <div class="bg-red-100 text-red-700 p-2 rounded mb-4">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form method="POST" action="{{ route('login.submit') }}">
-                @csrf
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" name="email" id="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" required>
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" name="password" id="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" required>
-                </div>
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center">
-                        <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                        <label for="remember" class="ml-2 block text-sm text-gray-900">Remember me</label>
-                    </div>
-                    <a href="#" class="text-sm text-blue-600 hover:underline">Forgot password?</a>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Login</button>
-            </form>
-            <div class="mt-4 text-center">
-                <p class="text-sm">Don't have an account? <a href="{{ route('register') }}" class="text-blue-600 hover:underline">Register</a></p>
-            </div>
-        </div>
+    <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+        <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-4 py-3 bg-gray-700 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email" required>
     </div>
-    <div class="hidden lg:flex flex-1 bg-cover bg-center" style="background-image: url('/api/placeholder/1200/800');"></div>
-</div>
+
+    <div class="mb-6">
+        <div class="flex justify-between items-center">
+            <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+            <a href="{{route('password.request')}}" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+        </div>
+        <div class="relative">
+            <input
+                type="password"
+                name="password"
+                id="password"
+                class="w-full mt-2 px-4 py-3 pr-12 bg-gray-700 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter your password"
+                required>
+
+            <!-- Eye Icon -->
+            <button
+                type="button"
+                onclick="togglePassword()"
+                class="absolute mt-8 right-3 transform -translate-y-1/2 text-gray-400 hover:text-blue-500">
+                <i id="eyeIcon" class="fa-solid fa-eye"></i>
+            </button>
+        </div>
+
+
+        <div class="flex items-center mb-6 mt-2">
+            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+            <label for="remember" class="ml-2 block text-sm text-gray-300">Remember me</label>
+        </div>
+
+
+        <div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-300">
+                LOGIN
+            </button>
+        </div>
+
+        <p class="text-center text-sm text-gray-300 mt-8">
+            Don't have an account?
+            <a href="{{ route('register.form') }}" class="font-medium text-blue-600 hover:underline">
+                Sign up
+            </a>
+        </p>
+</form>
+<script>
+  function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+    
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      eyeIcon.classList.remove('fa-eye');
+      eyeIcon.classList.add('fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      eyeIcon.classList.remove('fa-eye-slash');
+      eyeIcon.classList.add('fa-eye');
+    }
+  }
+</script>
 @endsection

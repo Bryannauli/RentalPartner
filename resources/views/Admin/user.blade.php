@@ -1,60 +1,66 @@
 @extends('admin.layout')
 
-@section('title', 'Pengguna - Rental Partner Admin')
-
-@section('page-title', 'Pengguna')
+@section('title', 'Daftar Pengguna')
 
 @section('content')
-<div class="bg-white rounded-lg shadow p-5">
+<div class="bg-white p-6 rounded-lg shadow-md">
     <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-semibold">Daftar Pengguna</h3>
-        <button onclick="alert('Form tambah pengguna')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Tambah Pengguna</button>
+        <h2 class="text-xl font-bold text-slate-800">Manajemen Pengguna</h2>
+        <a href="{{ route('admin.users.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+            <i class="fas fa-plus"></i> Tambah Pengguna
+        </a>
     </div>
-    <div class="mb-4 flex flex-wrap gap-4">
-        <input type="text" placeholder="Cari pengguna..." class="px-3 py-2 border border-gray-300 rounded flex-grow max-w-xs" />
-        <select class="border border-gray-300 rounded px-3 py-2">
-            <option value="all">Semua Tipe</option>
-            <option value="user">Pengguna Biasa</option>
-            <option value="owner">Owner</option>
-            <option value="admin">Admin</option>
-        </select>
-        <select class="border border-gray-300 rounded px-3 py-2">
-            <option value="all">Semua Status</option>
-            <option value="active">Aktif</option>
-            <option value="inactive">Tidak Aktif</option>
-            <option value="suspended">Ditangguhkan</option>
+
+    <div class="flex gap-4 mb-4">
+        <input type="text" placeholder="Cari pengguna..." class="flex-grow p-2 border rounded-md">
+        <select class="p-2 border rounded-md">
+            <option>Semua Status</option>
+            <option>Aktif</option>
+            <option>Ditangguhkan</option>
         </select>
     </div>
+
     <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 table-auto">
-            <thead class="bg-gray-50">
+        <table class="w-full text-left">
+            <thead class="bg-slate-50">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipe Akun</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Terdaftar</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                    <th class="p-3 font-semibold text-slate-600">Nama</th>
+                    <th class="p-3 font-semibold text-slate-600">Email</th>
+                    <th class="p-3 font-semibold text-slate-600">No hp</th>
+                    <th class="p-3 font-semibold text-slate-600">Status</th>
+                    <th class="p-3 font-semibold text-slate-600">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">1001</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Budi Santoso</td>
-                    <td class="px-6 py-4 whitespace-nowrap">budi.santoso@email.com</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Owner</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Aktif</span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">10 Jan 2025</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <button onclick="alert('Lihat 1001')" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm mr-1">Lihat</button>
-                        <button onclick="alert('Edit 1001')" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition text-sm mr-1">Edit</button>
-                        <button onclick="if(confirm('Hapus 1001?')) alert('Dihapus')" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm">Hapus</button>
+            <tbody>
+                @foreach ($users as $user)
+                <tr class="border-b">
+                    <td class="p-3">{{ $user->name }}</td>
+                    <td class="p-3">{{ $user->email }}</td>
+                    <td class="p-3">{{ $user->phone }}</td>
+                <td class="p-3">
+                    @if ($user->access_level == 2)
+                    <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                        Owner
+                    </span>
+                    @elseif ($user->status == 'active')
+                        <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                    Aktif
+                    </span>
+                    @else
+                    <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
+                        Ditangguhkan
+                    </span>
+                    @endif
+                </td>
+                    <td class="p-3 flex gap-2">
+                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Anda yakin menangguhkan pengguna ini?');">
+                    @csrf
+                    @method('DELETE')
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Tangguhkan</button>
+                    </form>
                     </td>
                 </tr>
-                {{-- Tambah data pengguna lain disini --}}
+                @endforeach
             </tbody>
         </table>
     </div>

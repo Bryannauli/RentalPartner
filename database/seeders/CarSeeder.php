@@ -1,0 +1,118 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+class CarSeeder extends Seeder
+{
+    public function run(): void
+    {
+        DB::table('cars')->insert([
+            [
+                'name' => 'Alphard',
+                'price' => 2500000,
+                'seat' => 7,
+                'transmission' => 'Automatic',
+                'year' => 2023,
+                'image' => 'Alphard.jpg',
+                'description' => 'Toyota Alphard adalah MPV mewah dengan kenyamanan premium dan ruang kabin luas. Cocok untuk perjalanan bisnis dan keluarga.',
+                'facilities' => "AC\nAudio System\nBluetooth\nSensor Parkir\nAirbag\nABS",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'mileage' => '12000 km',
+                'baggage' => '4 Koper',
+                'type' => 'MPV (Luxury Minivan)',
+                'brand' => 'Toyota',
+                'location' => 'Jakarta',
+            ],
+            [
+                'name' => 'Honda CRV',
+                'price' => 1450000,
+                'seat' => 4,
+                'transmission' => 'Automatic',
+                'year' => 2023,
+                'image' => 'hondacrv.png',
+                'description' => 'Rental Honda CR-V. Nyaman, elegan, dan bertenaga! Dengan desain modern dan kabin luas, CR-V siap menemani perjalanan Anda dengan efisiensi dan kenyamanan maksimal.',
+                'facilities' => "AC Digital\nKamera Parkir\nCruise Control\nHead Unit Layar Sentuh\nAirbag & ABS",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'mileage' => '10000 km',
+                'baggage' => '3 Koper',
+                'type' => 'SUV',
+                'brand' => 'Honda',
+                'location' => 'Medan',
+            ],
+            [
+                'name' => 'Mercedez-Benz S 450',
+                'price' => 14900000,
+                'seat' => 4,
+                'transmission' => 'CVT',
+                'year' => 2022,
+                'image' => 'mercys450.jpg',
+                'description' => 'Mercedes-Benz S 450 adalah simbol kemewahan dan prestise. Cocok untuk acara resmi, pernikahan, atau keperluan eksekutif. Interior premium dan fitur berkendara otomatis membuatnya luar biasa.',
+                'facilities' => "Jok pijat dan ventilasi\nSuspensi udara\nPanoramic roof\nMBUX infotainment\nSistem audio premium Burmester",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'mileage' => '8000 km',
+                'baggage' => '3 Koper',
+                'type' => 'Sedan (Luxury)',
+                'brand' => 'Mercedes-Benz',
+                'location' => 'Jakarta',
+            ],
+            [
+                'name' => 'XPander',
+                'price' => 1150000,
+                'seat' => 7,
+                'transmission' => 'CVT',
+                'year' => 2022,
+                'image' => 'xpander.png',
+                'description' => 'Xpander adalah pilihan sempurna untuk keluarga atau rombongan. MPV ini memiliki kabin lega, suspensi empuk, dan fitur modern yang membuat perjalanan nyaman dan menyenangkan',
+                'facilities' => "7 kursi nyaman\nAC double blower\nLayar sentuh multimedia\nKamera belakang\nSensor parkir",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'mileage' => '15000 km',
+                'baggage' => '4 Koper',
+                'type' => 'MPV',
+                'brand' => 'Mitsubishi',
+                'location' => 'Jakarta',
+            ],
+            [
+                'name' => 'Innova',
+                'price' => 1350000,
+                'seat' => 7,
+                'transmission' => 'CVT',
+                'year' => 2022,
+                'image' => 'innova.png',
+                'description' => 'Toyota Innova adalah kendaraan andalan keluarga Indonesia. Dikenal luas karena kenyamanan, ketangguhan, dan efisiensinya untuk perjalanan jauh maupun dalam kota.',
+                'facilities' => "Kabin luas\nDual AC\nAudio system\nJok captain seat (tipe V)\nFitur keamanan lengkap",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'mileage' => '18000 km',
+                'baggage' => '4 Koper',
+                'type' => 'MPV',
+                'brand' => 'Toyota',
+                'location' => 'Medan',
+            ],
+            [
+                'name' => 'Toyota Camry',
+                'price' => 1750000,
+                'seat' => 4,
+                'transmission' => 'CVT',
+                'year' => 2022,
+                'image' => 'camry.png',
+                'description' => 'Toyota Camry menyuguhkan keseimbangan sempurna antara kenyamanan premium dan performa tangguh. Cocok untuk perjalanan bisnis atau pengguna eksekutif yang mengutamakan kenyamanan dan gaya.',
+                'facilities' => "Jok kulit elektrik\nSunroof\nHead unit layar sentuh\nRear AC control\nCruise control",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'mileage' => '9000 km',
+                'baggage' => '2 Koper',
+                'type' => 'Sedan',
+                'brand' => 'Toyota',
+                'location' => 'Medan',
+            ],
+        ]);
+    }
+}

@@ -3,7 +3,11 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "development": "mix",
+        "dev": "vite",
+        "hot": "mix hot",
+        "prod": "npm run production",
+        "production": "mix --production"
     },
     "devDependencies": {
         "@prettier/plugin-php": "^0.22.4",
