@@ -50,9 +50,6 @@
 
       <div class="flex items-center">
         <ul class="hidden md:flex items-center text-white font-medium">
-          <li class="nav-item"><a href="#header" class="nav-link hover:!text-blue-500">HOME</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link hover:!text-blue-500">ABOUT</a></li>
-          <li class="nav-item"><a href="#service" class="nav-link hover:!text-blue-500">SERVICE</a></li>
 
           <a href="{{route('login')}}" class=" !text-white bg-gradient-to-r !ml-5 !mt-4 !mr-3 from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm !px-7 !py-3 text-center me-2 !mb-5">LOGIN NOW</a>
   </header>
@@ -61,27 +58,6 @@
   @include('user.about')
   @include('user.service')
   @include('user.review')
-  
-      
-<form action="{{ route('cars.search') }}" method="GET" class="search-container" style="margin-bottom: 20px;">
-  <input 
-    type="text" 
-    name="query" 
-    placeholder="Cari mobil..." 
-    class="search-input"
-    value="{{ request('query') }}"
-  />
-
-  <select name="kategori" class="search-select">
-    <option value="name" {{ request('kategori') == 'name' ? 'selected' : '' }}>Nama Kendaraan</option>
-    <option value="brand" {{ request('kategori') == 'brand' ? 'selected' : '' }}>Merek Kendaraan</option>
-    <option value="type" {{ request('kategori') == 'type' ? 'selected' : '' }}>Tipe Kendaraan</option>
-    <option value="location" {{ request('kategori') == 'location' ? 'selected' : '' }}>Lokasi</option>
-    <option value="facilities" {{ request('kategori') == 'facilities' ? 'selected' : '' }}>Fasilitas Kendaraan</option>
-  </select>
-
-  <button type="submit" class="search-button">Cari</button>
-</form>
 
 <section class="bg-gray-100 py-10 !pb-32" id="featured-cars">
 
