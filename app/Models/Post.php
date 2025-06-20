@@ -35,4 +35,8 @@ class Post extends Model
     {
         return $this->hasMany(Review::class, 'posts_id');
     }
+    public function pesanans()
+    {
+        return $this->hasMany(Pesanan::class, 'postingan_id');
+    }
 }

@@ -32,7 +32,7 @@
                     </td>
                     <td class="p-3">Rp {{ number_format($pesanan->postingan->price * \Carbon\Carbon::parse($pesanan->start_date)->diffInDays($pesanan->end_date), 0, ',', '.') }}</td>
                     <td class="p-3">
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full
+                        <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full text-center
                             {{ $pesanan->status == 'Selesai' ? 'bg-green-500 text-white' : 'bg-yellow-400 text-black' }}">
                             {{ $pesanan->status }}
                         </span>

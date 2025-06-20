@@ -19,7 +19,11 @@
   margin-right: 10px;
   margin-left: 12px;
 }
-
+.buttonreview{
+  text-align: center;
+  color: white;
+  margin-left: 220px;
+}
   .search-input {
     width: 24rem;
     padding: 1rem 1.5rem;

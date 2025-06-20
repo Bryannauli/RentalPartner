@@ -28,14 +28,24 @@ class LandingPageController extends Controller
     }
 
     public function index(){
-        $posts = Post::where('status_verifikasi', 'approved');
+        $query = Post::where('status_verifikasi', 'approved');
 
         if (Auth::check() && Auth::user()->owner) {
             $ownerId = Auth::user()->owner->id;
-            $posts->where('owner_id', '!=', $ownerId);
+            $query->where('owner_id', '!=', $ownerId);
         }
 
-        $posts = $posts->latest()->get();
+        // Cek mobil yang tidak sedang disewa (hanya tampilkan mobil yang tidak punya pesanan aktif)
+        $query->whereDoesntHave('pesanans', function ($q) {
+            $q->whereIn('status', [
+                'Menunggu Konfirmasi Owner',
+                'Menunggu Pembayaran',
+                'Menunggu Konfirmasi Pembayaran',
+                'Peminjaman Berlangsung'
+            ]);
+        });
+
+        $posts = $query->latest()->get();
 
         return view('user.index', compact('posts'))->with('layout', 'landing');
     }
