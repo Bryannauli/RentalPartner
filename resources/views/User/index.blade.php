@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('user.hero')
+@include('user.hero')
+@if (session('error'))
+<script>
+    alert("{{ session('error') }}");
+</script>
+@endif
     @include('user.about') 
     @include('user.service')
     @include('user.review')

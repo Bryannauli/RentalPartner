@@ -31,7 +31,7 @@ class AdminController extends Controller
 
     public function users(Request $request)
     {
-        $query = User::where('access_level', 1);
+        $query = User::with('owner')->whereIn('access_level', [1, 2]);
 
         // Filter berdasarkan kata kunci pencarian
         if ($request->filled('search')) {
@@ -141,6 +141,12 @@ class AdminController extends Controller
     {
         $user->status = 'suspended';
         $user->save();
+
+        // jika user adalah owner, tangguhkan owner juga
+        if ($user->access_level == 2 && $user->owner) {
+            $user->owner->status = 'suspended';
+            $user->owner->save();
+        }
 
         return redirect()->route('admin.users')
             ->with('success', 'Pengguna berhasil ditangguhkan.');

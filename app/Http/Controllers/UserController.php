@@ -56,6 +56,13 @@ class UserController extends Controller
             ])->withInput();
         }
 
+        //jika user ditangguhkan tidak bs login
+        if ($user->status === 'suspended') {
+            return back()->withErrors([
+                'email' => 'User ditangguhkan',
+            ]);
+        }
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {

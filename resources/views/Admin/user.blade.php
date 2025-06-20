@@ -49,9 +49,22 @@
                     <td class="p-3">{{ $user->phone }}</td>
                 <td class="p-3">
                     @if ($user->access_level == 2)
-                    <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
-                        Owner
-                    </span>
+                        <!-- user active, owner active -->
+                        @if ($user->status == 'active' && $user->owner->status == 'active')
+                            <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+                                Owner
+                            </span>
+                        <!-- user active, owner suspended -->
+                        @elseif ($user->status == 'active' && $user->owner->status == 'suspended')
+                            <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
+                                Owner
+                            </span>
+                        <!-- user suspended, owner suspended -->
+                        @else
+                            <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
+                                Owner ditangguhkan
+                            </span>
+                        @endif
                     @elseif ($user->status == 'active')
                         <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
                     Aktif
@@ -61,6 +74,7 @@
                         Ditangguhkan
                     </span>
                     @endif
+                <!-- aksi -->
                 </td>
                     <td class="p-3 flex gap-2">
                         @if ($user->status === 'suspended')

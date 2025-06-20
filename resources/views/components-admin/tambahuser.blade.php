@@ -40,7 +40,7 @@
         </div>
 
         <div class="mt-8 flex justify-end gap-4">
-            <a href="{{-- route('admin.users.index') --}}" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded">Batal</a>
+            <a href="{{ route('admin.users') }}" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded">Batal</a>
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                 Simpan Pengguna
             </button>

@@ -48,9 +48,16 @@
 
           @auth
             @if(optional(auth()->user())->owner && auth()->user()->owner->status_verifikasi === 'approved')
-              <li>
-                <a href="{{ route('owner.dashboard') }}" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard Owner</a>
-              </li>
+              <!-- jika owner ditangguhkan tidak bisa buka dashboard owner -->
+              @if(auth()->user()->owner->status === 'suspended')
+                <li>
+                  <span class="block px-4 py-2 text-red-400 cursor-default">Owner Ditangguhkan</span>
+                </li>
+              @else
+                <li>
+                  <a href="{{ route('owner.dashboard') }}" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-blue-600 dark:hover:!text-white">Dashboard Owner</a>
+                </li>
+              @endif
             @elseif(optional(auth()->user())->owner && auth()->user()->owner->status_verifikasi === 'pending')
               <li>
                 <span class="block px-4 py-2 text-yellow-400 cursor-default">Menunggu Persetujuan</span>
