@@ -23,7 +23,7 @@ class AdminController extends Controller
         // Data lain yang dibutuhkan dashboard
         $totalUsers = User::where('access_level', 1)->count();
         $totalOwners = Owner::where('status_verifikasi', 'approved')->count();
-        $totalPosts = Post::where('status', 'approved')->count();
+        $totalPosts = Post::where('status_verifikasi', 'approved')->count();
         $pendingRequests = Owner::where('status_verifikasi', 'pending')->count();
         return view('admin.dashboard', compact('recentOwners', 'totalUsers', 'totalOwners', 'totalPosts', 'pendingRequests'));
     }
