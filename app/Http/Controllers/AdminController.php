@@ -29,9 +29,25 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('recentOwners', 'totalUsers', 'totalOwners', 'totalPosts', 'pendingRequests'));
     }
 
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::where('access_level', 1)->latest()->get();
+        $query = User::where('access_level', 1);
+
+        // Filter berdasarkan kata kunci pencarian
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%");
+            });
+        }
+
+        // Filter berdasarkan status
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $users = $query->latest()->get();
         return view('admin.user', compact('users'));
     }
 
@@ -41,6 +57,7 @@ class AdminController extends Controller
         return view('components-admin.tambahuser');
     }
 
+    // bagian store user
     public function storeUser(Request $request)
     {
         $request->validate([
@@ -60,9 +77,26 @@ class AdminController extends Controller
         return redirect()->route('admin.users')->with('success', 'Pengguna berhasil ditambahkan.');
     }
 
-    public function owner()
+    public function owner(Request $request)
     {
-        $owners = Owner::with('user')->where('status_verifikasi', 'approved')->latest()->get();
+        $query = Owner::with('user')->where('status_verifikasi', 'approved');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->whereHas('user', function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%");
+            });
+        }
+
+        if ($request->filled('status')) {
+            $status = $request->status;
+            $query->whereHas('user', function ($q) use ($status) {
+                $q->where('status', $status);
+            });
+        }
+
+        $owners = $query->latest()->get();
         return view('admin.ownerinfo', compact('owners'));
     }
 
@@ -71,9 +105,24 @@ class AdminController extends Controller
         return view('admin.mobil');
     }
 
-    public function posts()
+    public function posts(Request $request)
     {
-        $posts = Post::with('owner')->orderBy('created_at', 'desc')->get();
+        $query = Post::with('owner.user');
+
+        if ($request->filled('status')) {
+            $query->where('status_verifikasi', $request->status);
+        }
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('car_name', 'like', "%$search%")
+                    ->orWhere('brand', 'like', "%$search%")
+                    ->orWhere('location', 'like', "%$search%");
+            });
+        }
+
+        $posts = $query->latest()->get();
         return view('admin.postingan', compact('posts'));
     }
 
@@ -109,15 +158,28 @@ class AdminController extends Controller
 
     // OWNER
     // Daftar permintaan owner
-    public function ownerRequests()
+    public function ownerRequests(Request $request)
     {
-        $owners = Owner::with('user')->latest()->get();
+        $query = Owner::with('user');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->whereHas('user', function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%");
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status_verifikasi', $request->status);
+        }
+
+        $owners = $query->latest()->get();
         return view('admin.owner', compact('owners'));
     }
     // Approve dan tolak permintaan owner
-    public function approveOwner($id)
+    public function approveOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
         $user = User::findOrFail($owner->user_id);
         $owner->status_verifikasi = 'approved';
         $user->access_level = 2;
@@ -125,24 +187,22 @@ class AdminController extends Controller
         $owner->save();
         return redirect()->back()->with('success', 'Owner request approved successfully.');
     }
-    public function rejectOwner($id)
+    public function rejectOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
         $owner->status_verifikasi = 'rejected';
         $owner->save();
         return redirect()->back()->with('success', 'Owner request rejected successfully.');
     }
     // Aktifkan dan Tangguhkan akun owner
-    public function activateOwner($id)
+    public function activateOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
+        // status owner untuk bs mengakses halaman owner
         $owner->status = 'active';
         $owner->save();
         return redirect()->back()->with('success', 'Owner berhasil diaktifkan kembali.');
     }
-    public function suspendOwner($id)
+    public function suspendOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
         $owner->status = 'suspended';
         $owner->save();
         return redirect()->back()->with('success', 'Owner berhasil ditangguhkan.');
@@ -198,5 +258,4 @@ class AdminController extends Controller
         $pesanans = Pesanan::with(['user', 'postingan'])->latest()->get();
         return view('admin.history', compact('pesanans'));
     }
-
 }

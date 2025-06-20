@@ -192,7 +192,7 @@ class OwnerController extends Controller
         }
 
         // ubah status jadi pending agar harus di-approve ulang
-        $post->status = 'pending';
+        $post->status_verifikasi = 'pending';
         
         $post->save();
 

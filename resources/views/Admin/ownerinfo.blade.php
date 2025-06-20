@@ -14,14 +14,19 @@
         <h2 class="text-xl font-bold text-slate-800">Manajemen Owner</h2>
     </div>
 
-    <div class="flex gap-4 mb-4">
-        <input type="text" placeholder="Cari pengguna..." class="flex-grow p-2 border rounded-md">
-        <select class="p-2 border rounded-md">
-            <option>Semua Status</option>
-            <option>Aktif</option>
-            <option>Ditangguhkan</option>
-        </select>
-    </div>
+    <form action="{{ route('admin.owner') }}" method="GET">
+        <div class="flex gap-4 mb-4">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari owner..." class="flex-grow p-2 border rounded-md">
+            <select name="status" class="p-2 border rounded-md">
+                <option value="">Semua Status</option>
+                <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
+                <option value="suspended" {{ request('status') == 'suspended' ? 'selected' : '' }}>Ditangguhkan</option>
+            </select>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+                <i class="fas fa-search"></i> Cari
+            </button>
+        </div>
+    </form>
 
     <div class="overflow-x-auto">
         <table class="w-full text-left">
@@ -32,7 +37,7 @@
                     <th class="p-3 font-semibold text-slate-600">Email</th>
                     <th class="p-3 font-semibold text-slate-600">No HP</th>
                     <th class="p-3 font-semibold text-slate-600">Tanggal Permintaan</th>
-                    <th class="p-3 font-semibold text-slate-600">Status</th>
+                    <th class="p-3 font-semibold text-slate-600">Status Owner</th>
                     <th class="p-3 font-semibold text-slate-600">Aksi</th>
                 </tr>
             </thead>
@@ -44,7 +49,11 @@
                     <td class="p-3">{{$owner->user->email}}</td>
                     <td class="p-3">{{ $owner->phone }}</td>
                     <td class="p-3">{{ $owner->created_at->format('d M Y') }}</td>
+                    @if($owner->status === 'active')
                     <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Aktif</span></td>
+                    @elseif($owner->status === 'suspended')
+                    <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">Ditangguhkan</span></td>
+                    @endif
                     <td class="p-3 flex gap-2">
                         @if($owner->status === 'active')
                         <form action="{{ route('admin.suspendOwner', $owner->id) }}" method="POST" onsubmit="return confirm('Tangguhkan owner ini?');">

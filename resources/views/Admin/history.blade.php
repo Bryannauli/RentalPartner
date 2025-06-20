@@ -24,13 +24,13 @@
                 <tr class="border-b">
                     <td class="p-3">#TRX-{{ str_pad($pesanan->id, 5, '0', STR_PAD_LEFT) }}</td>
                     <td class="p-3">{{ $pesanan->user->name ?? '-' }}</td>
-                    <td class="p-3">{{ $pesanan->postingan->judul ?? '-' }}</td>
+                    <td class="p-3">{{ $pesanan->postingan->car_name ?? '-' }}</td>
                     <td class="p-3">
                         {{ \Carbon\Carbon::parse($pesanan->start_date)->format('d M Y') }}
                         -
                         {{ \Carbon\Carbon::parse($pesanan->end_date)->format('d M Y') }}
                     </td>
-                    <td class="p-3">Rp {{ number_format($pesanan->postingan->harga * \Carbon\Carbon::parse($pesanan->start_date)->diffInDays($pesanan->end_date), 0, ',', '.') }}</td>
+                    <td class="p-3">Rp {{ number_format($pesanan->postingan->price * \Carbon\Carbon::parse($pesanan->start_date)->diffInDays($pesanan->end_date), 0, ',', '.') }}</td>
                     <td class="p-3">
                         <span class="px-2 py-1 text-xs font-semibold rounded-full
                             {{ $pesanan->status == 'Selesai' ? 'bg-green-500 text-white' : 'bg-yellow-400 text-black' }}">

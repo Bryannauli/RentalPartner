@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post;
 use App\Models\Car;
+use App\Models\Post;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LandingPageController extends Controller
 {
@@ -27,7 +28,15 @@ class LandingPageController extends Controller
     }
 
     public function index(){
-        $posts = Post::where('status_verifikasi', 'approved')->latest()->get();
+        $posts = Post::where('status_verifikasi', 'approved');
+
+        if (Auth::check() && Auth::user()->owner) {
+            $ownerId = Auth::user()->owner->id;
+            $posts->where('owner_id', '!=', $ownerId);
+        }
+
+        $posts = $posts->latest()->get();
+
         return view('user.index', compact('posts'))->with('layout', 'landing');
     }
 

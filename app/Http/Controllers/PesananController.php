@@ -53,7 +53,7 @@ class PesananController extends Controller
             'status' => 'Menunggu Konfirmasi Owner',
         ]);
 
-        return redirect()->back()->with('success', 'Pemesanan berhasil dikirim!');
+        return redirect()->route('user.history')->with('success', 'Pemesanan berhasil dikirim!');
     }
 
     // tampilkan list pesanan untuk owner (dashboard owner)
