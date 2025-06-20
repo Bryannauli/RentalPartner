@@ -32,7 +32,7 @@
                     <th class="p-3 font-semibold text-slate-600">Email</th>
                     <th class="p-3 font-semibold text-slate-600">No HP</th>
                     <th class="p-3 font-semibold text-slate-600">Tanggal Permintaan</th>
-                    <th class="p-3 font-semibold text-slate-600">Status</th>
+                    <th class="p-3 font-semibold text-slate-600">Status Owner</th>
                     <th class="p-3 font-semibold text-slate-600">Aksi</th>
                 </tr>
             </thead>
@@ -44,7 +44,11 @@
                     <td class="p-3">{{$owner->user->email}}</td>
                     <td class="p-3">{{ $owner->phone }}</td>
                     <td class="p-3">{{ $owner->created_at->format('d M Y') }}</td>
+                    @if($owner->status === 'active')
                     <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Aktif</span></td>
+                    @elseif($owner->status === 'suspended')
+                    <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">Ditangguhkan</span></td>
+                    @endif
                     <td class="p-3 flex gap-2">
                         @if($owner->status === 'active')
                         <form action="{{ route('admin.suspendOwner', $owner->id) }}" method="POST" onsubmit="return confirm('Tangguhkan owner ini?');">

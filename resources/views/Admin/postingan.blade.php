@@ -25,7 +25,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga/Hari</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Upload</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Update</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status Postingan</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -39,43 +39,43 @@
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->created_at->format('d M Y') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->updated_at->format('d M Y') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                         @php
-                            $statusColors = [
-                                'pending' => 'bg-yellow-100 text-yellow-800',
-                                'approved' => 'bg-green-100 text-green-800',
-                                'rejected' => 'bg-red-100 text-red-800',
-                            ];
+                        @php
+                        $statusColors = [
+                        'pending' => 'bg-yellow-100 text-yellow-800',
+                        'approved' => 'bg-green-100 text-green-800',
+                        'rejected' => 'bg-red-100 text-red-800',
+                        ];
                         @endphp
                         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium {{$statusColors[$post->status_verifikasi] ?? 'bg-gray-100 text-gray-800'}}">
                             {{ucfirst($post->status_verifikasi)}}
                         </span>
                     </td>
+                    <!-- aksi -->
                     <td class="px-6 py-4 whitespace-nowrap space-x-1">
-                        <a href="{{ route('admin.posts.show', $post->id) }}" 
-                        class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm inline-block">
-                        Lihat
+                        <a href="{{ route('admin.posts.show', $post->id) }}"
+                            class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm inline-block">
+                            Lihat
                         </a>
 
-                        @if ($post->status == 'approved')
-                            <span class="bg-green-300 text-green-900 px-3 py-1 rounded text-sm cursor-not-allowed">Sudah</span>
-                        @else
-                            <form action="{{ route('admin.posts.approve', $post->id) }}" method="POST" class="inline">
-                                @csrf
-                                <button type="submit" 
-                                    class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition text-sm"
-                                    onclick="return confirm('Setujui postingan {{ $post->id }}?')">
-                                    Setujui
-                                </button>
-                            </form>
-                        @endif
+                        @if ($post->status_verifikasi == 'pending')
+                        <form action="{{ route('admin.posts.approve', $post->id) }}" method="POST" class="inline">
+                            @csrf
+                            <button type="submit"
+                                class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition text-sm"
+                                onclick="return confirm('Setujui postingan {{ $post->id }}?')">
+                                Setujui
+                            </button>
+                        </form>
+                        
+                        <a href="{{ route('admin.posts.showRejectForm', $post->id) }}"
+                            class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm inline-block">
+                            Tolak
+                        </a>
 
-                        @if ($post->status == 'rejected')
-                            <span class="bg-red-300 text-red-900 px-3 py-1 rounded text-sm cursor-not-allowed">Ditolak</span>
-                        @elseif($post->status != 'approved')
-                            <a href="{{ route('admin.posts.showRejectForm', $post->id) }}" 
-                                class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition text-sm inline-block">
-                                Tolak
-                            </a>
+                        @elseif($post->status_verifikasi == 'approved')
+                        <span class="bg-green-300 text-green-900 px-3 py-1 rounded text-sm cursor-not-allowed">Sudah</span>
+                        @elseif($post->status_verifikasi == 'rejected')
+                        <span class="bg-red-300 text-red-900 px-3 py-1 rounded text-sm cursor-not-allowed">Ditolak</span>
                         @endif
                     </td>
                 </tr>

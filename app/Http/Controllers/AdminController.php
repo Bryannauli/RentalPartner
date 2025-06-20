@@ -41,6 +41,7 @@ class AdminController extends Controller
         return view('components-admin.tambahuser');
     }
 
+    // bagian store user
     public function storeUser(Request $request)
     {
         $request->validate([
@@ -115,9 +116,8 @@ class AdminController extends Controller
         return view('admin.owner', compact('owners'));
     }
     // Approve dan tolak permintaan owner
-    public function approveOwner($id)
+    public function approveOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
         $user = User::findOrFail($owner->user_id);
         $owner->status_verifikasi = 'approved';
         $user->access_level = 2;
@@ -125,24 +125,22 @@ class AdminController extends Controller
         $owner->save();
         return redirect()->back()->with('success', 'Owner request approved successfully.');
     }
-    public function rejectOwner($id)
+    public function rejectOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
         $owner->status_verifikasi = 'rejected';
         $owner->save();
         return redirect()->back()->with('success', 'Owner request rejected successfully.');
     }
     // Aktifkan dan Tangguhkan akun owner
-    public function activateOwner($id)
+    public function activateOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
+        // status owner untuk bs mengakses halaman owner
         $owner->status = 'active';
         $owner->save();
         return redirect()->back()->with('success', 'Owner berhasil diaktifkan kembali.');
     }
-    public function suspendOwner($id)
+    public function suspendOwner(Owner $owner)
     {
-        $owner = Owner::findOrFail($id);
         $owner->status = 'suspended';
         $owner->save();
         return redirect()->back()->with('success', 'Owner berhasil ditangguhkan.');

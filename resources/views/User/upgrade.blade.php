@@ -21,7 +21,15 @@
   {{-- Konten Form Upgrade --}}
   <div class="max-w-3xl mx-auto mt-16 bg-white p-10 rounded-xl shadow-md !mb-10">
     <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">Upgrade Akun - Ingin Menyewakan Mobil?</h1>
-
+    @if ($errors->any())
+        <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
+            <ul class="list-disc pl-5">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ url('/submit-upgrade') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
       @csrf
 
@@ -29,7 +37,6 @@
       <div>
         <h2 class="text-xl font-semibold mb-4 text-gray-700 border-b pb-2">Informasi Pribadi</h2>
         <div class="space-y-4">
-          <input type="text" name="name" placeholder="Nama Lengkap" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <input type="text" name="nik" placeholder="NIK" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <input type="text" name="phone" placeholder="No Telepon" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <textarea name="address" placeholder="Alamat Lengkap" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 resize-none"></textarea>

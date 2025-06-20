@@ -128,7 +128,7 @@ class UserController extends Controller
         return redirect()->route('user.history')->with('success', 'Pembayaran berhasil dikonfirmasi.');
     }
 
-
+    // untuk upgrade ke owner
     public function submitUpgrade(Request $request){
     $request->validate([
         'nik' => 'required|string|max:20|unique:owners,nik',

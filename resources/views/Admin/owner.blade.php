@@ -29,7 +29,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No HP</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Permintaan</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status Permintaan</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -51,6 +51,7 @@
                         @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap space-x-1">
+                        @if ($owner->status_verifikasi == 'pending')
                         <form action="{{ route('admin.owner.approve', $owner->id) }}" method="POST" class="inline">
                             @csrf
                             <button class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition text-sm">
@@ -63,6 +64,7 @@
                                 Tolak
                             </button>
                         </form>
+                        @endif
                         <a href="{{ route('admin.owner.detail', $owner->id) }}"
                             class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition text-sm">
                             Lihat

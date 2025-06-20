@@ -86,11 +86,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-histor
     Route::get('/owner-requests', [AdminController::class, 'ownerRequests'])->name('owner-requests');
 
     // route kelola owner
-    Route::post('/admin/owners/{id}/activate', [AdminController::class, 'activateOwner'])->name('activateOwner');
-    Route::post('/admin/owners/{id}/suspend', [AdminController::class, 'suspendOwner'])->name('suspendOwner');
-    Route::post('/owner/approve/{id}', [AdminController::class, 'approveOwner'])->name('owner.approve');
-    Route::post('/owner/reject/{id}', [AdminController::class, 'rejectOwner'])->name('owner.reject');
-    Route::get('/owner/detail/{id}', [AdminController::class, 'showOwner'])->name('owner.detail');
+    Route::post('/admin/owners/{owner}/activate', [AdminController::class, 'activateOwner'])->name('activateOwner');
+    Route::post('/admin/owners/{owner}/suspend', [AdminController::class, 'suspendOwner'])->name('suspendOwner');
+    Route::post('/owner/approve/{owner}', [AdminController::class, 'approveOwner'])->name('owner.approve');
+    Route::post('/owner/reject/{owner}', [AdminController::class, 'rejectOwner'])->name('owner.reject');
+    Route::get('/owner/detail/{owner}', [AdminController::class, 'showOwner'])->name('owner.detail');
 
     // route kelola post
     Route::get('/posts/detail/{id}', [AdminController::class, 'showPost'])->name('posts.show');
