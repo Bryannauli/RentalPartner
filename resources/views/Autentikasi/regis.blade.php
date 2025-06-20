@@ -11,7 +11,7 @@
 
   <div class="mb-4">
     <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-    <input type="text" name="name" id="name" value="{{ old('name') }}" class="w-full px-4 py-3 text-white border hover:bg-gray-700 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name" required>
+    <input type="text" name="name" id="name" value="{{ old('name') }}" class="w-full px-4 py-3 text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name" required>
   </div>
 
   <div class="mb-4">
