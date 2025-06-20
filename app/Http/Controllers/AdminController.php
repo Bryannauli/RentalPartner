@@ -23,7 +23,7 @@ class AdminController extends Controller
         // Data lain yang dibutuhkan dashboard
         $totalUsers = User::where('access_level', 1)->count();
         $totalOwners = Owner::where('status_verifikasi', 'approved')->count();
-        $totalPosts = Post::where('status', 'approved')->count();
+        $totalPosts = Post::where('status_verifikasi', 'approved')->count();
         $pendingRequests = Owner::where('status_verifikasi', 'pending')->count();
         return view('admin.dashboard', compact('recentOwners', 'totalUsers', 'totalOwners', 'totalPosts', 'pendingRequests'));
     }
@@ -34,6 +34,7 @@ class AdminController extends Controller
         return view('admin.user', compact('users'));
     }
 
+    // bagian tambah user
     public function createUser()
     {
         return view('components-admin.tambahuser');
@@ -44,7 +45,6 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            // 'phone' => 'nullable|string|max:20',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required',
         ]);
@@ -86,13 +86,24 @@ class AdminController extends Controller
         return view('admin.history');
     }
 
-    public function destroy(User $user)
+    // suspend user
+    public function suspend(User $user)
     {
         $user->status = 'suspended';
         $user->save();
 
-        return redirect()->route('admin.user')
+        return redirect()->route('admin.users')
             ->with('success', 'Pengguna berhasil ditangguhkan.');
+    }
+
+    // aktifkan user
+    public function activate(User $user)
+    {
+        $user->status = 'active';
+        $user->save();
+
+        return redirect()->route('admin.users')
+            ->with('success', 'Pengguna berhasil diaktifkan kembali.');
     }
 
     // OWNER
@@ -106,7 +117,10 @@ class AdminController extends Controller
     public function approveOwner($id)
     {
         $owner = Owner::findOrFail($id);
+        $user = User::findOrFail($owner->user_id);
         $owner->status_verifikasi = 'approved';
+        $user->access_level = 2;
+        $user->save();
         $owner->save();
         return redirect()->back()->with('success', 'Owner request approved successfully.');
     }

@@ -3,12 +3,12 @@
 @section('title', 'Daftar Pengguna')
 
 @section('content')
-    @if(session('success'))
-        <div class="bg-green-200 text-green-800 p-3 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
-    
+@if(session('success'))
+<div class="bg-green-200 text-green-800 p-3 rounded mb-4">
+    {{ session('success') }}
+</div>
+@endif
+
 <div class="bg-white p-6 rounded-lg shadow-md">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold text-slate-800">Manajemen Owner</h2>
@@ -46,21 +46,21 @@
                     <td class="p-3">{{ $owner->created_at->format('d M Y') }}</td>
                     <td class="p-3"><span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Aktif</span></td>
                     <td class="p-3 flex gap-2">
-                         @if($owner->status === 'active')
-                            <form action="{{ route('admin.suspendOwner', $owner->id) }}" method="POST" onsubmit="return confirm('Tangguhkan owner ini?');">
-                                @csrf
-                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Tangguhkan</button>
-                            </form>
+                        @if($owner->status === 'active')
+                        <form action="{{ route('admin.suspendOwner', $owner->id) }}" method="POST" onsubmit="return confirm('Tangguhkan owner ini?');">
+                            @csrf
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-1 px-3 rounded">Tangguhkan</button>
+                        </form>
                         @elseif($owner->status === 'suspended')
-                            <form action="{{ route('admin.activateOwner', $owner->id) }}" method="POST" onsubmit="return confirm('Aktifkan kembali owner ini?');">
-                                @csrf
-                                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white text-sm font-bold py-1 px-3 rounded">Aktifkan</button>
-                            </form>
+                        <form action="{{ route('admin.activateOwner', $owner->id) }}" method="POST" onsubmit="return confirm('Aktifkan kembali owner ini?');">
+                            @csrf
+                            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white text-sm font-bold py-1 px-3 rounded">Aktifkan</button>
+                        </form>
                         @endif
                     </td>
                 </tr>
                 @endforeach
-                </tbody>
+            </tbody>
         </table>
     </div>
 </div>
