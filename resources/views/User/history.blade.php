@@ -71,7 +71,7 @@
 
                             <a href="{{ route('user.history.detail', $pesanan->id) }}"
                                class="block bg-gray-200 text-gray-800 px-4 mt-5 py-2 rounded-md text-sm hover:bg-gray-300 transition">
-                                Lihat Detail
+                                Lihat Invoice
                             </a>
                         </div>
                     </div>
