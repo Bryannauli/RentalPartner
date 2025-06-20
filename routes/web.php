@@ -113,6 +113,8 @@ Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-histor
     Route::put('/pesanan/{id}/konfirmasi', [OwnerController::class, 'konfirmasiPesanan'])->name('pesanan.konfirmasi');
     Route::put('/pesanan/{id}/konfirmasi-pembayaran', [OwnerController::class, 'konfirmasiPembayaran'])->name('pesanan.konfirmasi.pembayaran');
     Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
+    Route::get('/reviews', [OwnerController::class, 'daftarReview'])->name('review');
+
 });
 
 Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');

@@ -14,7 +14,6 @@
                     <th class="p-3 font-semibold text-slate-600">Rating</th>
                     <th class="p-3 font-semibold text-slate-600">Ulasan</th>
                     <th class="p-3 font-semibold text-slate-600">Tanggal</th>
-                    <th class="p-3 font-semibold text-slate-600">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,9 +24,6 @@
                     <td class="p-3 text-yellow-500"><i class="fas fa-star"></i> {{ $review->rating }}</td>
                     <td class="p-3 max-w-xs truncate">{{ $review->comment }}</td>
                     <td class="p-3">{{ $review->created_at->format('d M Y') }}</td>
-                    <td class="p-3 flex gap-2">
-                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
-                    </td>
                 </tr>
                 @empty
                 <tr>
