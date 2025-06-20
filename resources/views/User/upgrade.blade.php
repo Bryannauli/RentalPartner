@@ -32,7 +32,6 @@
           <input type="text" name="name" placeholder="Nama Lengkap" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <input type="text" name="nik" placeholder="NIK" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <input type="text" name="phone" placeholder="No Telepon" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
-          <input type="email" name="email" placeholder="Email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" />
           <textarea name="address" placeholder="Alamat Lengkap" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 resize-none"></textarea>
         </div>
       </div>
