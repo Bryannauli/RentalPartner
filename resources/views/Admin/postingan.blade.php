@@ -6,15 +6,22 @@
 
 @section('content')
 <div class="bg-white rounded-lg shadow p-5">
-    <div class="mb-4 flex flex-wrap gap-4">
-        <input type="text" placeholder="Cari postingan..." class="px-3 py-2 border border-gray-300 rounded flex-grow max-w-xs" />
-        <select class="border border-gray-300 rounded px-3 py-2">
-            <option value="all">Semua Status</option>
-            <option value="active">Aktif</option>
-            <option value="inactive">Tidak Aktif</option>
-            <option value="suspended">Ditangguhkan</option>
-        </select>
-    </div>
+
+    <form action="{{ route('admin.posts') }}" method="GET">
+        <div class="flex gap-4 mb-4">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari postingan..." class="flex-grow p-2 border rounded-md">
+            <select name="status" class="p-2 border rounded-md">
+                <option value="">Semua Status</option>
+                <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                <option value="approved" {{ request('status') == 'approved' ? 'selected' : '' }}>Disetujui</option>
+                <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Ditolak</option>
+            </select>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+                <i class="fas fa-search"></i> Cari
+            </button>
+        </div>
+    </form>
+
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 table-auto">
             <thead class="bg-gray-50">

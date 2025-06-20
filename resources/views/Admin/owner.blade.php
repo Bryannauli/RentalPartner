@@ -6,20 +6,28 @@
 
 @section('content')
 @if(session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
+<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+    {{ session('success') }}
+</div>
+@endif
+
 <div class="bg-white rounded-lg shadow p-5">
-    <div class="mb-4 flex flex-wrap gap-4">
-        <input type="text" placeholder="Cari permintaan..." class="px-3 py-2 border border-gray-300 rounded flex-grow max-w-xs" />
-        <select class="border border-gray-300 rounded px-3 py-2">
-            <option value="all">Semua Status</option>
-            <option value="pending">Pending</option>
-            <option value="approved">Disetujui</option>
-            <option value="rejected">Ditolak</option>
-        </select>
-    </div>
+
+    <form action="{{ route('admin.owner-requests') }}" method="GET">
+        <div class="flex gap-4 mb-4">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari permintaan..." class="flex-grow p-2 border rounded-md">
+            <select name="status" class="p-2 border rounded-md">
+                <option value="">Semua Status</option>
+                <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                <option value="approved" {{ request('status') == 'approved' ? 'selected' : '' }}>Disetujui</option>
+                <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Ditolak</option>
+            </select>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+                <i class="fas fa-search"></i> Cari
+            </button>
+        </div>
+    </form>
+    
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 table-auto">
             <thead class="bg-gray-50">
@@ -43,11 +51,11 @@
                     <td class="px-6 py-4 whitespace-nowrap">{{ $owner->created_at->format('d M Y') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         @if ($owner->status_verifikasi == 'pending')
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
                         @elseif ($owner->status_verifikasi == 'approved')
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Disetujui</span>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Disetujui</span>
                         @else
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Ditolak</span>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Ditolak</span>
                         @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap space-x-1">
