@@ -39,6 +39,7 @@ return new class extends Migration {
                 'Dibatalkan'
             ])->default('Menunggu Konfirmasi Owner');
 
+            $table->text('rejection_reason')->nullable();
             $table->timestamps();
 
             // foreign key constraint
