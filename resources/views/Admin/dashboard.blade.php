@@ -21,14 +21,14 @@
         <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
             <div class="w-12 h-12 bg-yellow-500 text-white rounded-lg flex items-center justify-center text-xl"><i class="fas fa-car"></i></div>
             <div>
-                <h3 class="text-2xl font-bold">1,245</h3>
+                <h3 class="text-2xl font-bold">{{$totalPosts}}</h3>
                 <p class="text-slate-500">Postingan Aktif</p>
             </div>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md flex items-center gap-4">
             <div class="w-12 h-12 bg-red-500 text-white rounded-lg flex items-center justify-center text-xl"><i class="fas fa-clock"></i></div>
             <div>
-                <h3 class="text-2xl font-bold">28</h3>
+                <h3 class="text-2xl font-bold">{{$pendingRequests}}</h3>
                 <p class="text-slate-500">Permintaan Pending</p>
             </div>
         </div>
