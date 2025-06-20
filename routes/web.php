@@ -103,7 +103,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'prevent-back-histor
 
 Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/dashboard', [OwnerController::class, 'dashboard'])->name('dashboard');
-    Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
     Route::get('/order', [OwnerController::class, 'order'])->name('order');
     Route::get('/posts/info', [OwnerController::class, 'showPost'])->name('postingan');
     Route::get('/posts', [OwnerController::class, 'posts'])->name('posts');
@@ -112,6 +111,7 @@ Route::prefix('owner')->name('owner.')->middleware(['auth', 'prevent-back-histor
     Route::put('/posts/update/{id}', [OwnerController::class, 'updatePost'])->name('posts.update');
     Route::put('/pesanan/{id}/konfirmasi', [OwnerController::class, 'konfirmasiPesanan'])->name('pesanan.konfirmasi');
     Route::put('/pesanan/{id}/konfirmasi-pembayaran', [OwnerController::class, 'konfirmasiPembayaran'])->name('pesanan.konfirmasi.pembayaran');
+    Route::get('/riwayat', [OwnerController::class, 'riwayat'])->name('riwayat');
 });
 
 Route::post('/cars/{car}/review', [CarController::class, 'submitReview'])->name('cars.review')->middleware('auth');
