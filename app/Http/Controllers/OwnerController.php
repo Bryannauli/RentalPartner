@@ -23,7 +23,7 @@ class OwnerController extends Controller
         }
 
         $posts= Post::where('owner_id', $owner->id)
-        ->where('status_verifikasi', 'approved')
+        ->where('status', 'approved')
         ->get();
         return view('owner.dashboard', compact('posts'));
     }
