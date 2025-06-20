@@ -101,8 +101,9 @@
                 <h3 class="text-lg font-semibold text-gray-700 mb-2">Metode Pembayaran</h3>
                 <div class="text-sm text-gray-600 bg-blue-50 p-4 rounded-lg border border-blue-200">
                     <p>Silakan lakukan pembayaran ke rekening berikut:</p>
-                    <p class="font-semibold mt-2">Bank XYZ - 1234567890</p>
-                    <p>a.n. Perusahaan Rental Anda</p>
+                    <p class="font-semibold mt-1">Bank ABC - 1234567890</p>
+                    <p class="font-semibold mt-1">Bank XYZ - 0987654321</p>
+                    <p>a.n. Perusahaan RentalPartner</p>
                     <p class="mt-2">Setelah melakukan pembayaran, mohon konfirmasi dengan menekan tombol di bawah.</p>
                 </div>
             </div>
@@ -110,7 +111,7 @@
 
             <div class="mt-10 text-center">
                 @if($pesanan->status === 'Menunggu Pembayaran')
-                    <a href="{{ route('user.pembayaran.form', $pesanan->id) }}"
+                    <a href="{{ route('user.payment.form', $pesanan->id) }}"
                        class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md">
                         Bayar Invoice Ini
                     </a>

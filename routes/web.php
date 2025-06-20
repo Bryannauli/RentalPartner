@@ -47,7 +47,6 @@ Route::middleware(['auth', 'isUser', 'prevent-back-history'])->group(function ()
 
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::resource('profile', ProfileController::class);
 
     Route::post('/pesanan/store', [PesananController::class, 'store'])->name('pesanan.store');
     Route::get('/payment/form/{id}', [PesananController::class, 'form'])->name('payment.form');
