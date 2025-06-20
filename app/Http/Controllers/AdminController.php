@@ -6,6 +6,7 @@ use App\Models\Owner;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Pesanan;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -258,4 +259,11 @@ class AdminController extends Controller
         $pesanans = Pesanan::with(['user', 'postingan'])->latest()->get();
         return view('admin.history', compact('pesanans'));
     }
+
+    public function showReview()
+        {
+            $reviews = Review::with(['user', 'post'])->latest()->get();
+            return view('admin.review', compact('reviews'));
+        }
+
 }
