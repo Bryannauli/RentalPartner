@@ -27,7 +27,25 @@ class AdminController extends Controller
         $totalOwners = Owner::where('status_verifikasi', 'approved')->count();
         $totalPosts = Post::where('status_verifikasi', 'approved')->count();
         $pendingRequests = Owner::where('status_verifikasi', 'pending')->count();
-        return view('admin.dashboard', compact('recentOwners', 'totalUsers', 'totalOwners', 'totalPosts', 'pendingRequests'));
+        $recentOwners = Owner::latest()->take(5)->get();
+        $latestUser = User::latest()->take(5)->get(); // <- ini bagian penting
+        $latestApprovedOwners = Owner::where('status_verifikasi', 'approved')->latest()->take(5)->get();
+        $latestPosts = Post::latest()->take(5)->get();
+        $latestReviews = Review::latest()->take(5)->get();
+        $latestBookings = Pesanan::latest()->take(5)->get();
+
+        return view('admin.dashboard', compact(
+        'totalUsers',
+        'totalOwners',
+        'totalPosts',
+        'pendingRequests',
+        'recentOwners',
+        'latestUser', // <- pastikan dikirim ke view
+        'latestApprovedOwners',
+        'latestPosts',
+        'latestReviews',
+        'latestBookings'
+    ));
     }
 
     public function users(Request $request)

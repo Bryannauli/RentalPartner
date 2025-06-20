@@ -95,7 +95,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($latestUser as $users)
+                        @foreach ($latestUser as $user)
                         <tr class="border-b">
                             <td class="p-3">{{ $user->name }}</td>
                             <td class="p-3">{{ $user->email }}</td>
@@ -114,7 +114,7 @@
         <div class="bg-white p-6 rounded-lg shadow-md">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-bold text-slate-800">Owner Terbaru</h2>
-                <a href="{{ route('admin.activateOwners') }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
+                <a href="{{ route('admin.activateOwner', $owner->id) }}" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Semua</a>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
@@ -161,7 +161,7 @@
                     <tbody>
                         @foreach ($latestPosts as $post)
                         <tr class="border-b">
-                            <td class="p-3">{{ $post->mobil->merk }} {{ $post->mobil->model }}</td>
+                            <td class="p-3">{{ $post->brand }} {{ $post->type }}</td>
                             <td class="p-3">{{ $post->owner->user->name }}</td>
                             <td class="p-3">{{ $post->created_at->format('d M Y') }}</td>
                             <td class="p-3">
@@ -194,12 +194,12 @@
                         @foreach ($latestReviews as $review)
                         <tr class="border-b">
                             <td class="p-3">{{ $review->user->name }}</td>
-                            <td class="p-3">{{ $review->mobil->merk }}</td>
+                            <td class="p-3">{{ $review->brand }}</td>
                             <td class="p-3 text-yellow-500">
                                 @for ($i = 0; $i < $review->rating; $i++) <i class="fas fa-star"></i> @endfor
                              {{ $review->rating }}/5</td>
                             <td class="p-3">
-                                <a href="{{ route('admin.reviews', $review->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
+                                <a href="{{ route('admin.review', $review->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-bold py-1 px-3 rounded">Lihat</a>
                             </td>
                         </tr>
                         @endforeach
@@ -229,8 +229,8 @@
                         @foreach($latestBookings as $booking)
                         <tr class="border-b">
                             <td class="p-3">{{ $booking->user->name }}</td>
-                            <td class="p-3">{{ $booking->mobil->merk }} {{ $booking->mobil->model }}</td>
-                            <td class="p-3">{{ $booking->tanggal_mulai->format('d M Y') }}</td>
+                            <td class="p-3">{{ $booking->car_name }} {{ $booking->typel }}</td>
+                            <td class="p-3">{{ \Carbon\Carbon::parse($booking->start_date)->format('d M Y') }}</td>
                             <td class="p-3">
                                 <span class="px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">{{ ucfirst($booking->status) }}</span>
                             </td>
