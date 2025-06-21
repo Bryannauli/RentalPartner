@@ -14,14 +14,14 @@
     <form action="{{ route('admin.users') }}" method="GET">
         <div class="flex gap-4 mb-4">
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari pengguna..." class="flex-grow p-2 border rounded-md">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+                <i class="fas fa-search"></i> Cari
+            </button>
             <select name="status" class="p-2 border rounded-md">
                 <option>Semua Status</option>
                 <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
                 <option value="suspended" {{ request('status') == 'suspended' ? 'selected' : '' }}>Ditangguhkan</option>
             </select>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
-                <i class="fas fa-search"></i> Cari
-            </button>
         </div>
     </form>
 

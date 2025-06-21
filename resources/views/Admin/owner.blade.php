@@ -11,15 +11,15 @@
     <form action="{{ route('admin.owner-requests') }}" method="GET">
         <div class="flex gap-4 mb-4">
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari permintaan..." class="flex-grow p-2 border rounded-md">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+                <i class="fas fa-search"></i> Cari
+            </button>
             <select name="status" class="p-2 border rounded-md">
                 <option value="">Semua Status</option>
                 <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
                 <option value="approved" {{ request('status') == 'approved' ? 'selected' : '' }}>Disetujui</option>
                 <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Ditolak</option>
             </select>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
-                <i class="fas fa-search"></i> Cari
-            </button>
         </div>
     </form>
     
