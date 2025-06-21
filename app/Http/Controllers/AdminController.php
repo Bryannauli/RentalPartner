@@ -123,6 +123,8 @@ class AdminController extends Controller
     public function mobil(Request $request)
     {
         $query = Post::query();
+        
+        $query->where('status_verifikasi', 'approved');
 
         if ($request->filled('search')) {
             $search = $request->search;
