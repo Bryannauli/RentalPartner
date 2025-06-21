@@ -50,7 +50,10 @@ class Pesanan extends Model
     {
         $start = Carbon::parse($this->start_date);
         $end = Carbon::parse($this->end_date);
-        return $start->diffInDays($end);
+    
+        $days = $start->diffInDays($end);
+    
+        return max($days, 1);
     }
 
     public function getTotalPriceAttribute()

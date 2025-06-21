@@ -56,17 +56,6 @@ class PesananController extends Controller
         return redirect()->route('user.history')->with('success', 'Pemesanan berhasil dikirim!');
     }
 
-    // tampilkan list pesanan untuk owner (dashboard owner)
-    public function index()
-    {
-        $ownerId = Auth::user()->owner->id; 
-
-        $pesanans = Pesanan::where('owner_id', $ownerId)
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        return view('owner.pesanan.index', compact('pesanans'));
-    }
 
     
 }
