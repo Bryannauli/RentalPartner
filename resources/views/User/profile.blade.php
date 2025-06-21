@@ -12,7 +12,7 @@
     </div>
     @endif
 
-    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('profile.update') }}" method="POST">
 
         @csrf
         @method('PUT')
@@ -30,23 +30,6 @@
         <div class="mb-4">
             <label class="block font-medium mb-1">Nomor Telepon</label>
             <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" class="w-full p-2 border rounded">
-        </div>
-
-        <div class="mb-4">
-            <label class="block font-medium mb-1">Foto Profil</label>
-            <input
-                type="file"
-                name="sim"
-                accept=".jpg,.jpeg,.png"
-                class="w-full text-sm text-gray-500
-                    file:mr-4 file:py-2 file:px-4
-                    file:rounded-md file:border-2 
-                    file:text-sm file:font-semibold
-                    file:bg-blue-600 file:text-white
-                    hover:file:bg-white hover:file:text-blue-600" />
-            @if($user->photo)
-            <img src="{{ asset('storage/photos/' . $user->photo) }}" class="w-20 h-20 mt-2 rounded-full" alt="Foto Profil">
-            @endif
         </div>
 
         <div class="mb-4">

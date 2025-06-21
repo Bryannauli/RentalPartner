@@ -36,19 +36,6 @@ class ProfileController extends Controller
             $user->password = Hash::make($request->password);
         }
 
-        if ($request->hasFile('photo')) {
-            // Hapus foto lama jika ada
-            if ($user->photo && Storage::exists('public/photos/' . $user->photo)) {
-                Storage::delete('public/photos/' . $user->photo);
-            }
-
-            // Simpan foto baru
-            $file = $request->file('photo');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/photos', $filename);
-            $user->photo = $filename;
-        }
-
         $user->save();
 
         return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
