@@ -8,7 +8,7 @@
         <div class="flex flex-col items-center text-center">
             {{-- pakai foto profil kalau ada, kalau nggak fallback --}}
             <img class="w-24 h-24 rounded-full mb-4 object-cover"
-                src="{{ $owner->user->profile_photo_url ?? 'https://i.pravatar.cc/150?u='.$owner->user->email }}"
+                src="{{ (auth()->user()->avatar) ? asset('storage/' . auth()->user()->avatar) : asset('https://www.gravatar.com/avatar/?d=mp') }}"
                 alt="User Avatar">
 
             <h3 class="text-xl font-bold text-slate-800">{{ $owner->user->name }}</h3>
