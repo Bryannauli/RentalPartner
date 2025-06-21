@@ -37,5 +37,7 @@ class ReviewController extends Controller
         'comment' => $validated['comment'],
         'rating' => $validated['rating'],
     ]);
+    return redirect()->route('user.index')->with('success', 'Review berhasil dikirim.');
 }
+
 }
