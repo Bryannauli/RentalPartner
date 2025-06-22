@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('title', 'Invoice Pesanan')
-   <script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
 @section('content')
-<div class="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+
+{{-- Invoice area --}}
+<div class="print-area bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
         <div class="p-8">
             <div class="flex justify-between items-start mb-8">
@@ -89,13 +93,13 @@
                 </div>
             </div>
 
+            @if($pesanan->notes)
             <div class="mt-10">
-                @if($pesanan->notes)
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Catatan Tambahan</h3>
-                    <p class="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border">{{ $pesanan->notes }}</p>
-                @endif
+                <h3 class="text-lg font-semibold text-gray-700 mb-2">Catatan Tambahan</h3>
+                <p class="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border">{{ $pesanan->notes }}</p>
             </div>
-            
+            @endif
+
             @if($pesanan->status === 'Menunggu Pembayaran')
             <div class="mt-8">
                 <h3 class="text-lg font-semibold text-gray-700 mb-2">Metode Pembayaran</h3>
@@ -109,7 +113,7 @@
             </div>
             @endif
 
-            <div class="mt-10 text-center">
+            <div class="mt-10 text-center no-print">
                 @if($pesanan->status === 'Menunggu Pembayaran')
                     <a href="{{ route('user.payment.form', $pesanan->id) }}"
                        class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md">
@@ -118,15 +122,23 @@
                 @elseif($pesanan->status === 'Sedang Berjalan')
                     <p class="text-gray-600">Terima kasih telah memilih layanan kami. Selamat menikmati perjalanan Anda!</p>
                 @elseif($pesanan->status === 'Selesai')
-                     <p class="text-gray-600">Pembayaran telah kami terima. Terima kasih atas kepercayaan Anda.</p>
+                    <p class="text-gray-600">Pembayaran telah kami terima. Terima kasih atas kepercayaan Anda.</p>
                 @endif
+                   <div class="text-center mt-4 no-print">
+    <button onclick="window.print()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+        Download Invoice (Cetak PDF)
+    </button>
+</div>
+
+
             </div>
 
-            <div class="mt-12 text-center text-sm text-gray-400 border-t pt-6">
+            <div class="mt-5 text-center text-sm text-gray-400 border-t pt-6">
                 <p>Terima kasih telah menggunakan layanan kami.</p>
                 <p>www.rentalpartner.com</p>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
