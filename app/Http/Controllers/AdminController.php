@@ -23,12 +23,12 @@ class AdminController extends Controller
         $recentOwners = Owner::with('user')->latest()->take(5)->get();
 
         // Data lain yang dibutuhkan dashboard
-        $totalUsers = User::where('access_level', 1)->count();
+        $totalUsers = User::whereIn('access_level', [1, 2])->count();
         $totalOwners = Owner::where('status_verifikasi', 'approved')->count();
         $totalPosts = Post::where('status_verifikasi', 'approved')->count();
         $pendingRequests = Owner::where('status_verifikasi', 'pending')->count();
         $recentOwners = Owner::latest()->take(5)->get();
-        $latestUser = User::latest()->take(5)->get(); // <- ini bagian penting
+        $latestUser = User::where('access_level', 1)->latest()->take(5)->get();
         $latestApprovedOwners = Owner::where('status_verifikasi', 'approved')->latest()->take(5)->get();
         $latestPosts = Post::latest()->take(5)->get();
         $latestReviews = Review::latest()->take(5)->get();
