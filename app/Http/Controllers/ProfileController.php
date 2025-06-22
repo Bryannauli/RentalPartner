@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'phone' => 'required|string|max:20|unique:users,phone,' . $user->id,
             'sim' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'password' => 'nullable|string|min:6|confirmed'
+            'password' => 'nullable|string|min:8|confirmed'
         ]);
 
         // Update data user
