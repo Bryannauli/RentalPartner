@@ -40,7 +40,7 @@
                 @foreach ($posts as $post)
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->id}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->car_name }} {{ $post->year }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->brand }} {{ $post->car_name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->owner->user->name ?? 'Unknown' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($post->price, 0, ',', '.') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->created_at->format('d M Y') }}</td>
