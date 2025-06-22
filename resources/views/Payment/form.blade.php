@@ -23,7 +23,7 @@
 
     <h3 class="font-semibold mb-2">Data Pribadi</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-      <input type="email" name="email" placeholder="Email" class="border p-2 rounded" required>
+      <input type="email" name="email" value="{{ old('email', Auth::user()->email) }}" placeholder="Email" class="border p-2 rounded" required>
       <input type="tel" name="phone" placeholder="Nomor Telepon" class="border p-2 rounded" required>
       <input type="text" name="address" placeholder="Alamat" class="border p-2 rounded md:col-span-2" required>
       <div class="space-y-4 md:col-span-2">
@@ -61,14 +61,20 @@
 
     <h3 class="font-semibold mb-2">Detail Sewa Mobil</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-      <div>
-        <label for="start_date" class="block mb-1 font-medium text-gray-700">Tanggal Mulai</label>
-        <input id="start_date" name="start_date" type="date" class="border p-2 rounded w-full" required />
-      </div>
-      <div>
-        <label for="end_date" class="block mb-1 font-medium text-gray-700">Tanggal Selesai</label>
-        <input id="end_date" name="end_date" type="date" class="border p-2 rounded w-full" required />
-      </div>
+  <div>
+    <label for="start_date" class="block mb-1 font-medium text-gray-700">Tanggal Mulai</label>
+    <input id="start_date" name="start_date" type="date" 
+        class="border p-2 rounded w-full" 
+        min="{{ date('Y-m-d') }}" required />
+</div>
+
+<div>
+    <label for="end_date" class="block mb-1 font-medium text-gray-700">Tanggal Selesai</label>
+    <input id="end_date" name="end_date" type="date" 
+        class="border p-2 rounded w-full" 
+        min="{{ date('Y-m-d') }}" required />
+</div>
+
 
       <input name="pickup_location" type="text" placeholder="Lokasi Pengambilan" class="border p-2 rounded" required>
       <input name="return_location" type="text" placeholder="Lokasi Pengembalian" class="border p-2 rounded" required>

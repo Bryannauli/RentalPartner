@@ -6,44 +6,78 @@
 <div class="bg-white p-8 rounded-lg shadow-md">
     <h2 class="text-2xl font-bold text-slate-800 mb-6">Formulir Postingan Mobil Baru</h2>
 
-    <form action="{{route('owner.posts.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('owner.posts.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="space-y-6">
+
             <div>
                 <label for="brand" class="block text-sm font-medium text-slate-700">Brand Mobil</label>
                 <input type="text" name="brand" id="brand" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Toyota">
             </div>
+
             <div>
                 <label for="car_name" class="block text-sm font-medium text-slate-700">Model Mobil</label>
                 <input type="text" name="car_name" id="car_name" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Avanza">
             </div>
+
+            {{-- Kapasitas --}}
             <div>
                 <label for="capacity" class="block text-sm font-medium text-slate-700">Kapasitas</label>
-                <input type="text" name="capacity" id="capacity" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: 6 Orang">
+                <select name="capacity" id="capacity" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm">
+                    <option value="">-- Pilih Kapasitas --</option>
+                    <option value="4 Orang">4 Orang</option>
+                    <option value="6 Orang">6 Orang</option>
+                    <option value="8 Orang">8 Orang</option>
+                </select>
             </div>
+
             <div>
                 <label for="year" class="block text-sm font-medium text-slate-700">Tahun Keluaran Mobil</label>
                 <input type="text" name="year" id="year" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: 2018">
             </div>
+
+            {{-- Transmisi --}}
             <div>
                 <label for="transmission" class="block text-sm font-medium text-slate-700">Transmisi</label>
-                <input type="text" name="transmission" id="transmission" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: CVT">
+                <select name="transmission" id="transmission" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm">
+                    <option value="">-- Pilih Transmisi --</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Otomatis">Automatic</option>
+                    <option value="CVT">CVT</option>
+                </select>
             </div>
+
             <div>
                 <label for="facilities" class="block text-sm font-medium text-slate-700">Fasilitas</label>
-                <input type="text" name="facilities" id="facilities" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: AC">
+                <input type="text" name="facilities" id="facilities" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: AC, Bluetooth, GPS">
             </div>
+
             <div>
                 <label for="mileage" class="block text-sm font-medium text-slate-700">Jarak Tempuh</label>
                 <input type="text" name="mileage" id="mileage" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: 4000 KM">
             </div>
+
+            {{-- Bagasi --}}
             <div>
                 <label for="baggage" class="block text-sm font-medium text-slate-700">Bagasi</label>
-                <input type="text" name="baggage" id="baggage" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: 4 Koper">
+                <select name="baggage" id="baggage" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm">
+                    <option value="">-- Pilih Bagasi --</option>
+                    <option value="2 Koper">2 Koper</option>
+                    <option value="4 Koper">4 Koper</option>
+                    <option value="6 Koper">6 Koper</option>
+                </select>
             </div>
+
+            {{-- Tipe Mobil --}}
             <div>
                 <label for="type" class="block text-sm font-medium text-slate-700">Tipe Mobil</label>
-                <input type="text" name="type" id="type" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm" placeholder="Contoh: Luxury">
+                <select name="type" id="type" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm">
+                    <option value="">-- Pilih Tipe Mobil --</option>
+                    <option value="City Car">City Car</option>
+                    <option value="SUV">SUV</option>
+                    <option value="MPV">MPV</option>
+                    <option value="Luxury">Luxury</option>
+                </select>
             </div>
 
             <div>
